@@ -23,9 +23,11 @@ namespace WindowsFormsApplication2
             int counter = 0;
             string line;//cria uma string que recebe as linhas
             string[] setup;//declara o vetor de setup
+            char[] ra;
             setup = new string[9];//declara que setup terá 9 posições
+            ra = new char[20];
 
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\fernando.asilva10\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\setup\Setup.txt");//busca o arquivo de texto
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\fernando.asilva10\Desktop\WindowsFormsApplication2\setup\Setup.txt");//busca o arquivo de texto
             while ((line = file.ReadLine()) != null)//laço que le linha por linha
             {
                 setup[counter] = line;//setup recebe a linha lida no arquivo de Setup
@@ -37,7 +39,6 @@ namespace WindowsFormsApplication2
                 }
                 else if (counter == 1)
                 {
-                    char[] postos = new char[line.Length];
                     int cont = line.Length;
 
                     switch (cont - 3)
@@ -123,9 +124,22 @@ namespace WindowsFormsApplication2
                             checkBox23.Visible = true;
                             break;
                     }
+                    cont -= 3;
+                    textBox2.Text = cont.ToString();
+                }
+                else if(counter == 2)
+                {
+                    var chars = line.ToCharArray();
+                    for(int i=0;i<23;i++)
+                    {
+                        if (i > 2)
+                        {
+                            ra[i - 3] = chars[i];
+                        }
+                    }
                 }
                     
-                MessageBox.Show(setup[counter]);//demonstra em message box as linhas lidas
+                //MessageBox.Show(setup[counter]);//demonstra em message box as linhas lidas
                 counter++;//aumenta o contador para ler e armazenar novas linhas até o fim do arquivo(!=null)
             }
 
@@ -163,6 +177,11 @@ namespace WindowsFormsApplication2
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
