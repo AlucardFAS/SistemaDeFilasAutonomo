@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace PI_III
 
         private void carregarSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Carregar Setup");
+            CarregarSetup();
         }
         private void carregarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {
