@@ -1,0 +1,10 @@
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\bin\Debug\PI III.exe.config
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\bin\Debug\PI III.exe
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\bin\Debug\PI III.pdb
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\PI III.csprojResolveAssemblyReference.cache
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\PI_III.Properties.Resources.resources
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\PI III.csproj.GenerateResource.Cache
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\PI III.exe
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\PI III.pdb
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\PI_III.Teste.resources
+C:\Users\Bruno\Dropbox\Projetos C#\PI III\PI III\obj\Debug\VerticalProgressBar.resources
