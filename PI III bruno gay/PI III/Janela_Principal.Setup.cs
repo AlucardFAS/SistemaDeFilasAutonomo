@@ -36,23 +36,42 @@ namespace PI_III
             setup = new string[50];//declara que setup terá 9 posições
             while ((line = file.ReadLine()) != null)//laço que le linha por linha
             {
-                if(counter == 0)
+                if (counter == 0)
                 {
                     atendente = Convert.ToInt32(line);
                     //MessageBox.Show(Convert.ToString(atendente));
                 }
-                else if(counter == 1)
+                else if (counter == 1)
                 {
                     postos = line.ToCharArray();
                 }
-                else if(counter == 2)
+                else if (counter == 2)
                 {
                     atendente_pos = line.ToCharArray();
                 }
-                /*else if(counter == 3)
+                else if (counter == 3)
                 {
-                    vetor
-                }*/
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    char doispontos = ':';
+                    int condicional = 0, k = 0;
+                    for(int i=0; i<(vetor_aux.Length);i++)
+                    {
+                        if(condicional == 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                        else if(vetor_aux[i] == doispontos)
+                        {
+                            condicional = 1;
+                        }
+                    }
+                    string temp = new string(numfinal);
+                    troca = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(troca));
+                }
                 counter++;//aumenta o contador para ler e armazenar novas linhas até o fim do arquivo(!=null)
             }
 
