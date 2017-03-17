@@ -9,11 +9,12 @@ namespace PI_III
 {
     partial class Janela_Principal
     {
-        
+
         private string line;
 
-        
-        private void CarregarFila() {
+
+        private void CarregarFila()
+        {
 
             int turno = 0;
             bool usuario, chegada;
@@ -48,10 +49,9 @@ namespace PI_III
                         chegada = false;
                     }
                 }
-               
+
             }
-            
+
         }
     }
 }
- 

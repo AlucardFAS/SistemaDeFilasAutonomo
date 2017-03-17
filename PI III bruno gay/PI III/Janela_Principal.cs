@@ -13,9 +13,10 @@ namespace PI_III
 {
     public partial class Janela_Principal : Form
     {
-        public Janela_Principal()
-        {
-            ClientSize = new System.Drawing.Size(1200, 650);    //definindo tamanho da janela principal
+        const int TAMANHO_HORIZONTAL = 1350;
+        const int TAMANHO_VERTICAL = 670;
+        public Janela_Principal(){
+            ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Rocinha";   //nome da janela principal
             BarraMenu();
             CriarGuiches();

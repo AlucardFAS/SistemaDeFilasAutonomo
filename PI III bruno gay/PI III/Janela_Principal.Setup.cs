@@ -56,14 +56,14 @@ namespace PI_III
                     numfinal = new char[10];
                     char doispontos = ':';
                     int condicional = 0, k = 0;
-                    for(int i=0; i<(vetor_aux.Length);i++)
+                    for (int i = 0; i < (vetor_aux.Length); i++)
                     {
-                        if(condicional == 1)
+                        if (condicional == 1)
                         {
                             numfinal[k] = vetor_aux[i];
                             k++;
                         }
-                        else if(vetor_aux[i] == doispontos)
+                        else if (vetor_aux[i] == doispontos)
                         {
                             condicional = 1;
                         }
