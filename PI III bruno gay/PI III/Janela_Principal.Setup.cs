@@ -54,7 +54,6 @@ namespace PI_III
                     var vetor_aux = line.ToCharArray();
                     char[] numfinal;
                     numfinal = new char[10];
-                    char doispontos = ':';
                     int condicional = 0, k = 0;
                     for (int i = 0; i < (vetor_aux.Length); i++)
                     {
@@ -63,7 +62,7 @@ namespace PI_III
                             numfinal[k] = vetor_aux[i];
                             k++;
                         }
-                        else if (vetor_aux[i] == doispontos)
+                        else if (vetor_aux[i] == ':')
                         {
                             condicional = 1;
                         }
@@ -72,6 +71,256 @@ namespace PI_III
                     troca = Convert.ToInt32(temp);
                     //MessageBox.Show(Convert.ToString(troca));
                 }
+                else if(counter==4)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0,condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if(vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if(i>0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+                    string temp = new string(numfinal);
+                    postoA = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoA));
+                }
+                else if (counter == 5)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+                    string temp = new string(numfinal);
+                    postoB = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoB));
+                }
+                else if (counter == 6)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoC = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoC));
+                }
+                else if (counter == 7)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoD = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoD));
+                }
+                else if (counter == 8)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoE = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoE));
+                }
+                else if (counter == 9)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoF = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoG));
+                }
+                else if (counter == 10)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoG = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoG));
+                }
+                else if (counter == 11)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoH = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoH));
+                }
+                else if (counter == 12)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoI = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoI));
+                }
+                else if (counter == 13)
+                {
+                    var vetor_aux = line.ToCharArray();
+                    char[] numfinal;
+                    numfinal = new char[10];
+                    int k = 0, condicional = 0;
+                    for (int i = 0; i < (vetor_aux.Length); i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+
+                        else if (i > 0 && condicional != 1)
+                        {
+                            numfinal[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+
+
+                    string temp = new string(numfinal);
+                    postoJ = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(postoJ));
+                }
+
+
                 counter++;//aumenta o contador para ler e armazenar novas linhas até o fim do arquivo(!=null)
             }
 
