@@ -43,11 +43,45 @@ namespace PI_III
                 }
                 else if (counter == 1)
                 {
-                    postos = line.ToCharArray();
+                    var vetor_aux = line.ToCharArray();
+                    postos = new char[20];
+                    int condicional = 0, k = 0;
+
+                    for (int i = 0; i < vetor_aux.Length; i++)
+                    {
+                        if (vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+                        else if (condicional == 1)
+                        {
+                            postos[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+                    //string temp = new string(postos);
+                    //MessageBox.Show(temp);
                 }
                 else if (counter == 2)
                 {
-                    atendente_pos = line.ToCharArray();
+                    var vetor_aux = line.ToCharArray();
+                    atendente_pos = new char[20];
+                    int condicional = 0, k = 0;
+
+                    for(int i=0 ; i < vetor_aux.Length ; i++)
+                    {
+                        if(vetor_aux[i] == ':')
+                        {
+                            condicional = 1;
+                        }
+                        else if(condicional == 1)
+                        {
+                            atendente_pos[k] = vetor_aux[i];
+                            k++;
+                        }
+                    }
+                    //string temp = new string(atendente_pos);
+                    //MessageBox.Show(temp);
                 }
                 else if (counter == 3)
                 {
