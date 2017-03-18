@@ -6,16 +6,16 @@
         private VerticalProgressBar verticalProgressBar1;
         private System.Windows.Forms.ProgressBar progressBar1;
 
-        private void CriarGuiches()
+        private void criarGuiches()
         {
-            int quantidade = 6;
+            int quantidade = 20;
 
             for (int i = 0; i < quantidade; i++)
             {
                 // 
                 // guiches
                 // 
-                this.guiches = new System.Windows.Forms.Button();
+                guiches = new System.Windows.Forms.Button();
                 int inicio;
 
                 if (i <= 14)
@@ -57,7 +57,7 @@
                     inicio = TAMANHO_HORIZONTAL-(TAMANHO_HORIZONTAL/quantidade * (quantidade-1) + 18);
                     this.verticalProgressBar1.Location = new System.Drawing.Point ((quantidade > 14 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + inicio/2, 430);
                     this.verticalProgressBar1.Size = new System.Drawing.Size(18, 163);
-                    this.verticalProgressBar1.Value = 30;
+                    //this.verticalProgressBar1.Value = 30;
                 }
                 else {  //criando as ultimas 5 barras de progresso
                     this.progressBar1 = new System.Windows.Forms.ProgressBar();

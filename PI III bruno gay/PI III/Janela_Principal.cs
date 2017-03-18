@@ -15,13 +15,14 @@ namespace PI_III
     {
         const int TAMANHO_HORIZONTAL = 1350;
         const int TAMANHO_VERTICAL = 670;
+        
         public Janela_Principal(){
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Rocinha";   //nome da janela principal
-            BarraMenu();
-            CriarGuiches();
+            barraMenu();
+            criarGuiches();
+            gerarBotoes();
         }
-
 
         private void carregarSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -47,5 +48,6 @@ namespace PI_III
         {
             MessageBox.Show("Vai se fude");
         }
+
     }
 }
