@@ -13,7 +13,7 @@ namespace PI_III
         private string line;
 
 
-        private void CarregarFila()
+        private void carregarFila()
         {
 
             int turno = 0;
@@ -27,7 +27,7 @@ namespace PI_III
             Queue<char[]> guiche_d = new Queue<char[]>();
             Queue<char[]> guiche_e = new Queue<char[]>();
 
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\victor.etrindade\Desktop\PI3-master\PI III bruno gay\setup\Fila.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader("Dados/Fila.txt");
             while ((line = file.ReadLine()) != null)
             {
 

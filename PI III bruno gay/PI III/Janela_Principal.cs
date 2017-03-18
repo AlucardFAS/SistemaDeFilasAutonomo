@@ -30,7 +30,7 @@ namespace PI_III
         }
         private void carregarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Carregar Fila");
+            carregarFila();
         }
         private void criarSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {

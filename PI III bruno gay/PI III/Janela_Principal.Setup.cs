@@ -26,9 +26,8 @@ namespace PI_III
         private int postoJ;
 
 
-        private void CarregarSetup()
-        {
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\fernando.asilva10\Desktop\WindowsFormsApplication2\setup\Setup.txt");//busca o arquivo de texto
+        private void CarregarSetup(){
+            System.IO.StreamReader file = new System.IO.StreamReader("Dados/Setup.txt");//busca o arquivo de texto
             int counter = 0;
             postos = new char[20];
             string line;//cria uma string que recebe as linhas
