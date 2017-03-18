@@ -10,48 +10,67 @@ namespace PI_III
     partial class Janela_Principal
     {
 
-        private string line;
+        public void carregarFila(){
+            System.IO.StreamReader arquivo = new System.IO.StreamReader("dados/fila.txt");
+            string linha;
+            string dado = "";
+            int usuario = -1;
+            int chegada = -1;
+            string guiches;
 
+            Boolean stringUsuario = false;
+            Boolean stringChegada = false;
 
-        private void carregarFila()
-        {
-
-            int turno = 0;
-            bool usuario, chegada;
-
-
-            Queue<char[]> pessoa = new Queue<char[]>();
-            Queue<char[]> guiche_a = new Queue<char[]>();
-            Queue<char[]> guiche_b = new Queue<char[]>();
-            Queue<char[]> guiche_c = new Queue<char[]>();
-            Queue<char[]> guiche_d = new Queue<char[]>();
-            Queue<char[]> guiche_e = new Queue<char[]>();
-
-            System.IO.StreamReader file = new System.IO.StreamReader("Dados/Fila.txt");
-            while ((line = file.ReadLine()) != null)
+            while ((linha = arquivo.ReadLine()) != null)
             {
+                linha += ";";
 
-                var char_guiches = line.ToCharArray();
-                pessoa.Enqueue(char_guiches);
-                for (int i = 0; i < char_guiches.Length; i++)
+                char[] percorredor = linha.ToCharArray();
+
+                int i = 0;
+                while (true)
                 {
-                    if (char_guiches[i] == 'U')
+                    if (percorredor[i] == 'U')
                     {
-                        usuario = true;
+                        stringUsuario = true;
+                        i++;
                     }
-                    else if (char_guiches[i] == 'C')
+                    else if (percorredor[i] == 'C')
                     {
-                        usuario = false;
-                        chegada = true;
+                        stringChegada = true;
+                        stringUsuario = false;
+
+                        if (!Int32.TryParse(dado, out usuario)) Console.WriteLine("Deu ruim na hora de converter pra int");
+                        dado = "";
+                        i++;
                     }
-                    else if (char_guiches[i] == 'A')
+                    else if (percorredor[i] == 'A')
                     {
-                        chegada = false;
+                        stringChegada = false;
+                        if (!Int32.TryParse(dado, out chegada)) Console.WriteLine("Deu ruim na hora de converter pra int");
+                        dado = "";
+
+                        while (percorredor[i] != ';')
+                        {
+                            dado += percorredor[i];
+                            i++;
+
+                        }
+                        guiches = dado;
+                        dado = "";
+                        break;
                     }
+
+                    if (stringUsuario == true) dado += percorredor[i];
+                    if (stringChegada == true) dado += percorredor[i];
+
+                    i++;
+
                 }
-
+                MessageBox.Show("U: " + usuario + "\n" +
+                                "C: " + chegada + "\n" +
+                                "Guiches: " + guiches);
             }
-
         }
     }
 }
