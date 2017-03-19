@@ -11,29 +11,7 @@ namespace PI_III
     {
         private System.Windows.Forms.Button butao;
 
-        private void cliquePlay(object sender, EventArgs e) //essa função vai ser para dar play na velocidade padrão (1 seg)
-        {
-            contarTurnos(1);
-        }
-        private void cliquePlay2(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 2x (0.5 seg)
-        {
-            contarTurnos(0.5);
-        }
-        private void cliquePlay3(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 4x (0.25 seg)
-        {
-            contarTurnos(0.25);
-        }
-        private void cliquePlay4(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 10x (0.1 seg)
-        {
-            contarTurnos(0.10);
-        }
-        private void cliquePlay5(object sender, EventArgs e) //essa função vai ser para dar play na velocidade determinada pelo usuario, não mexer nisso por enquanto, nem ligar ela ao botão
-        {
-            double variavel = 0.10;
-            contarTurnos(variavel);
-        }
-
-        void gerarBotoes(){
+        void gerarBotoes(Queue<Pessoas>[] fila, Pessoas[] pessoas){
             for (int i = 0; i < 5; i++) //gerando os botões de play
             {
                 butao = new System.Windows.Forms.Button();
@@ -58,14 +36,14 @@ namespace PI_III
             butao.Text = "Pause";
             Controls.Add(this.butao);
         }
-        void contarTurnos(double tempo)
+        int contarTurnos(double tempo, int turno)
         {
-            int turno = 0;
-            while (turno < 10){   //até acabar todos os clientes (o <10 é provisório para testes)
+           // while (turno < 10){   //até acabar todos os clientes (o <10 é provisório para testes)
                 sleep(tempo);
                 turno++;
-                MessageBox.Show("turno: "+turno);
-            }
+               // MessageBox.Show("turno: "+turno);
+           // }
+                return turno;
 
         }
 

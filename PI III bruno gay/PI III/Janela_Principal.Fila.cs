@@ -9,6 +9,13 @@ namespace PI_III
 {
     partial class Janela_Principal{
 
+        Queue<Pessoas>[] criarFilas(Queue<Pessoas>[] fila, int quantidade) {
+            fila = new Queue<Pessoas>[quantidade];
+            //fila[0] = new Queue<Pessoas>();
+
+            return fila;
+            
+        }
         Pessoas[] carregarFila(){
             System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");
             string linha;

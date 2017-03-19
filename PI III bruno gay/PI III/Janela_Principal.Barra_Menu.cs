@@ -1,4 +1,11 @@
-﻿namespace PI_III
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PI_III
 {
     partial class Janela_Principal{
 
@@ -12,8 +19,7 @@
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
 
-        private void barraMenu(Pessoas[] pessoas)
-        {
+        private void barraMenu(Pessoas[] pessoas){
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,5 +114,31 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        private void carregarSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CarregarSetup();
+        }
+        private void carregarFilaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("" + pessoas[0].usuario);
+
+        }
+        private void criarSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("" + pessoas[0].usuario);
+        }
+        private void criarFilaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Criar Fila");
+        }
+        private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tutorial");
+        }
+        private void Clique_Guiche(object sender, EventArgs e)
+        {
+            MessageBox.Show("Vai se fude");
+        }
     }
+
 }

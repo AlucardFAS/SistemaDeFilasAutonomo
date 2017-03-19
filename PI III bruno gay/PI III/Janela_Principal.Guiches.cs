@@ -7,9 +7,8 @@
         private System.Windows.Forms.ProgressBar[] progressBar;
 
 
-        private void criarGuiches()
+        private void criarGuiches(int quantidade)
         {
-            int quantidade = 20;
 
             //declarando o vetor em função da quantidade de guiches
             verticalProgressBar = new VerticalProgressBar[quantidade > 15 ? 15 : quantidade];
