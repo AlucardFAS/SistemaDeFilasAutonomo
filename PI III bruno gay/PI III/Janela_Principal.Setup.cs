@@ -357,9 +357,48 @@ namespace PI_III
                 counter++;//aumenta o contador para ler e armazenar novas linhas até o fim do arquivo(!=null)
             }
 
-            
+            //obtendo a quantidade de guiches (metodo provisorio enquanto não arruma a classe)
+            int quantidade = 0;
+            String auxiliar = "";
 
-            MessageBox.Show(""+postos[3]);
+            for (int i = 0; i < 20; i++)    auxiliar += postos[i];
+            auxiliar = new String(auxiliar.Where(Char.IsLetter).ToArray());
+            quantidade = auxiliar.Length;
+
+            //criando as classes setupguiches
+            GuichesSetup[] guichesSetup;
+            guichesSetup = new GuichesSetup [quantidade];
+
+            //setando os guiches
+            int j = 0;
+            for (int i = 0; i < quantidade; i++){
+                guichesSetup[i] = new GuichesSetup();
+
+                guichesSetup[i].guiche = postos[i];
+
+                if (atendente_pos[j] == guichesSetup[i].guiche) {
+                    guichesSetup[i].atendente = true;
+                    j++;
+                }
+
+                if (guichesSetup[i].guiche == 'A') guichesSetup[i].turnosNecessarios = postoA;
+                if (guichesSetup[i].guiche == 'B') guichesSetup[i].turnosNecessarios = postoB;
+                if (guichesSetup[i].guiche == 'C') guichesSetup[i].turnosNecessarios = postoC;
+                if (guichesSetup[i].guiche == 'D') guichesSetup[i].turnosNecessarios = postoD;
+                if (guichesSetup[i].guiche == 'E') guichesSetup[i].turnosNecessarios = postoE;
+                if (guichesSetup[i].guiche == 'F') guichesSetup[i].turnosNecessarios = postoF;
+                if (guichesSetup[i].guiche == 'G') guichesSetup[i].turnosNecessarios = postoG;
+                if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = postoH;
+                if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = postoI;
+                if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = postoJ;
+
+                MessageBox.Show("Guiche: "+guichesSetup[i].guiche+"\n"+
+                                "Atendente: "+guichesSetup[i].atendente+"\n"+
+                                "Vazio: "+guichesSetup[i].vazio+"\n"+
+                                "Turnos Necessários: "+guichesSetup[i].turnosNecessarios);
+            }
+
+            MessageBox.Show(""+auxiliar.Length);
             file.Close();//fecha o txt
         }
     }

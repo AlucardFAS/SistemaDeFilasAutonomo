@@ -15,14 +15,17 @@ namespace PI_III
     {
         const int TAMANHO_HORIZONTAL = 1350;
         const int TAMANHO_VERTICAL = 670;
+
         Pessoas[] pessoas;
         Queue<Pessoas>[] fila;
+        GuichesSetup[] guiches1;
+
         
         public Janela_Principal(){
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Rocinha";   //nome da janela principal
 
-            int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length;
+            int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
 
             pessoas = new Pessoas[totalClientes];
             pessoas = carregarFila();
@@ -54,6 +57,9 @@ namespace PI_III
                 }
                 verticalProgressBar[0].Value = fila[0].Count;
                 MessageBox.Show("turno: "+turno+"\ntamanho da fila: "+verticalProgressBar[0].Value+"\ni: "+i);  
+
+                //jogando as pessoas nos guiches
+
 
                 turno = contarTurnos(1, turno);
             }
