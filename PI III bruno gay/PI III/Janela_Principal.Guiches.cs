@@ -3,12 +3,17 @@
     partial class Janela_Principal
     {
         private System.Windows.Forms.Button guiches;
-        private VerticalProgressBar verticalProgressBar1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private VerticalProgressBar[] verticalProgressBar;
+        private System.Windows.Forms.ProgressBar[] progressBar;
+
 
         private void criarGuiches()
         {
             int quantidade = 20;
+
+            //declarando o vetor em função da quantidade de guiches
+            verticalProgressBar = new VerticalProgressBar[quantidade > 15 ? 15 : quantidade];
+            progressBar = new System.Windows.Forms.ProgressBar[quantidade > 15 ? (quantidade - 15) : 0];
 
             for (int i = 0; i < quantidade; i++)
             {
@@ -52,28 +57,31 @@
                 if (i == 16)  this.guiches.Text = "Q";
 
                 if (i <= 14){   //criando as 15 primeiras barras de progresso
-                    this.verticalProgressBar1 = new VerticalProgressBar();
+                    verticalProgressBar[i] = new VerticalProgressBar();
 
                     inicio = TAMANHO_HORIZONTAL-(TAMANHO_HORIZONTAL/quantidade * (quantidade-1) + 18);
-                    this.verticalProgressBar1.Location = new System.Drawing.Point ((quantidade > 14 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + inicio/2, 430);
-                    this.verticalProgressBar1.Size = new System.Drawing.Size(18, 163);
-                    //this.verticalProgressBar1.Value = 30;
+                    verticalProgressBar[i].Location = new System.Drawing.Point ((quantidade > 14 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + inicio/2, 430);
+                    verticalProgressBar[i].Size = new System.Drawing.Size(18, 163);
+
+                    this.Controls.Add(this.verticalProgressBar[i]);
                 }
                 else {  //criando as ultimas 5 barras de progresso
-                    this.progressBar1 = new System.Windows.Forms.ProgressBar();
+                    progressBar[i-15] = new System.Windows.Forms.ProgressBar();
+
                     inicio = (TAMANHO_VERTICAL - 250)-(((TAMANHO_VERTICAL- 250)/(quantidade-14)*(quantidade-15) - 60));
-                    this.progressBar1.Location = new System.Drawing.Point(1100, (TAMANHO_VERTICAL - 250)/(quantidade-14)*(i-15) + (inicio/2));
-                    this.progressBar1.Size = new System.Drawing.Size(163, 18);
-                    
+                    progressBar[i-15].Location = new System.Drawing.Point(1100, (TAMANHO_VERTICAL - 250)/(quantidade-14)*(i-15) + (inicio/2));
+                    progressBar[i-15].Size = new System.Drawing.Size(163, 18);
+
+                    this.Controls.Add(this.progressBar[i-15]);             
                 } 
                 // 
                 // Janela Principal
                 // 
                 this.Controls.Add(this.guiches);
-                this.Controls.Add(this.verticalProgressBar1);
-                this.Controls.Add(this.progressBar1);
                 this.ResumeLayout(false);
             }
+            //progressBar[2].Value = 30;
+            //verticalProgressBar[1].Value = 30;
         }
     }
 }

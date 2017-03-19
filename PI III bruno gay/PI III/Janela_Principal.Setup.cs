@@ -357,26 +357,10 @@ namespace PI_III
                 counter++;//aumenta o contador para ler e armazenar novas linhas até o fim do arquivo(!=null)
             }
 
-            MessageBox.Show("Setup Carregado");
+            
+
+            MessageBox.Show(""+postos[3]);
             file.Close();//fecha o txt
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // Janela_Principal
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "Janela_Principal";
-            this.Load += new System.EventHandler(this.Janela_Principal_Load);
-            this.ResumeLayout(false);
-
-        }
-
-        private void Janela_Principal_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

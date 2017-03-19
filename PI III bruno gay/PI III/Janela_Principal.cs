@@ -15,13 +15,19 @@ namespace PI_III
     {
         const int TAMANHO_HORIZONTAL = 1350;
         const int TAMANHO_VERTICAL = 670;
+        Pessoas[] pessoas;
         
         public Janela_Principal(){
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Rocinha";   //nome da janela principal
-            barraMenu();
+            int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length;
+
+            pessoas = new Pessoas[totalClientes];
+
+            barraMenu(pessoas);
             criarGuiches();
             gerarBotoes();
+
         }
 
         private void carregarSetupToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,7 +36,9 @@ namespace PI_III
         }
         private void carregarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            carregarFila();
+            pessoas = carregarFila();
+
+            MessageBox.Show(""+pessoas[0].usuario);
         }
         private void criarSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {

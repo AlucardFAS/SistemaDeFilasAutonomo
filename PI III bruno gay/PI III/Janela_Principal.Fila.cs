@@ -7,11 +7,10 @@ using System.Windows.Forms;
 using System.IO;
 namespace PI_III
 {
-    partial class Janela_Principal
-    {
+    partial class Janela_Principal{
 
-        public void carregarFila(){
-            System.IO.StreamReader arquivo = new System.IO.StreamReader("dados/fila.txt");
+        Pessoas[] carregarFila(){
+            System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");
             string linha;
             string dado = "";
             int usuario = -1;
@@ -21,8 +20,8 @@ namespace PI_III
             Boolean stringUsuario = false;
             Boolean stringChegada = false;
 
-            while ((linha = arquivo.ReadLine()) != null)
-            {
+            int j = 0;
+            while ((linha = arquivo.ReadLine()) != null){
                 linha += ";";
 
                 char[] percorredor = linha.ToCharArray();
@@ -65,12 +64,15 @@ namespace PI_III
                     if (stringChegada == true) dado += percorredor[i];
 
                     i++;
-
+                    
                 }
-                MessageBox.Show("U: " + usuario + "\n" +
-                                "C: " + chegada + "\n" +
-                                "Guiches: " + guiches);
+                pessoas[j] = new Pessoas();
+                pessoas[j].setPessoa(usuario,chegada,guiches);
+                j++;
             }
+            arquivo.Close();
+
+            return pessoas;
         }
     }
 }
