@@ -11,12 +11,18 @@ namespace PI_III
     {
         public int usuario;
         public int chegada;
-        public char[] guiches; 
+        public char[] guiches;
 
-    public void setPessoa(int u, int c, String g){
+        public int atualGuiche;
+
+        public Pessoas() {
+            atualGuiche = 0;
+        }
+
+        public void setPessoa(int u, int c, String g){
         this.usuario = u;
         this.chegada = c;
         this.guiches = g.ToCharArray();
-    }
+        }
     }
 }

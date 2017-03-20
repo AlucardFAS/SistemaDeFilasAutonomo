@@ -12,12 +12,15 @@ namespace PI_III
         public Boolean atendente;
         public Boolean vazio;
         public int turnosNecessarios;
-        public String nome;
+        //public String nome;
+
+        public int ultimoTurno;
+        public Pessoas pessoaDentro;
 
        public GuichesSetup() {
             atendente = false;
             vazio = true;
-
+            ultimoTurno = 1;
         }
 
     }

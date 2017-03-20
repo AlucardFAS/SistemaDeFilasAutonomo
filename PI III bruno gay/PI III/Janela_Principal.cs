@@ -18,7 +18,7 @@ namespace PI_III
 
         Pessoas[] pessoas;
         Queue<Pessoas>[] fila;
-        GuichesSetup[] guiches1;
+        GuichesSetup[] guiches;
 
         
         public Janela_Principal(){
@@ -27,40 +27,56 @@ namespace PI_III
 
             int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
 
+            guiches = CarregarSetup();
+
             pessoas = new Pessoas[totalClientes];
             pessoas = carregarFila();
 
-            int quantidade = 20;
+            int quantidade = guiches.Length;
             fila = criarFilas(fila, quantidade);
 
             barraMenu(pessoas);
-            criarGuiches(quantidade);
+            criarGuiches(quantidade, guiches);
 
             //fila[0] = new Queue<Pessoas>();
             //fila[0].Enqueue(pessoas[0]);
-            gerarBotoes(fila, pessoas);
+            GerarPlay(fila, pessoas, guiches);
 
         }
         private void cliquePlay(object sender, EventArgs e) //essa função vai ser para dar play na velocidade padrão (1 seg)
         {
             int turno = 1;
-            fila[0] = new Queue<Pessoas>();
+            int quantidadeGuiches = guiches.Length;
+            for (int k = 0; k < quantidadeGuiches; k++ )    fila[k] = new Queue<Pessoas>();
 
             int i = 0;
+            //entrando na fila
             while (i<pessoas.Length){
-                //entrando na fila
                 while (pessoas[i].chegada == turno)
                 {
                     fila[0].Enqueue(pessoas[i]);
                     i++;
                     if (i >= pessoas.Length) break;
                 }
-                verticalProgressBar[0].Value = fila[0].Count;
-                MessageBox.Show("turno: "+turno+"\ntamanho da fila: "+verticalProgressBar[0].Value+"\ni: "+i);  
 
                 //jogando as pessoas nos guiches
+                if (quantidadeGuiches <= 15)
+                    for (int j = 0; j < quantidadeGuiches; j++){
+                        if (guiches[j].vazio == true && fila[j].Count != 0)
+                        {
+                            //tira o primeiro da fila e joga ele dentro do guiche
+                            entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                        }
+                    }
+
+                //atualizando os guiches
+                guiches = atualizarGuiches(guiches, fila);
 
 
+                //atualizando as barras de progresso
+                for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
+
+                MessageBox.Show("turno: " + turno + "\ntamanho da fila: " + verticalProgressBar[0].Value + "\ni: " + i);  
                 turno = contarTurnos(1, turno);
             }
 

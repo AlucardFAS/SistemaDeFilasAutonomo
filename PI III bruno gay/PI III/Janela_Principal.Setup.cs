@@ -26,7 +26,8 @@ namespace PI_III
         private int postoJ;
 
 
-        private void CarregarSetup(){
+        private GuichesSetup[] CarregarSetup()
+        {
             System.IO.StreamReader file = new System.IO.StreamReader("Dados/Setup.txt");//busca o arquivo de texto
             int counter = 0;
             postos = new char[20];
@@ -391,15 +392,10 @@ namespace PI_III
                 if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = postoH;
                 if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = postoI;
                 if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = postoJ;
-
-                MessageBox.Show("Guiche: "+guichesSetup[i].guiche+"\n"+
-                                "Atendente: "+guichesSetup[i].atendente+"\n"+
-                                "Vazio: "+guichesSetup[i].vazio+"\n"+
-                                "Turnos Necessários: "+guichesSetup[i].turnosNecessarios);
             }
-
-            MessageBox.Show(""+auxiliar.Length);
             file.Close();//fecha o txt
+
+            return guichesSetup;
         }
     }
 }
