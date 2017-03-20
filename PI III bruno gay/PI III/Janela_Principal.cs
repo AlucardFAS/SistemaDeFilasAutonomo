@@ -46,12 +46,13 @@ namespace PI_III
         private void cliquePlay(object sender, EventArgs e) //essa função vai ser para dar play na velocidade padrão (1 seg)
         {
             int turno = 1;
+            //obtendo a quantidade de guiches
             int quantidadeGuiches = guiches.Length;
-            for (int k = 0; k < quantidadeGuiches; k++ )    fila[k] = new Queue<Pessoas>();
-
+            
             int i = 0;
-            //entrando na fila
+            //esse laço vai até entrar todas as pessoas nas filas
             while (i<pessoas.Length){
+                //jogando as pessoas na fila do guiche A (ou dos guiches A)
                 while (pessoas[i].chegada == turno)
                 {
                     fila[0].Enqueue(pessoas[i]);
@@ -59,26 +60,42 @@ namespace PI_III
                     if (i >= pessoas.Length) break;
                 }
 
-                //jogando as pessoas nos guiches
-                if (quantidadeGuiches <= 15)
-                    for (int j = 0; j < quantidadeGuiches; j++){
-                        if (guiches[j].vazio == true && fila[j].Count != 0)
-                        {
-                            //tira o primeiro da fila e joga ele dentro do guiche
-                            entrarGuiches(fila[j].Dequeue(), guiches[j]);
-                        }
-                    }
+                //jogando as primeiras pessoas das filas nos guiches
+                    for (int j = 0; j < quantidadeGuiches; j++)
+                        if (guiches[j].vazio == true && fila[j].Count != 0)   
+                            entrarGuiches(fila[j].Dequeue(), guiches[j]);                        
+                    
 
-                //atualizando os guiches
+                //atualizando os guiches e jogando as pessoas pras respectivas filas
                 guiches = atualizarGuiches(guiches, fila);
-
 
                 //atualizando as barras de progresso
                 for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
 
-                MessageBox.Show("turno: " + turno + "\ntamanho da fila: " + verticalProgressBar[0].Value + "\ni: " + i);  
                 turno = contarTurnos(1, turno);
             }
+
+            //esse laço vai até esvaziar todos os guiches, assim, terminando
+            Boolean continuar = true;
+            while (continuar) {
+
+                //jogando as primeiras pessoas das filas nos guiches
+                for (int j = 0; j < quantidadeGuiches; j++)
+                    if (guiches[j].vazio == true && fila[j].Count != 0)
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);
+
+                //atualizando os guiches e jogando as pessoas pras respectivas filas
+                guiches = atualizarGuiches(guiches, fila);
+
+                //atualizando as barras de progresso
+                for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
+
+                turno = contarTurnos(1, turno);
+         
+                continuar = false;
+                for (int j = 0; j < quantidadeGuiches; j++) if (guiches[j].vazio == false) continuar = true;
+            }
+            MessageBox.Show(""+turno);
 
         }
         private void cliquePlay2(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 2x (0.5 seg)

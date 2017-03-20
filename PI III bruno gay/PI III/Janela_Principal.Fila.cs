@@ -11,6 +11,7 @@ namespace PI_III
 
         Queue<Pessoas>[] criarFilas(Queue<Pessoas>[] fila, int quantidade) {
             fila = new Queue<Pessoas>[quantidade];
+            for (int k = 0; k < quantidade; k++) fila[k] = new Queue<Pessoas>();
             //fila[0] = new Queue<Pessoas>();
 
             return fila;

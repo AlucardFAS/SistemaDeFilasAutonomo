@@ -27,6 +27,9 @@ namespace PI_III
                     guiches[i].ultimoTurno = 1;
                     guiches[i].pessoaDentro.atualGuiche++;
 
+                    //testando se a pessoa ainda tem guiches pra ir, se não, ela cai no esquecimento e segue o jogo
+                    if (guiches[i].pessoaDentro.atualGuiche >= guiches[i].pessoaDentro.guiches.Length) return guiches;
+                    //verificando o proximo guiche que ela tem que ir
                     proximoGuiche = guiches[i].pessoaDentro.guiches[guiches[i].pessoaDentro.atualGuiche];
 
                     //achando o guiche que a pessoa tem de ir
@@ -34,7 +37,7 @@ namespace PI_III
                     while (guiches[j].guiche != proximoGuiche) j++;
 
                     //verificando se tem um guiche da mesma letra
-                    if (guiches[j].guiche == guiches[j+1].guiche) 
+                    if (j+1 < quantidadeGuiches && guiches[j].guiche == guiches[j+1].guiche) 
                         if (guiches[j].vazio == false && guiches[j+1].vazio == true || fila[j].Count > fila[j+1].Count) j++;
 
                     //enviando a pessoa para a fila
@@ -66,7 +69,7 @@ namespace PI_III
                     inicio = TAMANHO_HORIZONTAL - (TAMANHO_HORIZONTAL / quantidade * (quantidade - 1)) - (100 - (quantidade * 3));
                 else inicio = (TAMANHO_VERTICAL-250) - ((TAMANHO_VERTICAL-250) / (quantidade-14) * (quantidade-15)) - (100 - (quantidade *3));
                 if (i <= 14)  //gerando os 15 primeiros guiches de baixo
-                    this.guichesBotao.Location = new System.Drawing.Point((quantidade > 15 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + (inicio/2), TAMANHO_VERTICAL - 70);
+                    this.guichesBotao.Location = new System.Drawing.Point((quantidade > 15 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + (inicio/2), TAMANHO_VERTICAL - 90);
                 else{   //gerando os 5 ultimos guiches no lado direito em cima
                     this.guichesBotao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
                     this.guichesBotao.Location = new System.Drawing.Point(1270, (TAMANHO_VERTICAL - 250) / (quantidade-14)*(i-14) - (inicio/2));
@@ -85,7 +88,7 @@ namespace PI_III
                     verticalProgressBar[i] = new VerticalProgressBar();
 
                     inicio = TAMANHO_HORIZONTAL-(TAMANHO_HORIZONTAL/quantidade * (quantidade-1) + 18);
-                    verticalProgressBar[i].Location = new System.Drawing.Point ((quantidade > 14 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + inicio/2, 430);
+                    verticalProgressBar[i].Location = new System.Drawing.Point ((quantidade > 14 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + inicio/2, 410);
                     verticalProgressBar[i].Size = new System.Drawing.Size(18, 163);
                     verticalProgressBar[i].Maximum = 10;
 
