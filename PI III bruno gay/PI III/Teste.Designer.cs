@@ -33,13 +33,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(279, 90);
+            this.button1.BackColor = System.Drawing.Color.Yellow;
+            this.button1.Location = new System.Drawing.Point(116, 127);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(65, 60);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // Teste
             // 
@@ -56,6 +56,8 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
+
+
 
 
 

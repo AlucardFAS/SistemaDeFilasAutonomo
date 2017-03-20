@@ -38,8 +38,6 @@ namespace PI_III
             barraMenu(pessoas);
             criarGuiches(quantidade, guiches);
 
-            //fila[0] = new Queue<Pessoas>();
-            //fila[0].Enqueue(pessoas[0]);
             GerarPlay(fila, pessoas, guiches);
 
         }
@@ -59,20 +57,36 @@ namespace PI_III
                     i++;
                     if (i >= pessoas.Length) break;
                 }
-
                 //jogando as primeiras pessoas das filas nos guiches
-                    for (int j = 0; j < quantidadeGuiches; j++)
-                        if (guiches[j].vazio == true && fila[j].Count != 0)   
-                            entrarGuiches(fila[j].Dequeue(), guiches[j]);                        
-                    
+                for (int j = 0; j < quantidadeGuiches; j++)
+                    if (guiches[j].vazio == true && fila[j].Count != 0)
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);      
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 guiches = atualizarGuiches(guiches, fila);
 
+                //jogando as primeiras pessoas das filas nos guiches
+                for (int j = 0; j < quantidadeGuiches; j++)
+                    if (guiches[j].vazio == true && fila[j].Count != 0)
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);     
+
                 //atualizando as barras de progresso
                 for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
 
+                //atualizando a cor dos botões
+                for (int j = 0; j < quantidadeGuiches; j++)
+                {
+                    if (guiches[j].vazio == false) guichesBotao[j].BackColor = System.Drawing.Color.Green;
+                    else if (guiches[j].atendente == true) guichesBotao[j].BackColor = System.Drawing.Color.Yellow;
+                    else guichesBotao[j].BackColor = System.Drawing.Color.Red;
+                }
+
+                MessageBox.Show(""+turno);
+                //tentativa falha de adicionar um contador de turno
                 turno = contarTurnos(1, turno);
+                textoTurno.Text = "Turno: "+turno;
+                Refresh();
+                textoTurno.Refresh();
             }
 
             //esse laço vai até esvaziar todos os guiches, assim, terminando
@@ -82,20 +96,34 @@ namespace PI_III
                 //jogando as primeiras pessoas das filas nos guiches
                 for (int j = 0; j < quantidadeGuiches; j++)
                     if (guiches[j].vazio == true && fila[j].Count != 0)
-                        entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);      
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 guiches = atualizarGuiches(guiches, fila);
 
+                //jogando as primeiras pessoas das filas nos guiches
+                for (int j = 0; j < quantidadeGuiches; j++)
+                    if (guiches[j].vazio == true && fila[j].Count != 0)
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);     
+
                 //atualizando as barras de progresso
                 for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
 
-                turno = contarTurnos(1, turno);
-         
+                //atualizando a cor dos botões
+                for (int j = 0; j < quantidadeGuiches; j++)
+                {
+                    if (guiches[j].vazio == false) guichesBotao[j].BackColor = System.Drawing.Color.Green;
+                    else if (guiches[j].atendente == true) guichesBotao[j].BackColor = System.Drawing.Color.Yellow;
+                    else guichesBotao[j].BackColor = System.Drawing.Color.Red;
+                }
+
                 continuar = false;
                 for (int j = 0; j < quantidadeGuiches; j++) if (guiches[j].vazio == false) continuar = true;
+                if (continuar == false) break;
+
+                turno = contarTurnos(1, turno);
             }
-            MessageBox.Show(""+turno);
+            MessageBox.Show("Turno terminado: "+turno);
 
         }
         private void cliquePlay2(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 2x (0.5 seg)
@@ -103,10 +131,10 @@ namespace PI_III
             int turno = 1;
             contarTurnos(0.5, turno);
         }
-        private void cliquePlay3(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 4x (0.25 seg)
+        private void cliquePlay3(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 3x (0.33 seg)
         {
             int turno = 1;
-            contarTurnos(0.25, turno);
+            contarTurnos(0.333333, turno);
         }
         private void cliquePlay4(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 10x (0.1 seg)
         {

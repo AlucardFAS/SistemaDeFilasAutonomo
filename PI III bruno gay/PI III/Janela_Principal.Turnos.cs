@@ -10,6 +10,7 @@ namespace PI_III
     partial class Janela_Principal
     {
         private System.Windows.Forms.Button butao;
+        private System.Windows.Forms.Label textoTurno;
 
         void GerarPlay(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches){
             for (int i = 0; i < 5; i++) //gerando os botões de play
@@ -23,11 +24,25 @@ namespace PI_III
                 if (i == 3) butao.Text = "Play4";
                 if (i == 4) butao.Text = "Play5";
 
+
+                Controls.Add(this.butao);
+
+                textoTurno = new System.Windows.Forms.Label();
+                this.SuspendLayout();
+
+                textoTurno.AutoSize = true;
+                textoTurno.Location = new System.Drawing.Point(30, 30);
+                textoTurno.Size = new System.Drawing.Size(50, 30);
+                textoTurno.Text = "Turno: 0";
+
+                Controls.Add(textoTurno);
+
                 if (i == 0) butao.Click += new System.EventHandler(this.cliquePlay);
                 if (i == 1) butao.Click += new System.EventHandler(this.cliquePlay2);
                 if (i == 2) butao.Click += new System.EventHandler(this.cliquePlay3);
                 if (i == 3) butao.Click += new System.EventHandler(this.cliquePlay4);
-                Controls.Add(this.butao);
+
+
             }
 
             butao = new System.Windows.Forms.Button();
