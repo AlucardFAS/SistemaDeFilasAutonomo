@@ -47,14 +47,14 @@ namespace PI_III
                         stringChegada = true;
                         stringUsuario = false;
 
-                        if (!Int32.TryParse(dado, out usuario)) Console.WriteLine("Deu ruim na hora de converter pra int");
+                        if (!Int32.TryParse(dado, out usuario)) MessageBox.Show("Deu ruim na hora de converter pra int");
                         dado = "";
                         i++;
                     }
                     else if (percorredor[i] == 'A')
                     {
                         stringChegada = false;
-                        if (!Int32.TryParse(dado, out chegada)) Console.WriteLine("Deu ruim na hora de converter pra int");
+                        if (!Int32.TryParse(dado, out chegada)) MessageBox.Show("Deu ruim na hora de converter pra int");
                         dado = "";
 
                         while (percorredor[i] != ';')

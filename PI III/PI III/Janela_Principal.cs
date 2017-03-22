@@ -22,8 +22,9 @@ namespace PI_III
 
         
         public Janela_Principal(){
+            StartPosition = FormStartPosition.CenterScreen;
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
-            Text = "Projeto Rocinha";   //nome da janela principal
+            Text = "Projeto Integrador 3";   //nome da janela principal
 
             int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
 
@@ -118,6 +119,7 @@ namespace PI_III
                 textoTurno.Refresh();
                 Refresh();
 
+                Application.DoEvents();
                 turno = contarTurnos(1, turno);
             }
 

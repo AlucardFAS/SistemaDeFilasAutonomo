@@ -48,6 +48,7 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.button1);
             this.Name = "Teste";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teste";
             this.ResumeLayout(false);
 

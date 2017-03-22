@@ -129,15 +129,15 @@ namespace PI_III
         }
         private void criarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Criar Fila");
+            MessageBox.Show("Em Construção.");
         }
         private void tutorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tutorial");
+            MessageBox.Show("Verde - Guiche Ocupado.\nAmarelo - Guiche Disponível.\nVermelho - Guiche Desativado.");
         }
         private void Clique_Guiche(object sender, EventArgs e)
         {
-            MessageBox.Show("Vai se fude");
+            MessageBox.Show("Em construção");
         }
     }
 
