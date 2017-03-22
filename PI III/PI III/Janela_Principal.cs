@@ -55,7 +55,6 @@ namespace PI_III
                 if (j + 1 < quantidadeGuiches && guiches[j].guiche == guiches[j + 1].guiche) j++;
                 quantidadeFilas++;
             }
-            MessageBox.Show(""+quantidadeFilas);
             
             
             int i = 0;
@@ -121,6 +120,11 @@ namespace PI_III
 
                 turno = contarTurnos(1, turno);
             }
+
+            //Atualizando o label que conta os turnos
+            textoTurno.Text = "Turno: " + turno;
+            textoTurno.Refresh();
+            Refresh();
 
             //esse laço vai até esvaziar todos os guiches, assim, terminando
             Boolean continuar = true;

@@ -95,7 +95,6 @@ namespace PI_III
                             verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * j : TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2 + (TAMANHO_HORIZONTAL/quantidade /2), 410);
                             verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
                             verticalProgressBar[j].Maximum = 10;
-                            verticalProgressBar[j].Name += guiches[j].guiche;
 
                             this.Controls.Add(this.verticalProgressBar[j]);
                             j++;
@@ -105,7 +104,6 @@ namespace PI_III
                             verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * j : TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2, 410);
                             verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
                             verticalProgressBar[j].Maximum = 10;
-                            verticalProgressBar[j].Name += guiches[j].guiche;
 
                             this.Controls.Add(this.verticalProgressBar[j]);
                         }
