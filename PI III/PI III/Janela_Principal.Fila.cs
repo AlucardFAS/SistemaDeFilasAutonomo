@@ -13,7 +13,6 @@ namespace PI_III
             fila = new Queue<Pessoas>[quantidade];
             for (int k = 0; k < quantidade; k++) fila[k] = new Queue<Pessoas>();
             //fila[0] = new Queue<Pessoas>();
-
             return fila;
             
         }
@@ -24,6 +23,7 @@ namespace PI_III
             int usuario = -1;
             int chegada = -1;
             string guiches;
+
 
             Boolean stringUsuario = false;
             Boolean stringChegada = false;

@@ -36,10 +36,6 @@ namespace PI_III
                     int j = 0;
                     while (guiches[j].guiche != proximoGuiche) j++;
 
-                    //verificando se tem um guiche da mesma letra
-                    if (j+1 < quantidadeGuiches && guiches[j].guiche == guiches[j+1].guiche) 
-                        if (guiches[j].vazio == false && guiches[j+1].vazio == true && guiches[j+1].atendente == true|| fila[j].Count > fila[j+1].Count && guiches[j+1].atendente == true) j++;
-
                     //enviando a pessoa para a fila
                     fila[j].Enqueue(guiches[i].pessoaDentro);
                         
@@ -48,9 +44,7 @@ namespace PI_III
             return guiches;
         }
         private void criarGuiches(int quantidade, GuichesSetup[] guiches){
-            //declarando os vetor em função da quantidade de guiches
-            verticalProgressBar = new VerticalProgressBar[quantidade > 15 ? 15 : quantidade];
-            progressBar = new System.Windows.Forms.ProgressBar[quantidade > 15 ? (quantidade - 15) : 0];
+            //declarando os vetores em função da quantidade de guiches
             guichesBotao = new Button[quantidade];
 
             for (int i = 0; i < quantidade; i++)
@@ -81,33 +75,53 @@ namespace PI_III
                 this.guichesBotao[i].Text = aux;
                 aux = "";
 
-                if (i <= 14){   //criando as 15 primeiras barras de progresso
-                    verticalProgressBar[i] = new VerticalProgressBar();
-
-                    inicio = TAMANHO_HORIZONTAL-(TAMANHO_HORIZONTAL/quantidade * (quantidade-1) + 18);
-                    verticalProgressBar[i].Location = new System.Drawing.Point ((quantidade > 14 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + inicio/2, 410);
-                    verticalProgressBar[i].Size = new System.Drawing.Size(18, 163);
-                    verticalProgressBar[i].Maximum = 10;
-
-                    this.Controls.Add(this.verticalProgressBar[i]);
-                }
-                else {  //criando as ultimas 5 barras de progresso
-                    progressBar[i-15] = new System.Windows.Forms.ProgressBar();
-
-                    inicio = (TAMANHO_VERTICAL - 250)-(((TAMANHO_VERTICAL- 250)/(quantidade-14)*(quantidade-15) - 60));
-                    progressBar[i-15].Location = new System.Drawing.Point(1100, (TAMANHO_VERTICAL - 250)/(quantidade-14)*(i-15) + (inicio/2));
-                    progressBar[i-15].Size = new System.Drawing.Size(163, 18);
-
-                    this.Controls.Add(this.progressBar[i-15]);             
-                } 
-                // 
-                // Janela Principal
-                // 
                 this.Controls.Add(this.guichesBotao[i]);
                 this.ResumeLayout(false);
+            } 
+
+
+                verticalProgressBar = new VerticalProgressBar[quantidade > 15 ? 15 : quantidade];
+                progressBar = new System.Windows.Forms.ProgressBar[quantidade > 15 ? (quantidade - 15) : 0];
+
+                //Criando barras de progresso
+                for (int j = 0; j < quantidade; j++) {
+                    if (j <= 14){   //criando as 15 primeiras barras de progresso
+                        verticalProgressBar[j] = new VerticalProgressBar();
+
+                        int inicio = TAMANHO_HORIZONTAL - (TAMANHO_HORIZONTAL / quantidade * (quantidade - 1) + 18);
+
+                        if (j+1 < quantidade && guiches[j].guiche == guiches[j + 1].guiche)
+                        {
+                            verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * j : TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2 + (TAMANHO_HORIZONTAL/quantidade /2), 410);
+                            verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
+                            verticalProgressBar[j].Maximum = 10;
+                            verticalProgressBar[j].Name += guiches[j].guiche;
+
+                            this.Controls.Add(this.verticalProgressBar[j]);
+                            j++;
+                        }
+                        else
+                        {
+                            verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * j : TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2, 410);
+                            verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
+                            verticalProgressBar[j].Maximum = 10;
+                            verticalProgressBar[j].Name += guiches[j].guiche;
+
+                            this.Controls.Add(this.verticalProgressBar[j]);
+                        }
+                    }
+                    else
+                    {  //criando as ultimas 5 barras de progresso
+                        progressBar[j - 15] = new System.Windows.Forms.ProgressBar();
+
+                        int inicio = (TAMANHO_VERTICAL - 250) - (((TAMANHO_VERTICAL - 250) / (quantidade - 14) * (quantidade - 15) - 60));
+                        progressBar[j - 15].Location = new System.Drawing.Point(1100, (TAMANHO_VERTICAL - 250) / (quantidade - 14) * (j - 15) + (inicio / 2));
+                        progressBar[j - 15].Size = new System.Drawing.Size(163, 18);
+
+                        this.Controls.Add(this.progressBar[j - 15]);
+                    } 
+
             }
-            //progressBar[2].Value = 30;
-            //verticalProgressBar[1].Value = 30;
         }
 
     }

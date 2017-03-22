@@ -32,7 +32,10 @@ namespace PI_III
             pessoas = new Pessoas[totalClientes];
             pessoas = carregarFila();
 
+            
+            
             int quantidade = guiches.Length;
+
             fila = criarFilas(fila, quantidade);
 
             barraMenu(pessoas);
@@ -46,6 +49,14 @@ namespace PI_III
             int turno = 1;
             //obtendo a quantidade de guiches
             int quantidadeGuiches = guiches.Length;
+
+            int quantidadeFilas = 0;
+            for (int j = 0; j < quantidadeGuiches; j++ ){
+                if (j + 1 < quantidadeGuiches && guiches[j].guiche == guiches[j + 1].guiche) j++;
+                quantidadeFilas++;
+            }
+            MessageBox.Show(""+quantidadeFilas);
+            
             
             int i = 0;
 
@@ -60,19 +71,40 @@ namespace PI_III
                 }
                 //jogando as primeiras pessoas das filas nos guiches
                 for (int j = 0; j < quantidadeGuiches; j++)
+                {
+                    if (j + 1 < quantidadeGuiches && guiches[j].guiche == guiches[j + 1].guiche && guiches[j + 1].atendente == true)
+                    {
+                        if (guiches[j].vazio == true && fila[j].Count != 0 || guiches[j + 1].vazio == true && fila[j].Count != 0)
+                        {
+                            entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                            j++;
+                        }
+                    }
                     if (guiches[j].vazio == true && fila[j].Count != 0)
-                        entrarGuiches(fila[j].Dequeue(), guiches[j]);      
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                } 
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 guiches = atualizarGuiches(guiches, fila);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 for (int j = 0; j < quantidadeGuiches; j++)
+                {
+                    if (j + 1 < quantidadeGuiches && guiches[j].guiche == guiches[j + 1].guiche && guiches[j + 1].atendente == true)
+                    {
+                        if (guiches[j].vazio == true && fila[j].Count != 0 || guiches[j + 1].vazio == true && fila[j].Count != 0)
+                        {
+                            entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                            j++;
+                        }
+                    }
                     if (guiches[j].vazio == true && fila[j].Count != 0)
-                        entrarGuiches(fila[j].Dequeue(), guiches[j]);     
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                } 
 
                 //atualizando as barras de progresso
-                for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
+                for (int j = 0; j < quantidadeFilas; j++) 
+                    if (verticalProgressBar[j] != null) verticalProgressBar[j].Value = fila[j].Count;
 
                 //atualizando a cor dos botões
                 for (int j = 0; j < quantidadeGuiches; j++)
@@ -96,19 +128,40 @@ namespace PI_III
 
                 //jogando as primeiras pessoas das filas nos guiches
                 for (int j = 0; j < quantidadeGuiches; j++)
+                {
+                    if (j + 1 < quantidadeGuiches && guiches[j].guiche == guiches[j + 1].guiche && guiches[j + 1].atendente == true)
+                    {
+                        if (guiches[j].vazio == true && fila[j].Count != 0 || guiches[j + 1].vazio == true && fila[j].Count != 0)
+                        {
+                            entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                            j++;
+                        }
+                    }
                     if (guiches[j].vazio == true && fila[j].Count != 0)
-                        entrarGuiches(fila[j].Dequeue(), guiches[j]);      
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                } 
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 guiches = atualizarGuiches(guiches, fila);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 for (int j = 0; j < quantidadeGuiches; j++)
+                {
+                    if (j + 1 < quantidadeGuiches && guiches[j].guiche == guiches[j + 1].guiche && guiches[j + 1].atendente == true)
+                    {
+                        if (guiches[j].vazio == true && fila[j].Count != 0 || guiches[j + 1].vazio == true && fila[j].Count != 0)
+                        {
+                            entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                            j++;
+                        }
+                    }
                     if (guiches[j].vazio == true && fila[j].Count != 0)
-                        entrarGuiches(fila[j].Dequeue(), guiches[j]);     
+                        entrarGuiches(fila[j].Dequeue(), guiches[j]);
+                } 
 
                 //atualizando as barras de progresso
-                for (int j = 0; j < quantidadeGuiches; j++) verticalProgressBar[j].Value = fila[j].Count;
+                for (int j = 0; j < quantidadeGuiches; j++) 
+                    if (verticalProgressBar[j] != null) verticalProgressBar[j].Value = fila[j].Count;
 
                 //atualizando a cor dos botões
                 for (int j = 0; j < quantidadeGuiches; j++)
