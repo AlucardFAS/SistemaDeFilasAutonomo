@@ -14,16 +14,7 @@ namespace PI_III
         private char[] postos;
         private char[] atendente_pos;
         private int troca;
-        private int postoA;
-        private int postoB;
-        private int postoC;
-        private int postoD;
-        private int postoE;
-        private int postoF;
-        private int postoG;
-        private int postoH;
-        private int postoI;
-        private int postoJ;
+        private int[] posto;
 
 
         private GuichesSetup[] CarregarSetup()
@@ -31,6 +22,7 @@ namespace PI_III
             System.IO.StreamReader file = new System.IO.StreamReader("Dados/Setup.txt");//busca o arquivo de texto
             int counter = 0;
             postos = new char[20];
+            posto = new int[20];
             string line;//cria uma string que recebe as linhas
             string[] setup;//declara o vetor de setup
             setup = new string[50];//declara que setup terá 9 posições
@@ -105,31 +97,7 @@ namespace PI_III
                     troca = Convert.ToInt32(temp);
                     //MessageBox.Show(Convert.ToString(troca));
                 }
-                else if(counter==4)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0,condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if(vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if(i>0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-                    string temp = new string(numfinal);
-                    postoA = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoA));
-                }
-                else if (counter == 5)
+                else if(counter>=4)
                 {
                     var vetor_aux = line.ToCharArray();
                     char[] numfinal;
@@ -150,208 +118,8 @@ namespace PI_III
                     }
 
                     string temp = new string(numfinal);
-                    postoB = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoB));
-                }
-                else if (counter == 6)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoC = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoC));
-                }
-                else if (counter == 7)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoD = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoD));
-                }
-                else if (counter == 8)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoE = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoE));
-                }
-                else if (counter == 9)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoF = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoG));
-                }
-                else if (counter == 10)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoG = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoG));
-                }
-                else if (counter == 11)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoH = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoH));
-                }
-                else if (counter == 12)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoI = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoI));
-                }
-                else if (counter == 13)
-                {
-                    var vetor_aux = line.ToCharArray();
-                    char[] numfinal;
-                    numfinal = new char[10];
-                    int k = 0, condicional = 0;
-                    for (int i = 0; i < (vetor_aux.Length); i++)
-                    {
-                        if (vetor_aux[i] == ':')
-                        {
-                            condicional = 1;
-                        }
-
-                        else if (i > 0 && condicional != 1)
-                        {
-                            numfinal[k] = vetor_aux[i];
-                            k++;
-                        }
-                    }
-
-
-                    string temp = new string(numfinal);
-                    postoJ = Convert.ToInt32(temp);
-                    //MessageBox.Show(Convert.ToString(postoJ));
+                    posto[counter-4] = Convert.ToInt32(temp);
+                    //MessageBox.Show(Convert.ToString(posto[counter-4]));
                 }
 
 
@@ -382,16 +150,16 @@ namespace PI_III
                     j++;
                 }
 
-                if (guichesSetup[i].guiche == 'A') guichesSetup[i].turnosNecessarios = postoA;
-                if (guichesSetup[i].guiche == 'B') guichesSetup[i].turnosNecessarios = postoB;
-                if (guichesSetup[i].guiche == 'C') guichesSetup[i].turnosNecessarios = postoC;
-                if (guichesSetup[i].guiche == 'D') guichesSetup[i].turnosNecessarios = postoD;
-                if (guichesSetup[i].guiche == 'E') guichesSetup[i].turnosNecessarios = postoE;
-                if (guichesSetup[i].guiche == 'F') guichesSetup[i].turnosNecessarios = postoF;
-                if (guichesSetup[i].guiche == 'G') guichesSetup[i].turnosNecessarios = postoG;
-                if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = postoH;
-                if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = postoI;
-                if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = postoJ;
+                if (guichesSetup[i].guiche == 'A') guichesSetup[i].turnosNecessarios = posto[0];
+                if (guichesSetup[i].guiche == 'B') guichesSetup[i].turnosNecessarios = posto[1];
+                if (guichesSetup[i].guiche == 'C') guichesSetup[i].turnosNecessarios = posto[2];
+                if (guichesSetup[i].guiche == 'D') guichesSetup[i].turnosNecessarios = posto[3];
+                if (guichesSetup[i].guiche == 'E') guichesSetup[i].turnosNecessarios = posto[4];
+                if (guichesSetup[i].guiche == 'F') guichesSetup[i].turnosNecessarios = posto[5];
+                if (guichesSetup[i].guiche == 'G') guichesSetup[i].turnosNecessarios = posto[6];
+                if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = posto[7];
+                if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = posto[8];
+                if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = posto[9];
             }
             file.Close();//fecha o txt
 
