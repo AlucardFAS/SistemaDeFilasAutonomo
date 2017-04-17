@@ -9,6 +9,7 @@ namespace PI_III
 {
     partial class Janela_Principal{
 
+        
         Queue<Pessoas>[] criarFilas(Queue<Pessoas>[] fila, int quantidade) {
             fila = new Queue<Pessoas>[quantidade];
             for (int k = 0; k < quantidade; k++) fila[k] = new Queue<Pessoas>();

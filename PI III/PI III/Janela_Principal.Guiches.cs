@@ -38,7 +38,6 @@ namespace PI_III
 
                     //enviando a pessoa para a fila
                     fila[j].Enqueue(guiches[i].pessoaDentro);
-                        
                 }
             }
             return guiches;
@@ -94,7 +93,7 @@ namespace PI_III
                             if (guiches[j].guichesIguais % 2 == 0) verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais/2 - 1) : TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais/2 - 1)) + inicio / 2 + (TAMANHO_HORIZONTAL / quantidade / 2), 410);
                             else verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais /2) : TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
                             verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
-                            verticalProgressBar[j].Maximum = 100;
+                            verticalProgressBar[j].Maximum = 10;
 
                             this.Controls.Add(this.verticalProgressBar[j]);
                         
@@ -113,6 +112,5 @@ namespace PI_III
 
             }
         }
-
     }
 }
