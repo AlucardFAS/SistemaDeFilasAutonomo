@@ -90,23 +90,15 @@ namespace PI_III
 
                         int inicio = TAMANHO_HORIZONTAL - (TAMANHO_HORIZONTAL / quantidade * (quantidade - 1) + 18);
 
-                        if (j+1 < quantidade && guiches[j].guiche == guiches[j + 1].guiche)
-                        {
-                            verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * j : TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2 + (TAMANHO_HORIZONTAL/quantidade /2), 410);
+
+                            if (guiches[j].guichesIguais % 2 == 0) verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais/2 - 1) : TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais/2 - 1)) + inicio / 2 + (TAMANHO_HORIZONTAL / quantidade / 2), 410);
+                            else verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais /2) : TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
                             verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
                             verticalProgressBar[j].Maximum = 100;
 
                             this.Controls.Add(this.verticalProgressBar[j]);
-                            j++;
-                        }
-                        else
-                        {
-                            verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * j : TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2, 410);
-                            verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
-                            verticalProgressBar[j].Maximum = 100;
-
-                            this.Controls.Add(this.verticalProgressBar[j]);
-                        }
+                        
+                        j += guiches[j].guichesIguais - 1 ;
                     }
                     else
                     {  //criando as ultimas 5 barras de progresso

@@ -140,11 +140,24 @@ namespace PI_III
 
             //setando os guiches
             int j = 0;
+            char aux = 'x'; //serve para guardar o char do ultimo posto, para comparar com o que vai ser lido atualmente
             for (int i = 0; i < quantidade; i++){
                 guichesSetup[i] = new GuichesSetup();
 
-                guichesSetup[i].guiche = postos[i];
+                guichesSetup[i].guiche = postos[i]; //simplesmente joga o char do guiche
+                
+                //isso serve para verificar quantos guiches iguais tem, assim o primeiro guiches dos iguais (por exemplo, 3 guiches A's, o primeiro A terá a quantidadeGuiches igual a 3)
+                if (guichesSetup[i].guiche != aux){
+                    int k = i+1;
+                    aux = guichesSetup[i].guiche;
 
+                    while (postos[k] == aux){   //atualizando a quantidade de guiches iguais (somente no primeiro guiche)
+                        guichesSetup[i].guichesIguais++;
+                        k++;
+                    }
+                }
+
+                //colocando os atendentes nos devidos guiches
                 if (atendente_pos[j] == guichesSetup[i].guiche) {
                     guichesSetup[i].atendente = true;
                     j++;

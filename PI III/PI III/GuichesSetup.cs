@@ -12,6 +12,7 @@ namespace PI_III
         public Boolean atendente;
         public Boolean vazio;
         public int turnosNecessarios;
+        public int guichesIguais;
         //public String nome;
 
         public int ultimoTurno;
@@ -21,6 +22,7 @@ namespace PI_III
             atendente = false;
             vazio = true;
             ultimoTurno = 1;
+            guichesIguais = 1;
         }
 
     }
