@@ -51,9 +51,6 @@
     <Compile Include="Janela_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Janela_Principal.Fila.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Janela_Principal.Guiches.cs">
       <SubType>Form</SubType>
     </Compile>

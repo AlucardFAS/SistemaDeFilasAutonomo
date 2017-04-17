@@ -22,22 +22,26 @@ namespace PI_III
 
         
         public Janela_Principal(){
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen; //deixando a tela bem no centro
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Integrador 3";   //nome da janela principal
 
-            int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
-
+            int totalGuiches;
+            
+            guiches = new GuichesSetup[20];
             guiches = CarregarSetup();
 
+            int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
+
             pessoas = new Pessoas[totalClientes];
-            pessoas = carregarFila();
+            for (int i = 0; i < totalClientes; i++)
+                pessoas[i] = new Pessoas();
 
-            
-            
+            pessoas[0].carregarFila(pessoas);
+
             int quantidade = guiches.Length;
-
-            fila = criarFilas(fila, quantidade);
+            fila = new Queue<Pessoas>[quantidade];  //criando as filas em função da quantidade de guiches
+            for (int i = 0; i < fila.Length; i++) fila[i] = new Queue<Pessoas>();   //instanciando as filas
 
             barraMenu(pessoas);
             criarGuiches(quantidade, guiches);

@@ -116,7 +116,7 @@ namespace PI_III
         }
         private void carregarSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CarregarSetup();
+            
         }
         private void carregarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {

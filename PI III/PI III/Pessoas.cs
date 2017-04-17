@@ -24,5 +24,70 @@ namespace PI_III
         this.chegada = c;
         this.guiches = g.ToCharArray();
         }
+        public void carregarFila(Pessoas[] pessoas)
+        {
+            System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");
+            string linha;
+            string dado = "";
+            int usuario = -1;
+            int chegada = -1;
+            string guiches;
+
+
+            Boolean stringUsuario = false;
+            Boolean stringChegada = false;
+
+            int j = 0;
+            while ((linha = arquivo.ReadLine()) != null)
+            {
+                linha += ";";
+
+                char[] percorredor = linha.ToCharArray();
+
+                int i = 0;
+                while (true)
+                {
+                    if (percorredor[i] == 'U')
+                    {
+                        stringUsuario = true;
+                        i++;
+                    }
+                    else if (percorredor[i] == 'C')
+                    {
+                        stringChegada = true;
+                        stringUsuario = false;
+
+                        if (!Int32.TryParse(dado, out usuario)) MessageBox.Show("Deu ruim na hora de converter pra int");
+                        dado = "";
+                        i++;
+                    }
+                    else if (percorredor[i] == 'A')
+                    {
+                        stringChegada = false;
+                        if (!Int32.TryParse(dado, out chegada)) MessageBox.Show("Deu ruim na hora de converter pra int");
+                        dado = "";
+
+                        while (percorredor[i] != ';')
+                        {
+                            dado += percorredor[i];
+                            i++;
+
+                        }
+                        guiches = dado;
+                        dado = "";
+                        break;
+                    }
+
+                    if (stringUsuario == true) dado += percorredor[i];
+                    if (stringChegada == true) dado += percorredor[i];
+
+                    i++;
+
+                }
+                pessoas[j].setPessoa(usuario, chegada, guiches);
+                j++;
+            }
+            arquivo.Close();
+        }
     }
 }

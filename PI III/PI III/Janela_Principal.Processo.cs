@@ -111,6 +111,7 @@ namespace PI_III
 
             MessageBox.Show("Turno terminado: " + turno);
         }
+
         void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
         {
             int quantidadeGuiches = guiches.Length;
@@ -160,6 +161,13 @@ namespace PI_III
                 else if (guiches[j].atendente == true) guichesBotao[j].BackColor = System.Drawing.Color.Yellow;
                 else guichesBotao[j].BackColor = System.Drawing.Color.Red;
             }
+        }
+        int contarTurnos(double tempo, int turno)
+        {
+            sleep(tempo);
+            turno++;
+            // MessageBox.Show("turno: "+turno);
+            return turno;
         }
     }
 }

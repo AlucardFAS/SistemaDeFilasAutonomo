@@ -1,0 +1,6 @@
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\TesteFormulas\TesteFormulas\bin\Debug\TesteFormulas.exe.config
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\TesteFormulas\TesteFormulas\bin\Debug\TesteFormulas.exe
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\TesteFormulas\TesteFormulas\bin\Debug\TesteFormulas.pdb
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\TesteFormulas\TesteFormulas\obj\Debug\TesteFormulas.exe
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\TesteFormulas\TesteFormulas\obj\Debug\TesteFormulas.pdb
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\TesteFormulas\TesteFormulas\obj\Debug\TesteFormulas.csprojResolveAssemblyReference.cache

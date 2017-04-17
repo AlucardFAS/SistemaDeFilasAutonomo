@@ -49,13 +49,6 @@ namespace PI_III
             butao.Text = "Pause";
             Controls.Add(this.butao);
         }
-        int contarTurnos(double tempo, int turno)
-        {
-                sleep(tempo);
-                turno++;
-               // MessageBox.Show("turno: "+turno);
-                return turno;
-        }
         void sleep(double tempo)
         {
             String entradaTempo;
