@@ -9,9 +9,8 @@ Tempos médios
 Médio
 
 embelezar o programa
-"reformar esqueleto"
 criação de usuários randômicos
-pensar e elaborar automação 
+pensar e elaborar automação
 
 
 

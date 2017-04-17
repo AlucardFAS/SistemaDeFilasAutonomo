@@ -57,6 +57,9 @@
     <Compile Include="Janela_Principal.Guiches.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Janela_Principal.Processo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Janela_Principal.Setup.cs">
       <SubType>Form</SubType>
     </Compile>

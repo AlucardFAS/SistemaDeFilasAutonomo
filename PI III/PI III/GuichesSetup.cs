@@ -24,6 +24,5 @@ namespace PI_III
             ultimoTurno = 1;
             guichesIguais = 1;
         }
-
     }
 }

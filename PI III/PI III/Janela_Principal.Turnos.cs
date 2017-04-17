@@ -16,8 +16,9 @@ namespace PI_III
             for (int i = 0; i < 5; i++) //gerando os botões de play
             {
                 butao = new System.Windows.Forms.Button();
-                butao.Location = new System.Drawing.Point(600 - (i * 60), 350);
+                butao.Location = new System.Drawing.Point(600 - (i * 60), 330);
                 butao.Size = new System.Drawing.Size(50, 50);
+
                 if (i == 0) butao.Text = "Play";
                 if (i == 1) butao.Text = "Play2";
                 if (i == 2) butao.Text = "Play3";
@@ -40,27 +41,21 @@ namespace PI_III
                 if (i == 1) butao.Click += new System.EventHandler(this.cliquePlay2);
                 if (i == 2) butao.Click += new System.EventHandler(this.cliquePlay3);
                 if (i == 3) butao.Click += new System.EventHandler(this.cliquePlay4);
-
-
             }
-
+            //gerando pause
             butao = new System.Windows.Forms.Button();
-            butao.Location = new System.Drawing.Point (720, 350);
+            butao.Location = new System.Drawing.Point (720, 330);
             butao.Size = new System.Drawing.Size(50, 50);
             butao.Text = "Pause";
             Controls.Add(this.butao);
         }
         int contarTurnos(double tempo, int turno)
         {
-           // while (turno < 10){   //até acabar todos os clientes (o <10 é provisório para testes)
                 sleep(tempo);
                 turno++;
                // MessageBox.Show("turno: "+turno);
-           // }
                 return turno;
-
         }
-
         void sleep(double tempo)
         {
             String entradaTempo;
