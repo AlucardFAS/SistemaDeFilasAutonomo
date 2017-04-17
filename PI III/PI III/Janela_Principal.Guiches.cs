@@ -14,34 +14,7 @@ namespace PI_III
             guiche.vazio = false;
             guiche.pessoaDentro = pessoa;
         }
-        GuichesSetup[] atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila){
-            int quantidadeGuiches = guiches.Length;
-            char proximoGuiche;
 
-            for (int i = 0; i < quantidadeGuiches; i++){
-                if (guiches[i].vazio == false && guiches[i].ultimoTurno < guiches[i].turnosNecessarios){
-                    guiches[i].ultimoTurno++;
-                }
-                else if (guiches[i].vazio == false && guiches[i].ultimoTurno >= guiches[i].turnosNecessarios){
-                    guiches[i].vazio = true;
-                    guiches[i].ultimoTurno = 1;
-                    guiches[i].pessoaDentro.atualGuiche++;
-
-                    //testando se a pessoa ainda tem guiches pra ir, se não, ela cai no esquecimento e segue o jogo
-                    if (guiches[i].pessoaDentro.atualGuiche >= guiches[i].pessoaDentro.guiches.Length) return guiches;
-                    //verificando o proximo guiche que ela tem que ir
-                    proximoGuiche = guiches[i].pessoaDentro.guiches[guiches[i].pessoaDentro.atualGuiche];
-
-                    //achando o guiche que a pessoa tem de ir
-                    int j = 0;
-                    while (guiches[j].guiche != proximoGuiche) j++;
-
-                    //enviando a pessoa para a fila
-                    fila[j].Enqueue(guiches[i].pessoaDentro);
-                }
-            }
-            return guiches;
-        }
         private void criarGuiches(int quantidade, GuichesSetup[] guiches){
             //declarando os vetores em função da quantidade de guiches
             guichesBotao = new Button[quantidade];
