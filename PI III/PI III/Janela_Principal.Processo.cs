@@ -89,7 +89,7 @@ namespace PI_III
                     if (verticalProgressBar[j] != null)
                     {
                         if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
-                        else if (fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
+                        else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
 
                         verticalProgressBar[j].Value = fila[j].Count;
                     }

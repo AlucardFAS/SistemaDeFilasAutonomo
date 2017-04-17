@@ -120,7 +120,7 @@ namespace PI_III
         }
         private void carregarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("" + pessoas[0].usuario);
+            pessoas[0].carregarFila(pessoas);
 
         }
         private void criarSetupToolStripMenuItem_Click(object sender, EventArgs e)
