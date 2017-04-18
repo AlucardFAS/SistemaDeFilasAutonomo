@@ -8,7 +8,7 @@ namespace TesteFormulas
 {
     partial class Program
     {
-        static void processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, double tempo)
+        static int processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, double tempo)
         {
             int turno = 1;
             //obtendo a quantidade de guiches
@@ -70,7 +70,7 @@ namespace TesteFormulas
                 turno = contarTurnos(tempo, turno);
             }
 
-            Console.WriteLine("Turno terminado: " + turno);
+            return turno;
         }
 
         static void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila)

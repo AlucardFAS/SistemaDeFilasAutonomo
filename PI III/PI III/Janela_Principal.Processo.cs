@@ -108,7 +108,7 @@ namespace PI_III
                 Refresh();
                 Application.DoEvents();
             }
-
+            pessoas[0].resetPessoas(pessoas);
             MessageBox.Show("Turno terminado: " + turno);
         }
 

@@ -174,6 +174,7 @@ namespace TesteFormulas
                 if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = posto[7];
                 if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = posto[8];
                 if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = posto[9];
+                if (guichesSetup[i].guiche == 'K') guichesSetup[i].turnosNecessarios = posto[10];
             }
             file.Close();//fecha o txt
 
