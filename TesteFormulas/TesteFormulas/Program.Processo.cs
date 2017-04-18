@@ -8,7 +8,7 @@ namespace TesteFormulas
 {
     partial class Program
     {
-        static int processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, double tempo)
+        static int processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, int formula)
         {
             int turno = 1;
             //obtendo a quantidade de guiches
@@ -44,7 +44,7 @@ namespace TesteFormulas
                 atualizarFilas(guiches, fila);
 
 
-                turno = contarTurnos(tempo, turno);
+                turno = contarTurnos(turno);
             }
 
 
@@ -62,18 +62,16 @@ namespace TesteFormulas
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila);
 
-
-
+                //testando se todos os guiches estão vazios, se algum não estiver vazio, então continuar se torna verdade
                 continuar = false;
-                for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;    //testando se todos os guiches estão vazios, se algum não estiver vazio, então continuar se torna verdade
+                for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;
 
-                turno = contarTurnos(tempo, turno);
+                turno = contarTurnos(turno);
             }
-
             return turno;
         }
 
-        static void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
+        private static void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
         {
             int quantidadeGuiches = guiches.Length;
             char proximoGuiche;
@@ -104,7 +102,7 @@ namespace TesteFormulas
                 }
             }
         }
-        static void atualizarFilas(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
+        private static void atualizarFilas(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
         {
             for (int j = 0; j < guiches.Length; j++)
             {
@@ -116,10 +114,11 @@ namespace TesteFormulas
                 j += guiches[j].guichesIguais - 1;
             }
         }
-        static int contarTurnos(double tempo, int turno)
+        private static int contarTurnos(int turno)
         {
             turno++;
             // MessageBox.Show("turno: "+turno);
+            
             return turno;
         }
         private static void entrarGuiches(Pessoas pessoa, GuichesSetup guiche)

@@ -26,7 +26,7 @@ namespace PI_III
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Integrador 3";   //nome da janela principal
 
-            int totalGuiches;
+            //int totalGuiches;
             
             guiches = CarregarSetup();
 

@@ -60,6 +60,9 @@
     <Compile Include="Janela_Principal.Setup.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Janela_Principal.Trocas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Janela_Principal.Turnos.cs">
       <SubType>Form</SubType>
     </Compile>

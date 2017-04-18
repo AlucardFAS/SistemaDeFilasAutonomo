@@ -19,16 +19,16 @@ namespace TesteFormulas
 
         public static void Main(string[] args)
         {
-            int formula1; //risos
-            int formula2;
+            int formula1 = 0; //risos
+            int formula2 = 0;
 
             guiches = carregarSetup();
 
             int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
 
-            pessoas = new Pessoas[totalClientes];
+            pessoas = new Pessoas[totalClientes];   //criando em funcao do total de clientes
             for (int i = 0; i < totalClientes; i++)
-                pessoas[i] = new Pessoas();
+                pessoas[i] = new Pessoas(); //instanciando as pessoas
 
             pessoas[0].carregarFila(pessoas);
 
@@ -37,15 +37,17 @@ namespace TesteFormulas
 
 
             //ÁREA DE TESTES
-            formula1 = processo(fila, pessoas, guiches, 0);
-            Console.WriteLine("AtualGuiche: "+pessoas[2].atualGuiche);
-            pessoas[0].resetPessoas(pessoas);
-            Console.WriteLine("AtualGuiche: " + pessoas[2].atualGuiche);
+            for (int i = 0; i < 1000; i++)
+            {
+                formula1 += processo(fila, pessoas, guiches, 0);
+                pessoas[0].resetPessoas(pessoas);
 
-            formula2 = processo(fila, pessoas, guiches, 0);
+                formula2 += processo(fila, pessoas, guiches, 0);
+                pessoas[0].resetPessoas(pessoas);
+            }
 
             Console.WriteLine("Turnos demorados pelo método 1:" +formula1+ "\n"+
-                                "Turnos demorados pelo método 2:"+ formula2);
+                                "Turnos demorados pelo método 2:"+ formula2+ "\n");
 
             
             Console.ReadKey();

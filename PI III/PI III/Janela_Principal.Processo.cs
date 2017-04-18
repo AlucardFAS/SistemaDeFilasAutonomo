@@ -49,7 +49,7 @@ namespace PI_III
                     if (verticalProgressBar[j] != null)
                     {
                         if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
-                        else if (fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
+                        else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
 
                         verticalProgressBar[j].Value = fila[j].Count;
                     }
@@ -60,6 +60,9 @@ namespace PI_III
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
                 Refresh();
+
+                //Verificando se vale a pena fazer trocas
+                if (troca != 0) realizarTrocas(guiches, fila);
 
                 Application.DoEvents();
                 turno = contarTurnos(tempo, turno);
@@ -87,7 +90,7 @@ namespace PI_III
                 //atualizando as barras de progresso
                 for (int j = 0; j < quantidadeFilas; j++)
                     if (verticalProgressBar[j] != null)
-                    {
+                    {   //esses if's controlam a escala da barra de progresso, quando ela for ser maior que o tamanho maximo dela, aumenta em 10, e vice versa
                         if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
                         else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
 
@@ -97,8 +100,9 @@ namespace PI_III
                 //atualizando a cor dos botões
                 atualizarCorBotoes(guiches);
 
+                //testando se todos os guiches estão vazios, se algum não estiver vazio, então continuar se torna verdade
                 continuar = false;
-                for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;    //testando se todos os guiches estão vazios, se algum não estiver vazio, então continuar se torna verdade
+                for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;
 
                 turno = contarTurnos(tempo, turno);
 
@@ -106,9 +110,13 @@ namespace PI_III
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
                 Refresh();
+
+                //Verificando se vale a pena fazer trocas
+                if (troca != 0) realizarTrocas(guiches, fila);
+
                 Application.DoEvents();
             }
-            pessoas[0].resetPessoas(pessoas);
+            pessoas[0].resetPessoas(pessoas);   //resetando uma variável dentro da classe pessoas para que, o processo possa ser reproduzido novamente
             MessageBox.Show("Turno terminado: " + turno);
         }
 
