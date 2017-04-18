@@ -28,7 +28,6 @@ namespace PI_III
 
             int totalGuiches;
             
-            guiches = new GuichesSetup[20];
             guiches = CarregarSetup();
 
             int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila

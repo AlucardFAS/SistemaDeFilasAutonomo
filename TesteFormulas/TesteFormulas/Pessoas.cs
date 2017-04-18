@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace PI_III
+namespace TesteFormulas
 {
-
     class Pessoas
     {
         public int usuario;
@@ -16,14 +14,16 @@ namespace PI_III
 
         public int atualGuiche;
 
-        public Pessoas() {
+        public Pessoas()
+        {
             atualGuiche = 0;
         }
 
-        public void setPessoa(int u, int c, String g){
-        this.usuario = u;
-        this.chegada = c;
-        this.guiches = g.ToCharArray();
+        public void setPessoa(int u, int c, String g)
+        {
+            this.usuario = u;
+            this.chegada = c;
+            this.guiches = g.ToCharArray();
         }
         public void carregarFila(Pessoas[] pessoas)
         {
@@ -58,14 +58,14 @@ namespace PI_III
                         stringChegada = true;
                         stringUsuario = false;
 
-                        if (!Int32.TryParse(dado, out usuario)) MessageBox.Show("Deu ruim na hora de converter pra int");
+                        if (!Int32.TryParse(dado, out usuario)) Console.WriteLine("Deu ruim na hora de converter pra int");
                         dado = "";
                         i++;
                     }
                     else if (percorredor[i] == 'A')
                     {
                         stringChegada = false;
-                        if (!Int32.TryParse(dado, out chegada)) MessageBox.Show("Deu ruim na hora de converter pra int");
+                        if (!Int32.TryParse(dado, out chegada)) Console.WriteLine("Deu ruim na hora de converter pra int");
                         dado = "";
 
                         while (percorredor[i] != ';')
