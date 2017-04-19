@@ -27,6 +27,7 @@ namespace PI_III
             //esse laço vai até entrar todas as pessoas nas filas
             while (i < pessoas.Length)
             {
+
                 //jogando as pessoas na fila do guiche A (ou dos guiches A)
                 while (pessoas[i].chegada == turno)
                 {
@@ -40,6 +41,9 @@ namespace PI_III
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila);
+
+                //Verificando se vale a pena fazer trocas
+                if (troca != 0) realizarTrocas(guiches, fila);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila);
@@ -61,9 +65,6 @@ namespace PI_III
                 textoTurno.Refresh();
                 Refresh();
 
-                //Verificando se vale a pena fazer trocas
-                if (troca != 0) realizarTrocas(guiches, fila);
-
                 Application.DoEvents();
                 turno = contarTurnos(tempo, turno);
             }
@@ -83,6 +84,9 @@ namespace PI_III
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila);
+
+                //Verificando se vale a pena fazer trocas
+                if (troca != 0) realizarTrocas(guiches, fila);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila);
@@ -110,9 +114,6 @@ namespace PI_III
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
                 Refresh();
-
-                //Verificando se vale a pena fazer trocas
-                if (troca != 0) realizarTrocas(guiches, fila);
 
                 Application.DoEvents();
             }

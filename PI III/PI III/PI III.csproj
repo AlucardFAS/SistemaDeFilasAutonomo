@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constantes.cs" />
     <Compile Include="GuichesSetup.cs" />
     <Compile Include="Janela_Principal.Barra_Menu.cs">
       <SubType>Form</SubType>
