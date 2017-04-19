@@ -1,7 +1,6 @@
 Fáceis 
 
 Tirar sleep
-arrumar os plays
 arrumar design
 arrumar botões de menu
 Tempos médios

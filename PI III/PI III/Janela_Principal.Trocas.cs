@@ -17,7 +17,13 @@ namespace PI_III
             int menorPeso = Constantes.infinito;    //essa variavel serve pra achar o menor peso atualmente
             int posicaoMenor = -1;
 
+
             atualizarPesos_Atendentes(guiches, fila);
+
+            //area de formulas
+            //ainda nao tem rs
+
+
 
             for (int i = 0; i < guiches.Length; i++) {
                 if (guiches[i].atendente == false && guiches[i].chegadaAtendente == 0 && guiches[i].peso > maiorPeso)//achando o maior peso (sem atendente e nem com atendente a caminho) e guardando ele e a posicao
