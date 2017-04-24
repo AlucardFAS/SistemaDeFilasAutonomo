@@ -59,6 +59,9 @@ namespace TesteFormulas
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila);
 
+                //Verificando se vale a pena fazer trocas
+                if (troca != 0) Trocas.realizarTrocas(guiches, fila, troca);
+
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila);
 

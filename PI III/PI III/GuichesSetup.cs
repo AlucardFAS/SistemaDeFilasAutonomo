@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PI_III
 {
@@ -29,6 +30,18 @@ namespace PI_III
            peso = 0;
            chegadaAtendente = 0;
             
+       }
+       public static void resetGuiches(GuichesSetup[] guiches, Boolean[] atendentesIniciais)
+       {
+           for (int j = 0; j < guiches.Length; j++)
+           {
+               guiches[j].peso = 0;
+           }
+           for (int k = 0; k < guiches.Length; k++)
+           {
+               guiches[k].atendente = atendentesIniciais[k];
+           }
+
        }
     }
 }

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace PI_III
+namespace TesteFormulas
 {
-    partial class Janela_Principal
+    class Trocas
     {
-        void realizarTrocas (GuichesSetup[] guiches, Queue<Pessoas>[] fila)
+        public static void realizarTrocas(GuichesSetup[] guiches, Queue<Pessoas>[] fila, int troca)
         {
             int maiorPeso = 0;  //essa variavel serve para achar o maior peso atualmente
             int posicaoMaior = -1;
@@ -18,14 +17,15 @@ namespace PI_III
             int posicaoMenor = -1;
 
 
-            atualizarPesos_Atendentes(guiches, fila);
+            atualizarPesos_Atendentes(guiches, fila, troca);
 
             //area de formulas
             //ainda nao tem rs
 
 
 
-            for (int i = 0; i < guiches.Length; i++) {
+            for (int i = 0; i < guiches.Length; i++)
+            {
                 if (guiches[i].atendente == false && guiches[i].chegadaAtendente == 0 && guiches[i].peso > maiorPeso)//achando o maior peso (sem atendente e nem com atendente a caminho) e guardando ele e a posicao
                 {
                     maiorPeso = guiches[i].peso;
@@ -43,11 +43,12 @@ namespace PI_III
             }
         }
 
-        void trocarAtendentes(GuichesSetup[] guiches, int guiche1, int guiche2) {   //essa funcao faz troca de atendentes, da primeira posicao para a 2 posicao
+        static void trocarAtendentes(GuichesSetup[] guiches, int guiche1, int guiche2)
+        {   //essa funcao faz troca de atendentes, da primeira posicao para a 2 posicao
             guiches[guiche1].atendente = false;
             guiches[guiche2].chegadaAtendente = 1;
         }
-        void atualizarPesos_Atendentes(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
+        static void atualizarPesos_Atendentes(GuichesSetup[] guiches, Queue<Pessoas>[] fila, int troca)
         {
             int j;
             for (int i = 0; i < guiches.Length; i++)
@@ -66,31 +67,6 @@ namespace PI_III
                     }
                     else guiches[i].chegadaAtendente++; //caso ainda não deu o tempo de troca, somente incrementa o tempo e segue o jogo
             }
-        }
-        Boolean condicaoEspecial(GuichesSetup[] guiches, Queue<Pessoas>[] fila) {
-            Boolean continuar = false;
-            for (int k = 0; k < fila.Length; k++) if (fila[k].Count != 0) continuar = true;
-
-            if (continuar == true)
-            {
-                int i;
-                int j;
-                for (i = 0; i < fila.Length; i++)
-                {
-                    if (fila[i].Count != 0 && guiches[i].chegadaAtendente == 0) {
-
-                        MessageBox.Show("valor de i:" + i);
-
-                        for (j = 0; j < guiches.Length; j++) if (guiches[j].atendente == true) break;
-
-                        MessageBox.Show("valor de j:" + j);
-
-                        trocarAtendentes(guiches, j, i);
-                    }
-                }
-            }
-
-            return continuar;
         }
     }
 }

@@ -162,6 +162,8 @@ namespace PI_III
                     guichesSetup[i].atendente = true;
                     j++;
                 }
+                
+
 
                 if (guichesSetup[i].guiche == 'A') guichesSetup[i].turnosNecessarios = posto[0];
                 if (guichesSetup[i].guiche == 'B') guichesSetup[i].turnosNecessarios = posto[1];
@@ -173,8 +175,17 @@ namespace PI_III
                 if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = posto[7];
                 if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = posto[8];
                 if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = posto[9];
+                if (guichesSetup[i].guiche == 'K') guichesSetup[i].turnosNecessarios = posto[10];
+                if (guichesSetup[i].guiche == 'L') guichesSetup[i].turnosNecessarios = posto[11];
+                if (guichesSetup[i].guiche == 'M') guichesSetup[i].turnosNecessarios = posto[11];
             }
             file.Close();//fecha o txt
+
+            atendentesIniciais = new Boolean [guichesSetup.Length];
+            for (int k = 0; k < guichesSetup.Length; k++){
+                atendentesIniciais[k] = guichesSetup[k].atendente;
+            }
+
 
             return guichesSetup;
         }

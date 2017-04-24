@@ -90,7 +90,7 @@ namespace PI_III
             }
             arquivo.Close();
         }
-        public void resetPessoas(Pessoas[] pessoas)
+        public static void resetPessoas(Pessoas[] pessoas)
         {
             for (int i = 0; i < pessoas.Length; i++)
                 pessoas[i].atualGuiche = 0;

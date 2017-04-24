@@ -19,6 +19,7 @@ namespace PI_III
         Pessoas[] pessoas;
         Queue<Pessoas>[] fila;
         GuichesSetup[] guiches;
+        Boolean[] atendentesIniciais;
 
         
         public Janela_Principal(){

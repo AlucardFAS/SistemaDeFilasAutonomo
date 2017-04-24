@@ -14,15 +14,9 @@ namespace PI_III
             int turno = 1;
             //obtendo a quantidade de guiches
 
-            int quantidadeFilas = 0;
-            int i = 0;
-            while (i < guiches.Length)
-            {
-                i += guiches[i].guichesIguais;
-                quantidadeFilas++;
-            }
+            GuichesSetup.resetGuiches(guiches, atendentesIniciais);
 
-            i = 0;
+            int i = 0;
 
             //esse laço vai até entrar todas as pessoas nas filas
             while (i < pessoas.Length)
@@ -49,7 +43,7 @@ namespace PI_III
                 atualizarFilas(guiches, fila);
 
                 //atualizando as barras de progresso
-                for (int j = 0; j < quantidadeFilas; j++)
+                for (int j = 0; j < verticalProgressBar.Length; j++)
                     if (verticalProgressBar[j] != null)
                     {
                         if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
@@ -92,7 +86,7 @@ namespace PI_III
                 atualizarFilas(guiches, fila);
 
                 //atualizando as barras de progresso
-                for (int j = 0; j < quantidadeFilas; j++)
+                for (int j = 0; j < verticalProgressBar.Length; j++)
                     if (verticalProgressBar[j] != null)
                     {   //esses if's controlam a escala da barra de progresso, quando ela for ser maior que o tamanho maximo dela, aumenta em 10, e vice versa
                         if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
@@ -108,6 +102,8 @@ namespace PI_III
                 continuar = false;
                 for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;
 
+                if (continuar == false && troca != 0) continuar = condicaoEspecial(guiches, fila);
+
                 turno = contarTurnos(tempo, turno);
 
                 //Atualizando o label que conta os turnos
@@ -117,7 +113,7 @@ namespace PI_III
 
                 Application.DoEvents();
             }
-            pessoas[0].resetPessoas(pessoas);   //resetando uma variável dentro da classe pessoas para que, o processo possa ser reproduzido novamente
+            Pessoas.resetPessoas(pessoas);   //resetando uma variável dentro da classe pessoas para que, o processo possa ser reproduzido novamente
             MessageBox.Show("Turno terminado: " + turno);
         }
 
