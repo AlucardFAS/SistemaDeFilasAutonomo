@@ -28,12 +28,12 @@ namespace PI_III
         public Janela_Principal(){
 
 
-            this.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp;
+            //this.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp;
             StartPosition = FormStartPosition.CenterScreen; //deixando a tela bem no centro
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Integrador 3";   //nome da janela principal
-            
-            
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+
             //int totalGuiches;
 
             guiches = CarregarSetup();

@@ -64,7 +64,7 @@ namespace PI_III
                 this.textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
-                Refresh();
+               // Refresh();
 
                 Application.DoEvents();
                 turno = contarTurnos(tempo, turno);
@@ -75,7 +75,7 @@ namespace PI_III
             this.textoTurno.ForeColor = System.Drawing.Color.White;
             textoTurno.Text = "Turno: " + turno;
             textoTurno.Refresh();
-            Refresh();
+           // Refresh();
 
             //esse laço vai até esvaziar todos os guiches, assim, terminando
             Boolean continuar = true;
@@ -120,7 +120,7 @@ namespace PI_III
                 this.textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
-                Refresh();
+               // Refresh();
 
                 Application.DoEvents();
             }
