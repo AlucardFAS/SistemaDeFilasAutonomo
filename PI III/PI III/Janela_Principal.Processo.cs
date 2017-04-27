@@ -14,7 +14,12 @@ namespace PI_III
             int turno = 1;
             //obtendo a quantidade de guiches
 
+            Estatistica estatistica = new Estatistica();
+
+
+
             GuichesSetup.resetGuiches(guiches, atendentesIniciais);
+            Pessoas.resetPessoas(pessoas);   //resetando uma variável dentro da classe pessoas para que, o processo possa ser reproduzido novamente
 
             int i = 0;
 
@@ -31,16 +36,16 @@ namespace PI_III
                 }
 
                 //jogando as primeiras pessoas das filas nos guiches
-                atualizarFilas(guiches, fila);
+                atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
-                atualizarGuiches(guiches, fila);
+                atualizarGuiches(guiches, fila, estatistica, turno);
 
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
 
                 //jogando as primeiras pessoas das filas nos guiches
-                atualizarFilas(guiches, fila);
+                atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando as barras de progresso
                 for (int j = 0; j < verticalProgressBar.Length; j++)
@@ -74,16 +79,16 @@ namespace PI_III
             {
 
                 //jogando as primeiras pessoas das filas nos guiches
-                atualizarFilas(guiches, fila);
+                atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
-                atualizarGuiches(guiches, fila);
+                atualizarGuiches(guiches, fila, estatistica, turno);
 
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
 
                 //jogando as primeiras pessoas das filas nos guiches
-                atualizarFilas(guiches, fila);
+                atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando as barras de progresso
                 for (int j = 0; j < verticalProgressBar.Length; j++)
@@ -113,11 +118,18 @@ namespace PI_III
 
                 Application.DoEvents();
             }
-            Pessoas.resetPessoas(pessoas);   //resetando uma variável dentro da classe pessoas para que, o processo possa ser reproduzido novamente
             MessageBox.Show("Turno terminado: " + turno);
+
+            MessageBox.Show("tempoTotalUsuarios: " + estatistica.tempoTotalUsuarios + "\n" +
+                                        "quantidadeUsuarios: " + estatistica.quantidadeUsuarios + "\n" +
+                                        "médiaTempoTotalUsuarios " + estatistica.tempoTotalUsuarios / estatistica.quantidadeUsuarios);
+
+
+            MessageBox.Show("usuarioMaiorTempo: " + estatistica.usuarioMaiorTempo + "\n" +
+                            "maiorTempo: " + estatistica.maiorTempo);
         }
 
-        void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila)
+        void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila, Estatistica estatistica , int turno)
         {
             int quantidadeGuiches = guiches.Length;
             char proximoGuiche;
@@ -135,7 +147,19 @@ namespace PI_III
                     guiches[i].pessoaDentro.atualGuiche++;
 
                     //testando se a pessoa ainda tem guiches pra ir, se não, ela cai no esquecimento e segue o jogo
-                    if (guiches[i].pessoaDentro.atualGuiche >= guiches[i].pessoaDentro.guiches.Length) return;
+                    if (guiches[i].pessoaDentro.atualGuiche >= guiches[i].pessoaDentro.guiches.Length)
+                    {
+                        estatistica.tempoTotalUsuarios += turno - guiches[i].pessoaDentro.chegada;
+                        estatistica.quantidadeUsuarios++;
+
+                        //testando se é o maior tempo dentre os usuários
+                        if(turno - guiches[i].pessoaDentro.chegada > estatistica.maiorTempo){
+                            estatistica.usuarioMaiorTempo = guiches[i].pessoaDentro.usuario;
+                            estatistica.maiorTempo = turno - guiches[i].pessoaDentro.chegada;
+                        }
+
+                        return;
+                    }
                     //verificando o proximo guiche que ela tem que ir
                     proximoGuiche = guiches[i].pessoaDentro.guiches[guiches[i].pessoaDentro.atualGuiche];
 
@@ -145,16 +169,22 @@ namespace PI_III
 
                     //enviando a pessoa para a fila
                     fila[j].Enqueue(guiches[i].pessoaDentro);
+                    guiches[i].pessoaDentro.entradaFila = turno;
+
                 }
             }
         }
-        void atualizarFilas(GuichesSetup[] guiches, Queue<Pessoas>[] fila){
+        void atualizarFilas(GuichesSetup[] guiches, Queue<Pessoas>[] fila, Estatistica estatistica , int turno){
             for (int j = 0; j < guiches.Length; j++)
             {
                 for (int k = 0; k < guiches[j].guichesIguais; k++)
                 {
                     if (guiches[j + k].atendente == true && guiches[j + k].vazio == true && fila[j].Count != 0)
+                    {
                         entrarGuiches(fila[j].Dequeue(), guiches[j + k]);
+
+                        //estatistica.guicheTempoFila[0] += turno - guiches[j + k].pessoaDentro.entradaFila;
+                    }
                 }
                 j += guiches[j].guichesIguais - 1;
             }

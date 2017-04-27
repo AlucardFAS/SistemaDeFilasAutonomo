@@ -59,7 +59,7 @@ namespace PI_III
                 guiches[i].peso = fila[j].Count * guiches[i].turnosNecessarios;
 
                 if (guiches[i].chegadaAtendente != 0)   //verificando se tem algum atendente indo a esse guiche
-                    if (guiches[i].chegadaAtendente >= troca)   //verificando se já deu o tempo de troca
+                    if (guiches[i].chegadaAtendente >= troca-1)   //verificando se já deu o tempo de troca
                     {
                         guiches[i].atendente = true;
                         guiches[i].chegadaAtendente = 0;

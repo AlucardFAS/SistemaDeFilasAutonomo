@@ -41,6 +41,7 @@ namespace PI_III
                 if (i == 1) butao.Click += new System.EventHandler(this.cliquePlay2);
                 if (i == 2) butao.Click += new System.EventHandler(this.cliquePlay3);
                 if (i == 3) butao.Click += new System.EventHandler(this.cliquePlay4);
+                if (i == 4) butao.Click += new System.EventHandler(this.cliquePlay5);
             }
             //gerando pause
             butao = new System.Windows.Forms.Button();

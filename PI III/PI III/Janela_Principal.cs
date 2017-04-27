@@ -67,7 +67,7 @@ namespace PI_III
         }
         private void cliquePlay5(object sender, EventArgs e) //essa função vai ser para dar play na velocidade determinada pelo usuario, não mexer nisso por enquanto, nem ligar ela ao botão
         {
-            
+            processo(fila, pessoas, guiches, 0);
         }
     }
 }

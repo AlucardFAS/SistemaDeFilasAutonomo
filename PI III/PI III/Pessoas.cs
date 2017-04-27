@@ -16,9 +16,13 @@ namespace PI_III
 
         public int atualGuiche;
 
+        //usado para auxiliar o calculo da estatistica de tempo de fila
+        public int entradaFila;
+
         public Pessoas()
         {
             atualGuiche = 0;
+            entradaFila = 0;
         }
 
         public void setPessoa(int u, int c, String g)

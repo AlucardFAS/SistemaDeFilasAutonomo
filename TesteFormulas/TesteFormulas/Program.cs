@@ -17,6 +17,7 @@ namespace TesteFormulas
         static Queue<Pessoas>[] fila;
         static GuichesSetup[] guiches;
 
+
         public static void Main(string[] args)
         {
             int formula1 = 0; //risos
