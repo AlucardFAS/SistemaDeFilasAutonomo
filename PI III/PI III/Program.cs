@@ -11,7 +11,9 @@ namespace PI_III
         static void Main(){
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Janela_Principal());
+            Janela_Principal java = new Janela_Principal();
+            java.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp;
+            Application.Run(java);
         }
     }
 }
