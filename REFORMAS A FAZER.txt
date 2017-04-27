@@ -5,6 +5,7 @@ Tempos médios
 
 Médio
 
+arrumar o teste fórmulas
 embelezar o programa
 pensar e elaborar automação
 
