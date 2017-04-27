@@ -16,14 +16,16 @@ namespace PI_III
 
         public int atualGuiche;
 
-        public Pessoas() {
+        public Pessoas()
+        {
             atualGuiche = 0;
         }
 
-        public void setPessoa(int u, int c, String g){
-        this.usuario = u;
-        this.chegada = c;
-        this.guiches = g.ToCharArray();
+        public void setPessoa(int u, int c, String g)
+        {
+            this.usuario = u;
+            this.chegada = c;
+            this.guiches = g.ToCharArray();
         }
         public void carregarFila(Pessoas[] pessoas)
         {
@@ -94,6 +96,31 @@ namespace PI_III
         {
             for (int i = 0; i < pessoas.Length; i++)
                 pessoas[i].atualGuiche = 0;
+        }
+        
+        //Função para criar usuario aleatórios.
+        //Recebe a quantidade de usuario, tem que receber o char do ultimo guiche e o ultimo turno que algum "cliente" deve chegar
+        //retorna um vetor de pessoas. Que seria a fila do arquivo txt fila.
+        public static Pessoas []gerarUsuarioRandom(int quantidade, char ultimoguiche, int ultimotempochegada)
+        {
+            int aux;
+            Pessoas[] b = new Pessoas[quantidade];
+            Random ran = new Random();
+            for (int i = 0; i < quantidade; i++)
+            {
+                b[i] = new Pessoas();
+                b[i].usuario = (i + 1);
+                b[i].chegada = ran.Next(1, ultimotempochegada);
+                b[i].guiches[0] = 'A';
+                for (int j = 1; j < ran.Next(5, (Convert.ToInt32(ultimoguiche) + 1)); j++)
+                {
+                    aux = b[i].guiches[j - 1];
+                    if (aux == (Convert.ToInt32(ultimoguiche)))
+                        break;
+                    b[i].guiches[j] = ((char)ran.Next((aux + 1), (Convert.ToInt32(ultimoguiche))));
+                }
+            }
+            return b;
         }
     }
 }
