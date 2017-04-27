@@ -9,6 +9,7 @@ namespace PI_III
         private System.Windows.Forms.Button[] guichesBotao;
         private VerticalProgressBar[] verticalProgressBar;
         private System.Windows.Forms.ProgressBar[] progressBar;
+        //private System.Windows.Forms.ToolTip[] toolTip;
 
         private void entrarGuiches(Pessoas pessoa, GuichesSetup guiche) {
             guiche.vazio = false;
@@ -41,11 +42,14 @@ namespace PI_III
                 this.guichesBotao[i].Size = new System.Drawing.Size(100-(quantidade*3), 100-(quantidade*3));
                 
                 this.guichesBotao[i].Click += new System.EventHandler(this.Clique_Guiche);
-
+                this.guichesBotao[i].BackColor = System.Drawing.Color.DarkGray;
                 //texto dos guiches
                 aux += guiches[i].guiche;
                 this.guichesBotao[i].Text = aux;
                 aux = "";
+
+
+                
 
                 this.Controls.Add(this.guichesBotao[i]);
                 this.ResumeLayout(false);

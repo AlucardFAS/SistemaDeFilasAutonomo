@@ -60,6 +60,8 @@ namespace PI_III
                 atualizarCorBotoes(guiches);
 
                 //Atualizando o label que conta os turnos
+                this.textoTurno.BackColor = System.Drawing.Color.Transparent;
+                this.textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
                 Refresh();
@@ -69,6 +71,8 @@ namespace PI_III
             }
 
             //Atualizando o label que conta os turnos
+            this.textoTurno.BackColor = System.Drawing.Color.Transparent;
+            this.textoTurno.ForeColor = System.Drawing.Color.White;
             textoTurno.Text = "Turno: " + turno;
             textoTurno.Refresh();
             Refresh();
@@ -112,6 +116,8 @@ namespace PI_III
                 turno = contarTurnos(tempo, turno);
 
                 //Atualizando o label que conta os turnos
+                this.textoTurno.BackColor = System.Drawing.Color.Transparent;
+                this.textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
                 Refresh();
@@ -190,6 +196,9 @@ namespace PI_III
             }
         }
         void atualizarCorBotoes(GuichesSetup[] guiches){
+
+            
+
             for (int j = 0; j < guiches.Length; j++)
             {
                 if (guiches[j].vazio == false) guichesBotao[j].BackColor = System.Drawing.Color.Green;

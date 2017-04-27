@@ -16,13 +16,16 @@ namespace PI_III
             for (int i = 0; i < 5; i++) //gerando os botões de play
             {
                 butao = new System.Windows.Forms.Button();
-                butao.Location = new System.Drawing.Point(600 - (i * 60), 330);
-                butao.Size = new System.Drawing.Size(50, 50);
+                butao.Location = new System.Drawing.Point(260 - (i * 60), 300);
+                butao.Size = new System.Drawing.Size(60,60);
+                this.butao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                this.butao.BackColor = System.Drawing.Color.DarkGray;
 
-                if (i == 0) butao.Text = "Play";
-                if (i == 1) butao.Text = "Play2";
-                if (i == 2) butao.Text = "Play3";
-                if (i == 3) butao.Text = "Play4";
+
+                if (i == 0) butao.BackgroundImage = global::PI_III.Properties.Resources._1493335334_icon_play1;
+                if (i == 1) butao.BackgroundImage = global::PI_III.Properties.Resources._2x;
+                if (i == 2) butao.BackgroundImage = global::PI_III.Properties.Resources._3x;
+                if (i == 3) butao.BackgroundImage = global::PI_III.Properties.Resources._10x; ;
                 if (i == 4) butao.Text = "Play5";
 
 
@@ -32,9 +35,9 @@ namespace PI_III
                 this.SuspendLayout();
 
                 textoTurno.AutoSize = true;
-                textoTurno.Location = new System.Drawing.Point(30, 30);
+                textoTurno.Location = new System.Drawing.Point(30,30);
                 textoTurno.Size = new System.Drawing.Size(50, 30);
-
+                
                 Controls.Add(textoTurno);
 
                 if (i == 0) butao.Click += new System.EventHandler(this.cliquePlay);
@@ -45,10 +48,13 @@ namespace PI_III
             }
             //gerando pause
             butao = new System.Windows.Forms.Button();
-            butao.Location = new System.Drawing.Point (720, 330);
-            butao.Size = new System.Drawing.Size(50, 50);
-            butao.Text = "Pause";
+            butao.Location = new System.Drawing.Point (380, 300);
+            butao.Size = new System.Drawing.Size(60, 60);
+            
             Controls.Add(this.butao);
+            butao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            butao.BackgroundImage = global::PI_III.Properties.Resources._1493339249_pause;
+            this.butao.BackColor = System.Drawing.Color.DarkGray;
         }
         void sleep(double tempo)
         {

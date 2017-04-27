@@ -13,22 +13,29 @@ namespace PI_III
 {
     public partial class Janela_Principal : Form
     {
+        
         const int TAMANHO_HORIZONTAL = 1350;
         const int TAMANHO_VERTICAL = 670;
+        
 
         Pessoas[] pessoas;
         Queue<Pessoas>[] fila;
         GuichesSetup[] guiches;
         Boolean[] atendentesIniciais;
 
+       
         
         public Janela_Principal(){
+
+
+            this.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp;
             StartPosition = FormStartPosition.CenterScreen; //deixando a tela bem no centro
             ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Integrador 3";   //nome da janela principal
-
-            //int totalGuiches;
             
+            
+            //int totalGuiches;
+
             guiches = CarregarSetup();
 
             int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
@@ -49,6 +56,7 @@ namespace PI_III
             GerarPlay(fila, pessoas, guiches);
 
         }
+        
         private void cliquePlay(object sender, EventArgs e) //essa função vai ser para dar play na velocidade padrão (1 seg)
         {
             processo(fila, pessoas, guiches, 1);
