@@ -45,11 +45,10 @@ namespace TesteFormulas
             {
                 formula1 += processo(fila, pessoas, guiches, 1);
                 Pessoas.resetPessoas(pessoas);
-
-
-                formula2 += processo(fila, pessoas, guiches, 0);
+                formula2 += processo(fila, pessoas, guiches, 1);
                 Pessoas.resetPessoas(pessoas);
             }
+
 
             Console.WriteLine("Turnos demorados pelo método 1:" +formula1+ "\n"+
                                 "Turnos demorados pelo método 2:"+ formula2+ "\n");

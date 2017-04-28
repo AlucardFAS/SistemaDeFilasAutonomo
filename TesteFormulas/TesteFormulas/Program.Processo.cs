@@ -63,7 +63,8 @@ namespace TesteFormulas
                 atualizarGuiches(guiches, fila);
 
                 //Verificando se vale a pena fazer trocas
-                if (formula != 0) Trocas.realizarTrocas(guiches, fila, troca);
+                if (formula == 1) Trocas.realizarTrocas1(guiches, fila, troca);
+                if (formula == 2) Trocas.realizarTrocas2(guiches,fila, troca);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila);
@@ -71,6 +72,8 @@ namespace TesteFormulas
                 //testando se todos os guiches estão vazios, se algum não estiver vazio, então continuar se torna verdade
                 continuar = false;
                 for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;
+
+                if (continuar == false && troca != 0) continuar = Trocas.condicaoEspecial(guiches, fila);
 
                 turno = contarTurnos(turno);
             }
