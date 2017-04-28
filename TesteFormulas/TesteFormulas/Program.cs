@@ -41,12 +41,15 @@ namespace TesteFormulas
 
 
             //ÁREA DE TESTES
-
+            for (int i = 0; i < 100; i++)
+            {
                 formula1 += processo(fila, pessoas, guiches, 1);
+                Pessoas.resetPessoas(pessoas);
 
 
                 formula2 += processo(fila, pessoas, guiches, 0);
-
+                Pessoas.resetPessoas(pessoas);
+            }
 
             Console.WriteLine("Turnos demorados pelo método 1:" +formula1+ "\n"+
                                 "Turnos demorados pelo método 2:"+ formula2+ "\n");
