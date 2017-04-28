@@ -10,6 +10,9 @@ namespace TesteFormulas
     {
         static int processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, int formula)
         {
+
+            GuichesSetup.resetGuiches(guiches, atendentesIniciais);
+
             int turno = 1;
             //obtendo a quantidade de guiches
 
@@ -60,7 +63,7 @@ namespace TesteFormulas
                 atualizarGuiches(guiches, fila);
 
                 //Verificando se vale a pena fazer trocas
-                if (troca != 0) Trocas.realizarTrocas(guiches, fila, troca);
+                if (formula != 0) Trocas.realizarTrocas(guiches, fila, troca);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila);

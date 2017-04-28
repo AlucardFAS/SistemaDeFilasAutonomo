@@ -25,7 +25,7 @@ namespace TesteFormulas
             this.chegada = c;
             this.guiches = g.ToCharArray();
         }
-        public void carregarFila(Pessoas[] pessoas)
+        public static void carregarFila(Pessoas[] pessoas)
         {
             System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");
             string linha;
@@ -90,7 +90,33 @@ namespace TesteFormulas
             }
             arquivo.Close();
         }
-        public void resetPessoas(Pessoas[] pessoas) {
+        public static Pessoas[] gerarUsuarioRandom(int quantidade, char ultimoguiche, int ultimotempochegada)
+        {
+            //Função para criar usuario aleatórios.
+            //Recebe a quantidade de usuario, tem que receber o char do ultimo guiche e o ultimo turno que algum "cliente" deve chegar
+            //retorna um vetor de pessoas. Que seria a fila do arquivo txt fila.
+
+            int aux;
+            Pessoas[] b = new Pessoas[quantidade];
+            Random ran = new Random();
+            for (int i = 0; i < quantidade; i++)
+            {
+                b[i] = new Pessoas();
+                
+                b[i].usuario = (i + 1);
+                b[i].chegada = ran.Next(1, ultimotempochegada);
+                b[i].guiches[0] = 'A';
+                for (int j = 1; j < ran.Next(5, (Convert.ToInt32(ultimoguiche) + 1)); j++)
+                {
+                    aux = b[i].guiches[j - 1];
+                    if (aux == (Convert.ToInt32(ultimoguiche)))
+                        break;
+                    b[i].guiches[j] = ((char)ran.Next((aux + 1), (Convert.ToInt32(ultimoguiche))));
+                }
+            }
+            return b;
+        }
+        public static void resetPessoas(Pessoas[] pessoas) {
             for (int i = 0; i < pessoas.Length; i++)
                 pessoas[i].atualGuiche = 0;
         }

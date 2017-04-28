@@ -39,3 +39,4 @@ C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI III.cspr
 C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI III.exe
 C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI III.pdb
 C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI_III.Janela_Principal.resources
+C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\PI III\PI III\obj\Debug\PI_III.Janela_Principal.resources
