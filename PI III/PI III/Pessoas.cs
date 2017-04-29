@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,9 +32,15 @@ namespace PI_III
             this.chegada = c;
             this.guiches = g.ToCharArray();
         }
-        public void carregarFila(Pessoas[] pessoas)
+        public static Pessoas[] carregarFila(Pessoas[] pessoas, string path)
         {
-            System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");
+            int totalClientes = File.ReadAllLines(path).Length; //contando o numero de pessoas que terão na fila
+
+            pessoas = new Pessoas[totalClientes];
+            for (int i = 0; i < totalClientes; i++)
+                pessoas[i] = new Pessoas();
+
+            System.IO.StreamReader arquivo = new System.IO.StreamReader(path);
             string linha;
             string dado = "";
             int usuario = -1;
@@ -96,6 +102,8 @@ namespace PI_III
                 j++;
             }
             arquivo.Close();
+
+            return pessoas;
         }
         public static void resetPessoas(Pessoas[] pessoas)
         {

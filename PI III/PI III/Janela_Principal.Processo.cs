@@ -24,6 +24,7 @@ namespace PI_III
             int i = 0;
 
             //esse laço vai até entrar todas as pessoas nas filas
+            MessageBox.Show("pessoaslenght"+ pessoas.Length);
             while (i < pessoas.Length)
             {
 
@@ -110,6 +111,7 @@ namespace PI_III
                 //testando se todos os guiches estão vazios, se algum não estiver vazio, então continuar se torna verdade
                 continuar = false;
                 for (int j = 0; j < guiches.Length; j++) if (guiches[j].vazio == false) continuar = true;
+                
 
                 if (continuar == false && troca != 0) continuar = condicaoEspecial(guiches, fila);
 

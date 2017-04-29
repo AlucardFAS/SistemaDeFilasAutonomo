@@ -17,9 +17,11 @@ namespace PI_III
         private int[] posto;
 
 
-        private GuichesSetup[] CarregarSetup()
+        private GuichesSetup[] CarregarSetup(String path)
         {
-            System.IO.StreamReader file = new System.IO.StreamReader("Dados/Setup.txt");//busca o arquivo de texto
+
+
+            System.IO.StreamReader file = new System.IO.StreamReader(path);//busca o arquivo de texto
             int counter = 0;
             postos = new char[20];
             posto = new int[20];

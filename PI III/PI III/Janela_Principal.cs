@@ -36,15 +36,9 @@ namespace PI_III
 
             //int totalGuiches;
 
-            guiches = CarregarSetup();
+            guiches = CarregarSetup("Dados/Setup.txt");
 
-            int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
-
-            pessoas = new Pessoas[totalClientes];
-            for (int i = 0; i < totalClientes; i++)
-                pessoas[i] = new Pessoas();
-
-            pessoas[0].carregarFila(pessoas);
+            pessoas = Pessoas.carregarFila(pessoas, "Dados/Fila.txt");
 
             int quantidade = guiches.Length;
             fila = new Queue<Pessoas>[quantidade];  //criando as filas em função da quantidade de guiches

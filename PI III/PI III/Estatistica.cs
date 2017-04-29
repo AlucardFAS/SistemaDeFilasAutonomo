@@ -16,7 +16,7 @@ namespace PI_III
         public int maiorTempo;
 
         //tempo médio por tipo de fila
-        public int[] guicheTempoFila;
+        //public int[] guicheTempoFila;
 
         public Estatistica() {
             tempoTotalUsuarios = 0;
