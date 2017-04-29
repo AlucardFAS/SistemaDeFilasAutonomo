@@ -29,15 +29,14 @@ namespace TesteFormulas
 
             int totalClientes = File.ReadAllLines("Dados/Fila.txt").Length; //contando o numero de pessoas que terão na fila
 
-            pessoas = new Pessoas[30];
-            for (int i = 0; i < 30; i++) {
-                pessoas[i] = new Pessoas();
-            }
+            pessoas = Pessoas.gerarUsuarioRandom(30, 'D', 30);
 
-            Pessoas.carregarFila(pessoas);
+            for(int i = 0; i < 30; i++)
+            Console.WriteLine("chegada: "+pessoas[i].chegada);
 
             fila = new Queue<Pessoas>[guiches.Length];  //criando as filas em função da quantidade de guiches
             for (int i = 0; i < fila.Length; i++) fila[i] = new Queue<Pessoas>();   //instanciando as filas
+
 
 
             //ÁREA DE TESTES

@@ -99,13 +99,24 @@ namespace TesteFormulas
             int aux;
             Pessoas[] b = new Pessoas[quantidade];
             Random ran = new Random();
+            //aleatorizando um vetor chegada com chegadas de 1 até o ultimotempochegada
+            int[] chegada = new int[quantidade];
+
+            for (int j = 0; j < quantidade; j++) 
+                chegada[j] = ran.Next(1, ultimotempochegada);
+            
+            Array.Sort<int>(chegada);   //ordenando o vetor com as chegadas
+
+
             for (int i = 0; i < quantidade; i++)
             {
                 b[i] = new Pessoas();
                 
                 b[i].usuario = (i + 1);
-                b[i].chegada = ran.Next(1, ultimotempochegada);
+                b[i].chegada = chegada[i];  //settando a chegada das pessoas de acordo com o vetor chegada
+
                 b[i].guiches = new char[Convert.ToInt32(ultimoguiche) - (Convert.ToInt32('A') - 1)];
+                Console.WriteLine("tamanho guiches: "+b[i].guiches.Length); //verificando o tamanho de cada array
                 b[i].guiches[0] = 'A';
                 for (int j = 1; j < ran.Next(5, (Convert.ToInt32(ultimoguiche) + 1)); j++)
                 {
