@@ -127,16 +127,27 @@ namespace PI_III
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                try{
                 Array.Clear(guiches, 0, guiches.Length);    //limpando o vetor pessoas antes de carregar os guiches novamente
-                Array.Clear(atendentesIniciais, 0, atendentesIniciais.Length);
+                Array.Clear(atendentesIniciais, 0, atendentesIniciais.Length);  //limpando o vetor de relação de atendentes iniciais que é setado dentro do carregarSetup
 
                 guiches = CarregarSetup(openFileDialog1.FileName);  //chama a função que carrega o setup em função do arquivo escolhido
-                this.Controls.Clear();  //limpa todos os guiches atuais (e infelizmente a barra menu e os botões de play)
 
-                Array.Clear(fila, 0, fila.Length);
+                Array.Clear(fila, 0, fila.Length);  //limpa o vetor de filas antes de criar as filas novamente
 
                 fila = new Queue<Pessoas>[guiches.Length];  //criando as filas em função da quantidade de guiches
                 for (int i = 0; i < fila.Length; i++) fila[i] = new Queue<Pessoas>();   //instanciando as filas
+                }
+                catch (Exception){  //caso escolha um arquivo que não tem o formato de setup, dispara um erro e carrega o setup padrão
+                    MessageBox.Show("Por favor, carregar um arquivo válido de Setup");
+                    MessageBox.Show("O setup foi retornado para o padrão");
+
+                    guiches = CarregarSetup("Dados/Setup.txt");
+
+                    fila = new Queue<Pessoas>[guiches.Length];  //criando as filas em função da quantidade de guiches
+                    for (int i = 0; i < fila.Length; i++) fila[i] = new Queue<Pessoas>();   //instanciando as filas
+                }
+                this.Controls.Clear();  //limpa todos os guiches atuais (e infelizmente a barra menu e os botões de play)
 
                 barraMenu(pessoas); //cria a barra de menus novamente
                 criarGuiches(guiches.Length, guiches);  //cria os guiches novamente
@@ -175,8 +186,10 @@ namespace PI_III
                 Array.Clear(pessoas, 0, pessoas.Length);    //limpando o vetor pessoas antes de carregar a fila novamente
                 try{
                 pessoas = Pessoas.carregarFila(pessoas, openFileDialog1.FileName); //chama a função que carrega o setup em função do arquivo escolhido
-                }catch(Exception){
-                    MessageBox.Show("Por favor, escolha um arquivo válido");
+                }catch(Exception){  //caso escolha um arquivo que não tem o formato de filas, dispara um erro e carrega a fila padrão
+                    MessageBox.Show("Por favor, escolha um arquivo válido de Filas");
+                    MessageBox.Show("A fila foi retornada para o padrão");
+                    pessoas = Pessoas.carregarFila(pessoas, "Dados/Fila.txt");  
                 }
 
                 this.Controls.Clear();  //limpa todos os guiches atuais (e infelizmente a barra menu e os botões de play)

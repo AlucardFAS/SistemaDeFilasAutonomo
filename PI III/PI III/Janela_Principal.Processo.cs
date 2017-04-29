@@ -24,7 +24,6 @@ namespace PI_III
             int i = 0;
 
             //esse laço vai até entrar todas as pessoas nas filas
-            MessageBox.Show("pessoaslenght"+ pessoas.Length);
             while (i < pessoas.Length)
             {
 
