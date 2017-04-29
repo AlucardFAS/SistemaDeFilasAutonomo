@@ -149,13 +149,14 @@ namespace PI_III
                 guichesSetup[i].guiche = postos[i]; //simplesmente joga o char do guiche
                 
                 //isso serve para verificar quantos guiches iguais tem, assim o primeiro guiches dos iguais (por exemplo, 3 guiches A's, o primeiro A terá a quantidadeGuiches igual a 3)
-                if (guichesSetup[i].guiche != aux){
-                    int k = i+1;
+                if (guichesSetup[i].guiche != aux && i!=19){
+                    int k = i+1;    
                     aux = guichesSetup[i].guiche;
 
                     while (postos[k] == aux){   //atualizando a quantidade de guiches iguais (somente no primeiro guiche)
                         guichesSetup[i].guichesIguais++;
                         k++;
+                        if (k > 19) break;
                     }
                 }
 

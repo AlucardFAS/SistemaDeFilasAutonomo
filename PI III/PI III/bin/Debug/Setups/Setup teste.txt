@@ -1,0 +1,12 @@
+6
+RP:AAAAAAAAAAAAAAAABBBB
+RA:A
+TROCA:3
+A2:Triagem
+B5:Formulários
+C7:Fotografia
+D3:Impressão Digital
+E1:Retirada
+F3:Pós retirada
+G2:Póspos
+H4:APASDO

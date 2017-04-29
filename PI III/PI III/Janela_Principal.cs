@@ -14,15 +14,10 @@ namespace PI_III
     public partial class Janela_Principal : Form
     {
         
-        const int TAMANHO_HORIZONTAL = 1350;
-        const int TAMANHO_VERTICAL = 670;
-        
-
         Pessoas[] pessoas;
         Queue<Pessoas>[] fila;
         GuichesSetup[] guiches;
         Boolean[] atendentesIniciais;
-
        
         
         public Janela_Principal(){
@@ -30,7 +25,7 @@ namespace PI_III
 
             //this.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp;
             StartPosition = FormStartPosition.CenterScreen; //deixando a tela bem no centro
-            ClientSize = new System.Drawing.Size(TAMANHO_HORIZONTAL, TAMANHO_VERTICAL);    //definindo tamanho da janela principal
+            ClientSize = new System.Drawing.Size(Constantes.TAMANHO_HORIZONTAL, Constantes.TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Integrador 3";   //nome da janela principal
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
@@ -46,6 +41,7 @@ namespace PI_III
 
             barraMenu(pessoas);
             criarGuiches(quantidade, guiches);
+            
 
             GerarPlay(fila, pessoas, guiches);
 

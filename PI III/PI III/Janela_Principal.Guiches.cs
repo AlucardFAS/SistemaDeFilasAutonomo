@@ -30,13 +30,13 @@ namespace PI_III
                 String aux = "";
 
                 if (i <= 14)
-                    inicio = TAMANHO_HORIZONTAL - (TAMANHO_HORIZONTAL / quantidade * (quantidade - 1)) - (100 - (quantidade * 3));
-                else inicio = (TAMANHO_VERTICAL-250) - ((TAMANHO_VERTICAL-250) / (quantidade-14) * (quantidade-15)) - (100 - (quantidade *3));
+                    inicio = Constantes.TAMANHO_HORIZONTAL - (Constantes.TAMANHO_HORIZONTAL / quantidade * (quantidade - 1)) - (100 - (quantidade * 3));
+                else inicio = (Constantes.TAMANHO_VERTICAL-250) - ((Constantes.TAMANHO_VERTICAL-250) / (quantidade-14) * (quantidade-15)) - (100 - (quantidade *3));
                 if (i <= 14)  //gerando os 15 primeiros guiches de baixo
-                    this.guichesBotao[i].Location = new System.Drawing.Point((quantidade > 15 ? TAMANHO_HORIZONTAL/15*i:TAMANHO_HORIZONTAL/quantidade*i) + (inicio/2), TAMANHO_VERTICAL - 90);
+                    this.guichesBotao[i].Location = new System.Drawing.Point((quantidade > 15 ? Constantes.TAMANHO_HORIZONTAL/15*i:Constantes.TAMANHO_HORIZONTAL/quantidade*i) + (inicio/2), Constantes.TAMANHO_VERTICAL - 90);
                 else{   //gerando os 5 ultimos guiches no lado direito em cima
                     this.guichesBotao[i].Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-                    this.guichesBotao[i].Location = new System.Drawing.Point(1270, (TAMANHO_VERTICAL - 250) / (quantidade-14)*(i-14) - (inicio/2));
+                    this.guichesBotao[i].Location = new System.Drawing.Point(1270, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade-14)*(i-14) - (inicio/2));
                 }
                //gerando o tamanho dos guiches
                 this.guichesBotao[i].Size = new System.Drawing.Size(100-(quantidade*3), 100-(quantidade*3));
@@ -64,11 +64,11 @@ namespace PI_III
                     if (j <= 14){   //criando as 15 primeiras barras de progresso
                         verticalProgressBar[j] = new VerticalProgressBar();
 
-                        int inicio = TAMANHO_HORIZONTAL - (TAMANHO_HORIZONTAL / quantidade * (quantidade - 1) + 18);
+                        int inicio = Constantes.TAMANHO_HORIZONTAL - (Constantes.TAMANHO_HORIZONTAL / quantidade * (quantidade - 1) + 18);
 
 
-                            if (guiches[j].guichesIguais % 2 == 0) verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais/2 - 1) : TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais/2 - 1)) + inicio / 2 + (TAMANHO_HORIZONTAL / quantidade / 2), 410);
-                            else verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais /2) : TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
+                        if (guiches[j].guichesIguais % 2 == 0) verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais/2 - 1) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais/2 - 1)) + inicio / 2 + (Constantes.TAMANHO_HORIZONTAL / (quantidade>15 ? 15:quantidade) / 2), 410);
+                            else verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais /2) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
                             verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
                             verticalProgressBar[j].Maximum = 10;
 
@@ -80,13 +80,18 @@ namespace PI_III
                     {  //criando as ultimas 5 barras de progresso
                         progressBar[j - 15] = new System.Windows.Forms.ProgressBar();
 
-                        int inicio = (TAMANHO_VERTICAL - 250) - (((TAMANHO_VERTICAL - 250) / (quantidade - 14) * (quantidade - 15) - 60));
-                        progressBar[j - 15].Location = new System.Drawing.Point(1100, (TAMANHO_VERTICAL - 250) / (quantidade - 14) * (j - 15) + (inicio / 2));
+                        int inicio = (Constantes.TAMANHO_VERTICAL - 250) - (((Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * (quantidade - 15) - 60));
+
+                        if (guiches[j].guichesIguais % 2 == 0) progressBar[j - 15].Location = new System.Drawing.Point(1100, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 15) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2) + ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade-14) / 2));
+                        else progressBar[j - 15].Location = new System.Drawing.Point(1100, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 14) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2));
+
                         progressBar[j - 15].Size = new System.Drawing.Size(163, 18);
 
                         this.Controls.Add(this.progressBar[j - 15]);
-                    } 
 
+                        j += guiches[j].guichesIguais - 1;
+                    }
+                    
             }
         }
     }
