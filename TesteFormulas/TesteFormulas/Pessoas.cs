@@ -105,6 +105,7 @@ namespace TesteFormulas
                 
                 b[i].usuario = (i + 1);
                 b[i].chegada = ran.Next(1, ultimotempochegada);
+                b[i].guiches = new char[Convert.ToInt32(ultimoguiche) - (Convert.ToInt32('A') - 1)];
                 b[i].guiches[0] = 'A';
                 for (int j = 1; j < ran.Next(5, (Convert.ToInt32(ultimoguiche) + 1)); j++)
                 {
