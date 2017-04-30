@@ -12,28 +12,23 @@ namespace PI_III
         void processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, double tempo)
         {
             int turno = 1;
-            //obtendo a quantidade de guiches
 
             Estatistica estatistica = new Estatistica();
 
-
-
             GuichesSetup.resetGuiches(guiches, atendentesIniciais);
-            Pessoas.resetPessoas(pessoas);   //resetando uma variável dentro da classe pessoas para que, o processo possa ser reproduzido novamente
+            
+            System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");  //carrega a fila
+            String linha = arquivo.ReadLine();  //inicializa lendo a linha
+            linha += ';';   //já adiciona o . no final da linha
 
-            int i = 0;
+            Boolean continuar = true;
+            
 
             //esse laço vai até entrar todas as pessoas nas filas
-            while (i < pessoas.Length)
+            while (continuar)
             {
-
-                //jogando as pessoas na fila do guiche A (ou dos guiches A)
-                while (pessoas[i].chegada == turno)
-                {
-                    fila[0].Enqueue(pessoas[i]);
-                    i++;
-                    if (i >= pessoas.Length) break; //quando o i for maior do que a quantidade de pessoas
-                }
+                //lê as pessoas da fila e joga elas na fila do guiche A
+                lerFila(fila[0], turno, ref linha, arquivo, ref continuar);
 
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila, estatistica, turno);
@@ -78,7 +73,7 @@ namespace PI_III
            // Refresh();
 
             //esse laço vai até esvaziar todos os guiches, assim, terminando
-            Boolean continuar = true;
+            continuar = true;
             while (continuar)
             {
 
@@ -136,6 +131,69 @@ namespace PI_III
                             "maiorTempo: " + estatistica.maiorTempo);
         }
 
+        void lerFila(Queue<Pessoas> fila, int turno, ref string linha, System.IO.StreamReader arquivo, ref Boolean continuar) {
+            string dadoString = "";
+
+            int i = 1;
+            int usuario = -1;
+            int chegada = -1;
+            string guichesPessoa;
+
+            char[] percorredor = linha.ToCharArray();
+
+            while (true)
+            {
+                Pessoas pessoa = new Pessoas();
+
+                if (percorredor[i] == 'U')
+                {
+                    i++;
+                }
+
+                else if (percorredor[i] == 'C'){
+                    if (!Int32.TryParse(dadoString, out usuario)) MessageBox.Show("Deu ruim na hora de converter pra int");
+                    dadoString = "";
+                    i++;
+                }
+
+                else if (percorredor[i] == 'A'){
+                    if (!Int32.TryParse(dadoString, out chegada)) MessageBox.Show("Deu ruim na hora de converter pra int");
+                    dadoString = "";
+
+                    if (chegada != turno){
+                        i = 1;
+                        continuar = true;
+                        return;
+                    }
+
+                    while (percorredor[i] != ';'){
+                        dadoString += percorredor[i];
+                        i++;
+                    }
+
+                    guichesPessoa = dadoString;
+                    pessoa.setPessoa(usuario, chegada, guichesPessoa);
+
+                    fila.Enqueue(pessoa);
+
+                    if ((linha = arquivo.ReadLine()) == null)
+                    {
+                        continuar = false;
+                        MessageBox.Show("chegou aqui");
+                        return;
+
+                    }
+                    dadoString = "";
+                    linha += ';';
+                    i = 1;
+
+                    percorredor = linha.ToCharArray();  //transformando o percorredor em novo
+                }
+                dadoString += percorredor[i];
+                i++;
+            }
+        
+        }
         void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila, Estatistica estatistica , int turno)
         {
             int quantidadeGuiches = guiches.Length;

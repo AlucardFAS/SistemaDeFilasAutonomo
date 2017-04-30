@@ -55,13 +55,14 @@ namespace PI_III
             while ((linha = arquivo.ReadLine()) != null)
             {
                 linha += ";";
+                
 
                 char[] percorredor = linha.ToCharArray();
 
                 int i = 0;
                 while (true)
                 {
-                    if (percorredor[i] == 'U')
+                    if (percorredor[i] == 'U')  //se o percorredor chegou em U, então ativar flag de stringUsuario e incrementar i
                     {
                         stringUsuario = true;
                         i++;
@@ -91,7 +92,7 @@ namespace PI_III
                         dado = "";
                         break;
                     }
-
+                    
                     if (stringUsuario == true) dado += percorredor[i];
                     if (stringChegada == true) dado += percorredor[i];
 
