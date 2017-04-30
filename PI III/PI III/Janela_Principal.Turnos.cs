@@ -12,7 +12,7 @@ namespace PI_III
         private System.Windows.Forms.Button butao;
         private System.Windows.Forms.Label textoTurno;
 
-        void GerarPlay(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches){
+        void GerarPlay(Queue<Pessoas>[] fila, GuichesSetup[] guiches){
             for (int i = 0; i < 5; i++) //gerando os botões de play
             {
                 butao = new System.Windows.Forms.Button();

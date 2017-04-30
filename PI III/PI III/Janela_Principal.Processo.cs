@@ -9,7 +9,7 @@ namespace PI_III
 {
     partial class Janela_Principal
     {
-        void processo(Queue<Pessoas>[] fila, Pessoas[] pessoas, GuichesSetup[] guiches, double tempo)
+        void processo(Queue<Pessoas>[] fila, String pathFila, GuichesSetup[] guiches, double tempo)
         {
             int turno = 1;
 
@@ -17,7 +17,7 @@ namespace PI_III
 
             GuichesSetup.resetGuiches(guiches, atendentesIniciais);
             
-            System.IO.StreamReader arquivo = new System.IO.StreamReader("Dados/Fila.txt");  //carrega a fila
+            System.IO.StreamReader arquivo = new System.IO.StreamReader(pathFila);  //carrega a fila
             String linha = arquivo.ReadLine();  //inicializa lendo a linha
             linha += ';';   //já adiciona o . no final da linha
 
@@ -145,51 +145,46 @@ namespace PI_III
             {
                 Pessoas pessoa = new Pessoas();
 
-                if (percorredor[i] == 'U')
-                {
-                    i++;
-                }
-
-                else if (percorredor[i] == 'C'){
+                if (percorredor[i] == 'C'){ //se o percorredor for C, então o dado anterior é da variável usuario, e assim seta usuario, limpa dadoString e continua
                     if (!Int32.TryParse(dadoString, out usuario)) MessageBox.Show("Deu ruim na hora de converter pra int");
                     dadoString = "";
                     i++;
                 }
 
-                else if (percorredor[i] == 'A'){
+                else if (percorredor[i] == 'A')
+                { //se o percorredor for A, então o dado anterior é da variável chegada, e assim seta chegada, limpa dadoString e continua
                     if (!Int32.TryParse(dadoString, out chegada)) MessageBox.Show("Deu ruim na hora de converter pra int");
                     dadoString = "";
 
-                    if (chegada != turno){
+                    if (chegada != turno){  //verifica se a pessoa que está sendo lida é do turno atual, se sim, continua o processo, se não, retorna
                         i = 1;
                         continuar = true;
                         return;
                     }
 
-                    while (percorredor[i] != ';'){
+                    while (percorredor[i] != ';'){  //lê os guiches da pessoa até ;(final da linha)
                         dadoString += percorredor[i];
                         i++;
                     }
 
                     guichesPessoa = dadoString;
-                    pessoa.setPessoa(usuario, chegada, guichesPessoa);
+                    pessoa.setPessoa(usuario, chegada, guichesPessoa);  //seta a pessoa de acordo com a informação obtida
 
-                    fila.Enqueue(pessoa);
+                    fila.Enqueue(pessoa);   //joga a pessoa na fila do guiche A
 
-                    if ((linha = arquivo.ReadLine()) == null)
+                    if ((linha = arquivo.ReadLine()) == null)   //quando acabar o txt de filas continuar vai ser false e logo o 1º looping principal acabará
                     {
                         continuar = false;
-                        MessageBox.Show("chegou aqui");
                         return;
-
                     }
                     dadoString = "";
                     linha += ';';
                     i = 1;
 
-                    percorredor = linha.ToCharArray();  //transformando o percorredor em novo
+                    percorredor = linha.ToCharArray();  //transformando o percorredor em nova linha
                 }
-                dadoString += percorredor[i];
+
+                dadoString += percorredor[i];   //caso o percorredor não esteja nem em C nem em A, então o percorredor está em algum dado
                 i++;
             }
         

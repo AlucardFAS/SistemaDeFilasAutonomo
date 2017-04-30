@@ -20,7 +20,7 @@ namespace PI_III
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tutorialToolStripMenuItem;
 
-        private void barraMenu(Pessoas[] pessoas){
+        private void barraMenu(){
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carregarSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,9 +149,9 @@ namespace PI_III
                 }
                 this.Controls.Clear();  //limpa todos os guiches atuais (e infelizmente a barra menu e os botões de play)
 
-                barraMenu(pessoas); //cria a barra de menus novamente
+                barraMenu(); //cria a barra de menus novamente
                 criarGuiches(guiches.Length, guiches);  //cria os guiches novamente
-                GerarPlay(fila, pessoas, guiches);  //cria os botões de play de novo
+                GerarPlay(fila, guiches);  //cria os botões de play de novo
 
                 /*try
                 {
@@ -183,26 +183,25 @@ namespace PI_III
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Array.Clear(pessoas, 0, pessoas.Length);    //limpando o vetor pessoas antes de carregar a fila novamente
                 try{
-                pessoas = Pessoas.carregarFila(pessoas, openFileDialog1.FileName); //chama a função que carrega o setup em função do arquivo escolhido
+                pathFila = openFileDialog1.FileName; //seta a pathFila de acordo com o txt escolhido
                 }catch(Exception){  //caso escolha um arquivo que não tem o formato de filas, dispara um erro e carrega a fila padrão
                     MessageBox.Show("Por favor, escolha um arquivo válido de Filas");
                     MessageBox.Show("A fila foi retornada para o padrão");
-                    pessoas = Pessoas.carregarFila(pessoas, "Dados/Fila.txt");  
+                    pathFila = "Dados/Fila.txt";
                 }
 
                 this.Controls.Clear();  //limpa todos os guiches atuais (e infelizmente a barra menu e os botões de play)
 
-                barraMenu(pessoas); //cria a barra de menus novamente
+                barraMenu(); //cria a barra de menus novamente
                 criarGuiches(guiches.Length, guiches);  //cria os guiches novamente
-                GerarPlay(fila, pessoas, guiches);  //cria os botões de play de novo
+                GerarPlay(fila, guiches);  //cria os botões de play de novo
             }
 
         }
         private void criarSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("" + pessoas[0].usuario);
+            MessageBox.Show("naaao");
         }
         private void criarFilaToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -13,8 +13,8 @@ namespace PI_III
 {
     public partial class Janela_Principal : Form
     {
-        
-        Pessoas[] pessoas;
+
+        String pathFila = "Dados/Fila.txt";
         Queue<Pessoas>[] fila;
         GuichesSetup[] guiches;
         Boolean[] atendentesIniciais;
@@ -29,43 +29,41 @@ namespace PI_III
             Text = "Projeto Integrador 3";   //nome da janela principal
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
-            //int totalGuiches;
+            pathFila = "Dados/Fila.txt";
 
             guiches = CarregarSetup("Dados/Setup.txt");
-
-            pessoas = Pessoas.carregarFila(pessoas, "Dados/Fila.txt");
 
             int quantidade = guiches.Length;
             fila = new Queue<Pessoas>[quantidade];  //criando as filas em função da quantidade de guiches
             for (int i = 0; i < fila.Length; i++) fila[i] = new Queue<Pessoas>();   //instanciando as filas
 
-            barraMenu(pessoas);
+            barraMenu();
             criarGuiches(quantidade, guiches);
             
 
-            GerarPlay(fila, pessoas, guiches);
+            GerarPlay(fila, guiches);
 
         }
         
         private void cliquePlay(object sender, EventArgs e) //essa função vai ser para dar play na velocidade padrão (1 seg)
         {
-            processo(fila, pessoas, guiches, 1);
+            processo(fila, pathFila, guiches, 1);
         }
         private void cliquePlay2(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 2x (0.5 seg)
         {
-            processo(fila, pessoas, guiches, 0.5);
+            processo(fila, pathFila, guiches, 0.5);
         }
         private void cliquePlay3(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 3x (0.33 seg)
         {
-            processo(fila, pessoas, guiches, 0.333333);
+            processo(fila, pathFila, guiches, 0.333333);
         }
         private void cliquePlay4(object sender, EventArgs e) //essa função vai ser para dar play na velocidade 10x (0.1 seg)
         {
-            processo(fila, pessoas, guiches, 0.10);
+            processo(fila, pathFila, guiches, 0.10);
         }
         private void cliquePlay5(object sender, EventArgs e) //essa função vai ser para dar play na velocidade determinada pelo usuario, não mexer nisso por enquanto, nem ligar ela ao botão
         {
-            processo(fila, pessoas, guiches, 0);
+            processo(fila, pathFila, guiches, 0);
         }
     }
 }
