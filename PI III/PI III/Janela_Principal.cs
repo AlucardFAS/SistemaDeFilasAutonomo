@@ -39,7 +39,6 @@ namespace PI_III
 
             barraMenu();
             criarGuiches(quantidade, guiches);
-            
 
             GerarPlay(fila, guiches);
 
