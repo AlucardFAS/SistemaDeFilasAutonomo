@@ -72,13 +72,7 @@ namespace PI_III
                 //esse peso inicialmente atribuido é o tamanho da fila * turnos necessarios para atender um cliente, logo é a quantidade de turnos para a fila esvaziar
                 guiches[i].peso = fila[j].Count * guiches[i].turnosNecessarios;
 
-                if (guiches[i].chegadaAtendente != 0)   //verificando se tem algum atendente indo a esse guiche
-                    if (guiches[i].chegadaAtendente >= troca-1)   //verificando se já deu o tempo de troca
-                    {
-                        guiches[i].atendente = true;
-                        guiches[i].chegadaAtendente = 0;
-                    }
-                    else guiches[i].chegadaAtendente++; //caso ainda não deu o tempo de troca, somente incrementa o tempo e segue o jogo
+
             }
         }
         Boolean condicaoEspecial(GuichesSetup[] guiches, Queue<Pessoas>[] fila) {

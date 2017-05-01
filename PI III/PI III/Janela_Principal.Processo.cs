@@ -34,11 +34,16 @@ namespace PI_III
                 //lê as pessoas da fila e joga elas na fila do guiche A
                 lerFila(fila[0], turno, ref linha, arquivo, ref continuar);
 
+                //essa função atualiza se o tempo de troca de um atendente que vai de um guiche a outro já passou
+                atualizarTempoTroca(guiches);
+
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila, estatistica, turno);
+
+                turno = contarTurnos(tempo, turno);
 
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
@@ -66,7 +71,7 @@ namespace PI_III
                // Refresh();
 
                 Application.DoEvents();
-                turno = contarTurnos(tempo, turno);
+                
             }
 
             //Atualizando o label que conta os turnos
@@ -81,11 +86,16 @@ namespace PI_III
             while (continuar)
             {
 
+                //essa função atualiza se o tempo de troca de um atendente que vai de um guiche a outro já passou
+                atualizarTempoTroca(guiches);
+
                 //jogando as primeiras pessoas das filas nos guiches
                 atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila, estatistica, turno);
+
+                turno = contarTurnos(tempo, turno);
 
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
@@ -113,8 +123,6 @@ namespace PI_III
 
                 if (continuar == false && troca != 0) continuar = condicaoEspecial(guiches, fila);
 
-                turno = contarTurnos(tempo, turno);
-
                 //Atualizando o label que conta os turnos
                 this.textoTurno.BackColor = System.Drawing.Color.Transparent;
                 this.textoTurno.ForeColor = System.Drawing.Color.White;
@@ -125,20 +133,7 @@ namespace PI_III
                 Application.DoEvents();
             }
             MessageBox.Show("Turno terminado: " + turno);
-
-            MessageBox.Show("tempoTotalUsuarios: " + estatistica.tempoTotalUsuarios + "\n" +
-                                        "quantidadeUsuarios: " + estatistica.quantidadeUsuarios + "\n" +
-                                        "médiaTempoTotalUsuarios " + estatistica.tempoTotalUsuarios / estatistica.quantidadeUsuarios);
-
-
-            MessageBox.Show("usuarioMaiorTempo: " + estatistica.usuarioMaiorTempo + "\n" +
-                            "maiorTempo: " + estatistica.maiorTempo);
-
-            int k = 0;
-            for (int i = 0; i < estatistica.guicheTempoFila.Length; i++){
-                MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[i] / estatistica.quantidadePessoasFila[i]);
-                k += guiches[k].guichesIguais;
-            }
+            mostrarEstatisticas(estatistica);
         }
 
         void lerFila(Queue<Pessoas> fila, int turno, ref string linha, System.IO.StreamReader arquivo, ref Boolean continuar) {
@@ -206,6 +201,7 @@ namespace PI_III
 
             for (int i = 0; i < guiches.Length; i++)
             {
+
                 if (guiches[i].vazio == false && guiches[i].ultimoTurno < guiches[i].turnosNecessarios)
                 {
                     guiches[i].ultimoTurno++;
@@ -262,6 +258,16 @@ namespace PI_III
                 j += guiches[j].guichesIguais - 1;
             }
         }
+        void atualizarTempoTroca(GuichesSetup[] guiches) {
+            for (int i = 0; i < guiches.Length; i++)
+                if (guiches[i].chegadaAtendente != 0)   //verificando se tem algum atendente indo a esse guiche
+                    if (guiches[i].chegadaAtendente >= troca)   //verificando se já deu o tempo de troca
+                    {
+                        guiches[i].atendente = true;
+                        guiches[i].chegadaAtendente = 0;
+                    }
+                    else guiches[i].chegadaAtendente++; //caso ainda não deu o tempo de troca, somente incrementa o tempo e segue o jogo
+        }
         void atualizarCorBotoes(GuichesSetup[] guiches){
 
             
@@ -271,6 +277,22 @@ namespace PI_III
                 if (guiches[j].vazio == false) guichesBotao[j].BackColor = System.Drawing.Color.Green;
                 else if (guiches[j].atendente == true) guichesBotao[j].BackColor = System.Drawing.Color.Yellow;
                 else guichesBotao[j].BackColor = System.Drawing.Color.Red;
+            }
+        }
+        void mostrarEstatisticas(Estatistica estatistica) {
+            MessageBox.Show("tempoTotalUsuarios: " + estatistica.tempoTotalUsuarios + "\n" +
+                                        "quantidadeUsuarios: " + estatistica.quantidadeUsuarios + "\n" +
+                                        "médiaTempoTotalUsuarios " + estatistica.tempoTotalUsuarios / estatistica.quantidadeUsuarios);
+
+
+            MessageBox.Show("usuarioMaiorTempo: " + estatistica.usuarioMaiorTempo + "\n" +
+                            "maiorTempo: " + estatistica.maiorTempo);
+
+            int k = 0;
+            for (int i = 0; i < estatistica.guicheTempoFila.Length; i++)
+            {
+                MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[i] / estatistica.quantidadePessoasFila[i]);
+                k += guiches[k].guichesIguais;
             }
         }
         int contarTurnos(double tempo, int turno)
