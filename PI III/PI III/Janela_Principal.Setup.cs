@@ -180,7 +180,7 @@ namespace PI_III
                 if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = posto[9];
                 if (guichesSetup[i].guiche == 'K') guichesSetup[i].turnosNecessarios = posto[10];
                 if (guichesSetup[i].guiche == 'L') guichesSetup[i].turnosNecessarios = posto[11];
-                if (guichesSetup[i].guiche == 'M') guichesSetup[i].turnosNecessarios = posto[11];
+                if (guichesSetup[i].guiche == 'M') guichesSetup[i].turnosNecessarios = posto[12];
             }
             file.Close();//fecha o txt
 
