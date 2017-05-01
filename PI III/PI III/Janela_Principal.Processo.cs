@@ -136,7 +136,7 @@ namespace PI_III
 
             int k = 0;
             for (int i = 0; i < estatistica.guicheTempoFila.Length; i++){
-                MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[guiches[i].guiche - 'A'] / estatistica.quantidadePessoasFila[guiches[i].guiche - 'A']);
+                MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[i] / estatistica.quantidadePessoasFila[i]);
                 k += guiches[k].guichesIguais;
             }
         }
@@ -252,6 +252,7 @@ namespace PI_III
                     if (guiches[j + k].atendente == true && guiches[j + k].vazio == true && fila[j].Count != 0)
                     {
                         entrarGuiches(fila[j].Dequeue(), guiches[j + k]);
+                        
 
                         estatistica.guicheTempoFila[guiches[j+k].guiche - 'A'] += turno - guiches[j + k].pessoaDentro.entradaFila;
                         estatistica.quantidadePessoasFila[guiches[j+k].guiche - 'A']++;
