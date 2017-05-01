@@ -43,5 +43,17 @@ namespace PI_III
            }
 
        }
+       public static int getGuichesDiferentes(GuichesSetup[] guiches) {
+           int quantidade = 0;
+           char ultimoGuiche = 'x'; //setando um guiche impossivel para comparação
+
+           for (int i = 0; i < guiches.Length; i++) 
+               if (ultimoGuiche != guiches[i].guiche){
+                   quantidade++;
+                   ultimoGuiche = guiches[i].guiche;
+               }
+           return quantidade;
+           
+       }
     }
 }

@@ -60,7 +60,7 @@ namespace PI_III
         {
             processo(fila, pathFila, guiches, 0.10);
         }
-        private void cliquePlay5(object sender, EventArgs e) //essa função vai ser para dar play na velocidade determinada pelo usuario, não mexer nisso por enquanto, nem ligar ela ao botão
+        private void cliquePlay5(object sender, EventArgs e) //essa função vai ser para dar play na velocidade sem delay de sleep, ou seja, com a demora do processo (0 seg)
         {
             processo(fila, pathFila, guiches, 0);
         }

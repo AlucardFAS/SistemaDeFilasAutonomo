@@ -13,7 +13,11 @@ namespace PI_III
         {
             int turno = 1;
 
-            Estatistica estatistica = new Estatistica();
+            int guichesDiferentes = GuichesSetup.getGuichesDiferentes(guiches);
+
+            Estatistica estatistica = new Estatistica(guichesDiferentes);
+
+            
 
             GuichesSetup.resetGuiches(guiches, atendentesIniciais);
             
@@ -129,6 +133,12 @@ namespace PI_III
 
             MessageBox.Show("usuarioMaiorTempo: " + estatistica.usuarioMaiorTempo + "\n" +
                             "maiorTempo: " + estatistica.maiorTempo);
+
+            int k = 0;
+            for (int i = 0; i < estatistica.guicheTempoFila.Length; i++){
+                MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[guiches[i].guiche - 'A'] / estatistica.quantidadePessoasFila[guiches[i].guiche - 'A']);
+                k += guiches[k].guichesIguais;
+            }
         }
 
         void lerFila(Queue<Pessoas> fila, int turno, ref string linha, System.IO.StreamReader arquivo, ref Boolean continuar) {
@@ -243,7 +253,9 @@ namespace PI_III
                     {
                         entrarGuiches(fila[j].Dequeue(), guiches[j + k]);
 
-                        //estatistica.guicheTempoFila[0] += turno - guiches[j + k].pessoaDentro.entradaFila;
+                        estatistica.guicheTempoFila[guiches[j+k].guiche - 'A'] += turno - guiches[j + k].pessoaDentro.entradaFila;
+                        estatistica.quantidadePessoasFila[guiches[j+k].guiche - 'A']++;
+                        
                     }
                 }
                 j += guiches[j].guichesIguais - 1;

@@ -79,11 +79,11 @@ namespace PI_III
                 {
                     if (fila[i].Count != 0 && guiches[i].chegadaAtendente == 0) {
 
-                        MessageBox.Show("valor de i:" + i);
+                        //MessageBox.Show("valor de i:" + i);
 
                         for (j = 0; j < guiches.Length; j++) if (guiches[j].atendente == true) break;
 
-                        MessageBox.Show("valor de j:" + j);
+                        //MessageBox.Show("valor de j:" + j);
 
                         trocarAtendentes(guiches, j, i);
                     }
