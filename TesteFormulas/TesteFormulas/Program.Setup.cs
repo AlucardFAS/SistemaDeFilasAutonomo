@@ -118,15 +118,7 @@ namespace TesteFormulas
 
             GuichesSetup[] guichesSetup;
             guichesSetup = new GuichesSetup[num_postos];
-
-
-            for (int i=0;i<num_postos;i++)
-            {
-                guichesSetup[i] = new GuichesSetup();
-                guichesSetup[i].guiche = postos[i];
-                if (guichesSetup[i].guiche == a) guichesSetup[i].turnosNecessarios = posto[i];
-                a++;
-            }
+/*
             Console.WriteLine("atendente = "+atendente);
             Console.WriteLine("troca = " + troca);
             for(int i=0;i<postos.Length;i++)
@@ -145,11 +137,59 @@ namespace TesteFormulas
                 Console.WriteLine("posto "+a+" = " + posto[i]);
                 a++;
             }
+            */
+            j = 0;
+            char aux2 = 'x'; //serve para guardar o char do ultimo posto, para comparar com o que vai ser lido atualmente
+            for (int i = 0; i < guichesSetup.Length; i++)
+            {
+                guichesSetup[i] = new GuichesSetup();
+                guichesSetup[i].guiche = postos[i];
 
-            //testando os guichesSetup
-            for (int i = 0; i < num_postos; i++) {
-                //Console.WriteLine("guiche"+i+": "+guichesSetup[i].atendente);
+                if (guichesSetup[i].guiche == 'A') guichesSetup[i].turnosNecessarios = posto[0];
+                if (guichesSetup[i].guiche == 'B') guichesSetup[i].turnosNecessarios = posto[1];
+                if (guichesSetup[i].guiche == 'C') guichesSetup[i].turnosNecessarios = posto[2];
+                if (guichesSetup[i].guiche == 'D') guichesSetup[i].turnosNecessarios = posto[3];
+                if (guichesSetup[i].guiche == 'E') guichesSetup[i].turnosNecessarios = posto[4];
+                if (guichesSetup[i].guiche == 'F') guichesSetup[i].turnosNecessarios = posto[5];
+                if (guichesSetup[i].guiche == 'G') guichesSetup[i].turnosNecessarios = posto[6];
+                if (guichesSetup[i].guiche == 'H') guichesSetup[i].turnosNecessarios = posto[7];
+                if (guichesSetup[i].guiche == 'I') guichesSetup[i].turnosNecessarios = posto[8];
+                if (guichesSetup[i].guiche == 'J') guichesSetup[i].turnosNecessarios = posto[9];
+                if (guichesSetup[i].guiche == 'K') guichesSetup[i].turnosNecessarios = posto[10];
+                if (guichesSetup[i].guiche == 'L') guichesSetup[i].turnosNecessarios = posto[11];
+                if (guichesSetup[i].guiche == 'M') guichesSetup[i].turnosNecessarios = posto[12];
+
+                //isso serve para verificar quantos guiches iguais tem, assim o primeiro guiches dos iguais (por exemplo, 3 guiches A's, o primeiro A terá a quantidadeGuiches igual a 3)
+                if (guichesSetup[i].guiche != aux2)
+                {
+                    int k = i + 1;
+                    aux2 = guichesSetup[i].guiche;
+
+                    while (k < guichesSetup.Length && postos[k] == aux2)
+                    {   //atualizando a quantidade de guiches iguais (somente no primeiro guiche)
+                        guichesSetup[i].guichesIguais++;
+                        k++;
+                    }
+                }
+
+                //colocando os atendentes nos devidos guiches
+                if (j < atendente_pos.Length && atendente_pos[j] == guichesSetup[i].guiche)
+                {
+                    guichesSetup[i].atendente = true;
+                    j++;
+                }
+
+
             }
+
+            atendentesIniciais = new Boolean[guichesSetup.Length];
+            for (int k = 0; k < guichesSetup.Length; k++)
+            {
+                atendentesIniciais[k] = guichesSetup[k].atendente;
+            }
+
+
+
 
             return guichesSetup;
         }
