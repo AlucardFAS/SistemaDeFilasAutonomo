@@ -31,10 +31,25 @@ namespace TesteFormulas
                     maiorPeso = guiches[i].peso;
                     posicaoMaior = i;
                 }
-                if (guiches[i].atendente == true && guiches[i].vazio == true && guiches[i].peso < menorPeso)//achando o menor peso (com atendente) e guardando ele e a posicao
+                if (guiches[i].atendente == true && guiches[i].vazio == true && guiches[i].peso <= menorPeso)//achando o menor peso (com atendente) e guardando ele e a posicao
                 {
-                    menorPeso = guiches[i].peso;
-                    posicaoMenor = i;
+                    if (guiches[i].peso == menorPeso)
+                    {  //esse if verifica se menorPesos iguais tem a mesma quantidade de antendentes entre seus guiches, se esse peso, embora igual a outro, tiver mais atendentes em seus devidos guiches, a preferencia de troca será ele
+
+                        int quantidadeAtendente = 0;
+                        for (int j = i; j < guiches.Length && j <= i + (guiches[j].guichesIguais - 1); j++)
+                            if (guiches[j].atendente == true)
+                                quantidadeAtendente++;
+
+                        // MessageBox.Show("quantidadeAtendente: "+quantidadeAtendente);
+
+                        if (quantidadeAtendente >= 2) posicaoMenor = i;
+                    }
+                    else
+                    {
+                        menorPeso = guiches[i].peso;
+                        posicaoMenor = i;
+                    }
                 }
             }
             if (maiorPeso > menorPeso + troca)
@@ -66,10 +81,25 @@ namespace TesteFormulas
                     maiorPeso = guiches[i].peso;
                     posicaoMaior = i;
                 }
-                if (guiches[i].atendente == true && guiches[i].vazio == true && guiches[i].peso < menorPeso)//achando o menor peso (com atendente) e guardando ele e a posicao
+                if (guiches[i].atendente == true && guiches[i].vazio == true && guiches[i].peso <= menorPeso)//achando o menor peso (com atendente) e guardando ele e a posicao
                 {
-                    menorPeso = guiches[i].peso;
-                    posicaoMenor = i;
+                    if (guiches[i].peso == menorPeso)
+                    {  //esse if verifica se menorPesos iguais tem a mesma quantidade de antendentes entre seus guiches, se esse peso, embora igual a outro, tiver mais atendentes em seus devidos guiches, a preferencia de troca será ele
+
+                        int quantidadeAtendente = 0;
+                        for (int j = i; j < guiches.Length && j <= i + (guiches[j].guichesIguais - 1); j++)
+                            if (guiches[j].atendente == true)
+                                quantidadeAtendente++;
+
+                        // MessageBox.Show("quantidadeAtendente: "+quantidadeAtendente);
+
+                        if (quantidadeAtendente >= 2) posicaoMenor = i;
+                    }
+                    else
+                    {
+                        menorPeso = guiches[i].peso;
+                        posicaoMenor = i;
+                    }
                 }
             }
             if (maiorPeso > menorPeso + troca)
