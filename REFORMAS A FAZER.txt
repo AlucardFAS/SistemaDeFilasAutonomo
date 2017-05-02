@@ -10,6 +10,11 @@ embelezar o programa
 pensar e elaborar automação
 
 
+Proposta:
+
+Fazer tipo um menu para o programa ter uma tela inicial, e não começar direto no programa dos guichês
+
+
 
 
 ? EXTREME GO HORSE FOREVER ?
