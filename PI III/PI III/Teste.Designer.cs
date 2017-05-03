@@ -41,9 +41,10 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DarkGray;
-            this.button1.BackgroundImage = global::PI_III.Properties.Resources._10x;
+            this.button1.BackgroundImage = global::PI_III.Properties.Resources.TrocaSaindo;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.Color.Snow;
             this.button1.Location = new System.Drawing.Point(89, 88);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 123);

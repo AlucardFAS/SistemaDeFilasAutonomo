@@ -40,3 +40,14 @@ C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI III.exe
 C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI III.pdb
 C:\Users\victor.etrindade\Desktop\PI3-master\PI III\PI III\obj\Debug\PI_III.Janela_Principal.resources
 C:\Users\Bruno\Dropbox\Ciência da computação\3 semestre\PI III\PI3\PI III\PI III\obj\Debug\PI_III.Janela_Principal.resources
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\bin\Debug\PI III.exe.config
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI III.exe
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI III.pdb
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\bin\Debug\PI III.exe
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\bin\Debug\PI III.pdb
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI III.csprojResolveAssemblyReference.cache
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI_III.Janela_Principal.resources
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI_III.Properties.Resources.resources
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI_III.Teste.resources
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\VerticalProgressBar.resources
+C:\Users\vkelv\Downloads\PI3-master\pi\PI3-master\PI III\PI III\obj\Debug\PI III.csproj.GenerateResource.Cache

@@ -22,11 +22,11 @@ namespace PI_III
                 this.butao.BackColor = System.Drawing.Color.DarkGray;
 
 
-                if (i == 0) butao.BackgroundImage = global::PI_III.Properties.Resources._1493335334_icon_play1;
+                if (i == 0) butao.BackgroundImage = global::PI_III.Properties.Resources._1493335334_icon_play2;
                 if (i == 1) butao.BackgroundImage = global::PI_III.Properties.Resources._2x;
                 if (i == 2) butao.BackgroundImage = global::PI_III.Properties.Resources._3x;
                 if (i == 3) butao.BackgroundImage = global::PI_III.Properties.Resources._10x; ;
-                if (i == 4) butao.Text = "Play5";
+                if (i == 4) butao.BackgroundImage = global::PI_III.Properties.Resources.play5;
 
 
                 Controls.Add(this.butao);
@@ -56,8 +56,22 @@ namespace PI_III
             
             Controls.Add(this.butao);
             butao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            butao.BackgroundImage = global::PI_III.Properties.Resources._1493339249_pause;
+            butao.BackgroundImage = global::PI_III.Properties.Resources._1493339249_pause1;
             this.butao.BackColor = System.Drawing.Color.DarkGray;
+            butao.Click += new System.EventHandler(this.cliquePause);
+        }
+
+        void cliquePause(object sender, EventArgs e)
+        {
+            if (Constantes.pause == false)
+                Constantes.pause = true;
+            else
+                Constantes.pause = false;
+            while (Constantes.pause == true)
+            {
+                Application.DoEvents();
+                if (Constantes.pause == false) break;
+            }
         }
         void sleep(double tempo)
         {

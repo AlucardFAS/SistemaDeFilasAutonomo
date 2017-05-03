@@ -23,7 +23,7 @@ namespace PI_III
         public Janela_Principal(){
 
 
-            //this.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp;
+            //this.BackgroundImage = global::PI_III.Properties.Resources.backgroundPNG;
             StartPosition = FormStartPosition.CenterScreen; //deixando a tela bem no centro
             ClientSize = new System.Drawing.Size(Constantes.TAMANHO_HORIZONTAL, Constantes.TAMANHO_VERTICAL);    //definindo tamanho da janela principal
             Text = "Projeto Integrador 3";   //nome da janela principal

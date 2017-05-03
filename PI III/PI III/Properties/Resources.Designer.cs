@@ -93,6 +93,16 @@ namespace PI_III.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1493335334_icon_play2 {
+            get {
+                object obj = ResourceManager.GetObject("1493335334_icon-play2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1493335427_fast_forward {
             get {
                 object obj = ResourceManager.GetObject("1493335427_fast-forward", resourceCulture);
@@ -106,6 +116,16 @@ namespace PI_III.Properties {
         internal static System.Drawing.Bitmap _1493339249_pause {
             get {
                 object obj = ResourceManager.GetObject("1493339249_pause", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1493339249_pause1 {
+            get {
+                object obj = ResourceManager.GetObject("1493339249_pause1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +153,79 @@ namespace PI_III.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap atendenteAlone {
+            get {
+                object obj = ResourceManager.GetObject("atendenteAlone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap atendenteAtendendo {
+            get {
+                object obj = ResourceManager.GetObject("atendenteAtendendo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundPNG {
+            get {
+                object obj = ResourceManager.GetObject("backgroundPNG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PI_IIIwpp {
             get {
                 object obj = ResourceManager.GetObject("PI IIIwpp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play5 {
+            get {
+                object obj = ResourceManager.GetObject("play5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TrocaChegando {
+            get {
+                object obj = ResourceManager.GetObject("TrocaChegando", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TrocaSaindo {
+            get {
+                object obj = ResourceManager.GetObject("TrocaSaindo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vazio {
+            get {
+                object obj = ResourceManager.GetObject("vazio", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

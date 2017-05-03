@@ -113,10 +113,9 @@ namespace PI_III
 
                 turno = contarTurnos(tempo, turno);
             }
-            MessageBox.Show("Turno terminado: " + turno);
+            MessageBox.Show("Turno terminado: " + (turno-1));
             mostrarEstatisticas(estatistica, estatisticaPorGuiches);
         }
-
         void lerFila(Queue<Pessoas> fila, int turno, ref string linha, System.IO.StreamReader arquivo, ref Boolean continuar) {
             string dadoString = "";
 
@@ -311,13 +310,29 @@ namespace PI_III
         }
         void atualizarCorBotoes(GuichesSetup[] guiches){
 
-            
+        
 
             for (int j = 0; j < guiches.Length; j++)
-            {
-                if (guiches[j].vazio == false) guichesBotao[j].BackColor = System.Drawing.Color.Green;
-                else if (guiches[j].atendente == true) guichesBotao[j].BackColor = System.Drawing.Color.Yellow;
-                else guichesBotao[j].BackColor = System.Drawing.Color.Red;
+            {   if (guiches[j].chegadaAtendente != 0) {
+                    guichesBotao[j].BackgroundImage = Properties.Resources.TrocaChegando;
+                    guichesBotao[j].BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                else if (guiches[j].vazio == false)
+                {
+                    guichesBotao[j].BackgroundImage = Properties.Resources.atendenteAtendendo;
+                    guichesBotao[j].BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                else if (guiches[j].atendente == true)
+                {
+                    guichesBotao[j].BackgroundImage = Properties.Resources.atendenteAlone;
+                    guichesBotao[j].BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                else
+                {
+                    guichesBotao[j].BackgroundImage = Properties.Resources.vazio;
+                    guichesBotao[j].BackgroundImageLayout = ImageLayout.Stretch;
+                }
+
             }
         }
         void mostrarEstatisticas(Estatistica estatistica, List<EstatisticaComb> estatisticaPorGuiches) {

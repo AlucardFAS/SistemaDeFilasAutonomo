@@ -6,7 +6,7 @@ namespace PI_III
 {
     partial class Janela_Principal
     {
-        private System.Windows.Forms.Button[] guichesBotao;
+        private System.Windows.Forms.PictureBox[] guichesBotao;
         private VerticalProgressBar[] verticalProgressBar;
         private System.Windows.Forms.ProgressBar[] progressBar;
         private System.Windows.Forms.Label[] textoFila;
@@ -19,14 +19,14 @@ namespace PI_III
 
         private void criarGuiches(int quantidade, GuichesSetup[] guiches){
             //declarando os vetores em função da quantidade de guiches
-            guichesBotao = new Button[quantidade];
+            guichesBotao = new PictureBox[quantidade];
 
             for (int i = 0; i < quantidade; i++)
             {
                 // 
                 // guiches
                 // 
-                guichesBotao[i] = new System.Windows.Forms.Button();
+                guichesBotao[i] = new System.Windows.Forms.PictureBox();
                 int inicio;
                 String aux = "";
 
