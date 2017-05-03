@@ -213,7 +213,7 @@ namespace PI_III
         }
         private void Clique_Guiche(object sender, EventArgs e)
         {
-            MessageBox.Show("Em construção");
+            //MessageBox.Show("Em construção");
         }
     }
 

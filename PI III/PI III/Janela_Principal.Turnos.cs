@@ -34,9 +34,12 @@ namespace PI_III
                 textoTurno = new System.Windows.Forms.Label();
                 this.SuspendLayout();
 
+                textoTurno.BackColor = System.Drawing.Color.Transparent;
+                textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.AutoSize = true;
                 textoTurno.Location = new System.Drawing.Point(30,30);
                 textoTurno.Size = new System.Drawing.Size(50, 30);
+
                 
                 Controls.Add(textoTurno);
 

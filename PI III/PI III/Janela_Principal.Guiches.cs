@@ -9,6 +9,7 @@ namespace PI_III
         private System.Windows.Forms.Button[] guichesBotao;
         private VerticalProgressBar[] verticalProgressBar;
         private System.Windows.Forms.ProgressBar[] progressBar;
+        private System.Windows.Forms.Label[] textoFila;
         //private System.Windows.Forms.ToolTip[] toolTip;
 
         private void entrarGuiches(Pessoas pessoa, GuichesSetup guiche) {
@@ -32,6 +33,7 @@ namespace PI_III
                 if (i <= 14)
                     inicio = Constantes.TAMANHO_HORIZONTAL - (Constantes.TAMANHO_HORIZONTAL / quantidade * (quantidade - 1)) - (100 - (quantidade * 3));
                 else inicio = (Constantes.TAMANHO_VERTICAL-250) - ((Constantes.TAMANHO_VERTICAL-250) / (quantidade-14) * (quantidade-15)) - (100 - (quantidade *3));
+
                 if (i <= 14)  //gerando os 15 primeiros guiches de baixo
                     this.guichesBotao[i].Location = new System.Drawing.Point((quantidade > 15 ? Constantes.TAMANHO_HORIZONTAL/15*i:Constantes.TAMANHO_HORIZONTAL/quantidade*i) + (inicio/2), Constantes.TAMANHO_VERTICAL - 90);
                 else{   //gerando os 5 ultimos guiches no lado direito em cima
@@ -46,18 +48,17 @@ namespace PI_III
                 //texto dos guiches
                 aux += guiches[i].guiche;
                 this.guichesBotao[i].Text = aux;
-                aux = "";
-
-
-                
+                aux = "";         
 
                 this.Controls.Add(this.guichesBotao[i]);
                 this.ResumeLayout(false);
             } 
 
+                
+                verticalProgressBar = new VerticalProgressBar[quantidade > 15 ? 15 : quantidade];   //declarando a quantidade de barras de progresso verticais
+                progressBar = new System.Windows.Forms.ProgressBar[quantidade > 15 ? (quantidade - 15) : 0];    //declarando a quantidade de barras de progressos horizontais
 
-                verticalProgressBar = new VerticalProgressBar[quantidade > 15 ? 15 : quantidade];
-                progressBar = new System.Windows.Forms.ProgressBar[quantidade > 15 ? (quantidade - 15) : 0];
+                textoFila = new System.Windows.Forms.Label[quantidade]; //declarando a quantidade de textoFilas
 
                 //Criando barras de progresso
                 for (int j = 0; j < quantidade; j++) {
@@ -68,14 +69,38 @@ namespace PI_III
 
                         if (j + guiches[j].guichesIguais - 1 > 14) { 
                             verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * j : Constantes.TAMANHO_HORIZONTAL / quantidade * j) + inicio / 2, 410);
-                        }    
+                        }
 
-                        else if (guiches[j].guichesIguais % 2 == 0) verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais/2 - 1) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais/2 - 1)) + inicio / 2 + (Constantes.TAMANHO_HORIZONTAL / (quantidade>15 ? 15:quantidade) / 2), 410);
-                            else verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais /2) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
+                        else if (guiches[j].guichesIguais % 2 == 0)
+                        {
+                            verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2 - 1) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2 - 1)) + inicio / 2 + (Constantes.TAMANHO_HORIZONTAL / (quantidade > 15 ? 15 : quantidade) / 2), 410);
+
+                            //criando label que conta tamanho da fila
+                            textoFila[j] = new System.Windows.Forms.Label();
+
+                            textoFila[j].BackColor = System.Drawing.Color.Transparent;
+                            textoFila[j].ForeColor = System.Drawing.Color.White;
+                            textoFila[j].AutoSize = true;
+                            textoFila[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2 - 1) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2 - 1)) + inicio / 2 + (Constantes.TAMANHO_HORIZONTAL / (quantidade > 15 ? 15 : quantidade) / 2), 390);
+                            Controls.Add(textoFila[j]);
+                        }
+                        else{
+                            verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
+
+                            //criando label que conta tamanho da fila
+                            textoFila[j] = new System.Windows.Forms.Label();
+
+                            textoFila[j].BackColor = System.Drawing.Color.Transparent;
+                            textoFila[j].ForeColor = System.Drawing.Color.White;
+                            textoFila[j].AutoSize = true;
+                            textoFila[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 390);
+                            Controls.Add(textoFila[j]);
+                        }
+
                             verticalProgressBar[j].Size = new System.Drawing.Size(18, 163);
                             verticalProgressBar[j].Maximum = 10;
 
-                            this.Controls.Add(this.verticalProgressBar[j]);
+                            this.Controls.Add(verticalProgressBar[j]);
                         
                         j += guiches[j].guichesIguais - 1 ;
                     }
@@ -85,12 +110,34 @@ namespace PI_III
 
                         int inicio = (Constantes.TAMANHO_VERTICAL - 250) - (((Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * (quantidade - 15) - 60));
 
-                        if (guiches[j].guichesIguais % 2 == 0) progressBar[j - 15].Location = new System.Drawing.Point(1100, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 15) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2) + ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade-14) / 2));
-                        else progressBar[j - 15].Location = new System.Drawing.Point(1100, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 14) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2));
+                        if(guiches[j].guichesIguais % 2 == 0){ 
+                            progressBar[j - 15].Location = new System.Drawing.Point(1100, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 15) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2) + ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade-14) / 2));
+
+                            //criando label que conta tamanho da fila
+                            textoFila[j] = new System.Windows.Forms.Label();
+
+                            textoFila[j].BackColor = System.Drawing.Color.Transparent;
+                            textoFila[j].ForeColor = System.Drawing.Color.White;
+                            textoFila[j].AutoSize = true;
+                            textoFila[j].Location = new System.Drawing.Point(1080, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 15) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2) + ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) / 2));
+                            Controls.Add(textoFila[j]);
+                        }
+                        else{ 
+                            progressBar[j - 15].Location = new System.Drawing.Point(1100, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 14) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2));
+
+                            //criando label que conta tamanho da fila
+                            textoFila[j] = new System.Windows.Forms.Label();
+
+                            textoFila[j].BackColor = System.Drawing.Color.Transparent;
+                            textoFila[j].ForeColor = System.Drawing.Color.White;
+                            textoFila[j].AutoSize = true;
+                            textoFila[j].Location = new System.Drawing.Point(1080, (Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 14) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2));
+                            Controls.Add(textoFila[j]);
+                            }
 
                         progressBar[j - 15].Size = new System.Drawing.Size(163, 18);
 
-                        this.Controls.Add(this.progressBar[j - 15]);
+                        Controls.Add(progressBar[j - 15]);
 
                         j += guiches[j].guichesIguais - 1;
                     }

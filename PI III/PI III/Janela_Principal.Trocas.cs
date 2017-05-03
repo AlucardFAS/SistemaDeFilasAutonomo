@@ -53,7 +53,7 @@ namespace PI_III
 
             if (maiorPeso > menorPeso + troca)
             {
-                trocarAtendentes(guiches, posicaoMenor, posicaoMaior); //se o maiorPeso for maior que o menorPeso + a troca * 3, então, efetuará a troca
+                trocarAtendentes(guiches, posicaoMenor, posicaoMaior); //se o maiorPeso for maior que o menorPeso + a troca, então, efetuará a troca
             }
         }
 

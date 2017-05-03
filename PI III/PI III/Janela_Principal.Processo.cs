@@ -43,8 +43,6 @@ namespace PI_III
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila, estatistica, turno);
 
-                turno = contarTurnos(tempo, turno);
-
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
 
@@ -52,33 +50,25 @@ namespace PI_III
                 atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando as barras de progresso
-                for (int j = 0; j < verticalProgressBar.Length; j++)
-                    if (verticalProgressBar[j] != null)
-                    {
-                        if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
-                        else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
+                atualizarBarrasProgresso();
 
-                        verticalProgressBar[j].Value = fila[j].Count;
-                    }
                 //atualizando a cor dos botões
                 atualizarCorBotoes(guiches);
 
                 //Atualizando o label que conta os turnos
-                this.textoTurno.BackColor = System.Drawing.Color.Transparent;
-                this.textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.Text = "Turno: " + turno;
-                textoTurno.Refresh();
-               // Refresh();
 
                 Application.DoEvents();
-                
+
+                turno = contarTurnos(tempo, turno);
             }
 
             //Atualizando o label que conta os turnos
-            this.textoTurno.BackColor = System.Drawing.Color.Transparent;
-            this.textoTurno.ForeColor = System.Drawing.Color.White;
             textoTurno.Text = "Turno: " + turno;
-            textoTurno.Refresh();
+
+            for (int k = 0; k < textoFila.Length; k++)
+                if (textoFila[k] != null) textoFila[k].Text = ""+fila[k].Count;
+            
            // Refresh();
 
             //esse laço vai até esvaziar todos os guiches, assim, terminando
@@ -95,8 +85,6 @@ namespace PI_III
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
                 atualizarGuiches(guiches, fila, estatistica, turno);
 
-                turno = contarTurnos(tempo, turno);
-
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
 
@@ -104,14 +92,7 @@ namespace PI_III
                 atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando as barras de progresso
-                for (int j = 0; j < verticalProgressBar.Length; j++)
-                    if (verticalProgressBar[j] != null)
-                    {   //esses if's controlam a escala da barra de progresso, quando ela for ser maior que o tamanho maximo dela, aumenta em 10, e vice versa
-                        if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
-                        else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
-
-                        verticalProgressBar[j].Value = fila[j].Count;
-                    }
+                atualizarBarrasProgresso();
 
                 //atualizando a cor dos botões
                 atualizarCorBotoes(guiches);
@@ -124,13 +105,13 @@ namespace PI_III
                 if (continuar == false && troca != 0) continuar = condicaoEspecial(guiches, fila);
 
                 //Atualizando o label que conta os turnos
-                this.textoTurno.BackColor = System.Drawing.Color.Transparent;
-                this.textoTurno.ForeColor = System.Drawing.Color.White;
                 textoTurno.Text = "Turno: " + turno;
                 textoTurno.Refresh();
                // Refresh();
 
                 Application.DoEvents();
+
+                turno = contarTurnos(tempo, turno);
             }
             MessageBox.Show("Turno terminado: " + turno);
             mostrarEstatisticas(estatistica);
@@ -258,7 +239,54 @@ namespace PI_III
                 j += guiches[j].guichesIguais - 1;
             }
         }
-        void atualizarTempoTroca(GuichesSetup[] guiches) {
+        void atualizarBarrasProgresso() {
+            //atualizando barras de progresso verticais
+            for (int j = 0; j < verticalProgressBar.Length; j++)
+            {
+                if (verticalProgressBar[j] != null)
+                {
+                    if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
+                    else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
+
+                    verticalProgressBar[j].Value = fila[j].Count;
+                }
+
+                //atualizando a label que conta quantas pessoas tem na fila em cima da barra de progresso
+                if (textoFila[j] != null) textoFila[j].Text = "" + fila[j].Count;
+            }
+            //atualizando barras de progresso verticais
+            for (int j = 0; j < verticalProgressBar.Length; j++)
+            {
+                if (verticalProgressBar[j] != null)
+                {
+                    if (fila[j].Count > verticalProgressBar[j].Maximum) verticalProgressBar[j].Maximum *= 10;
+                    else if (fila[j].Count != 0 && fila[j].Count < verticalProgressBar[j].Maximum / 10) verticalProgressBar[j].Maximum /= 10;
+
+                    verticalProgressBar[j].Value = fila[j].Count;
+                }
+
+                //atualizando a label que conta quantas pessoas tem na fila em cima da barra de progresso
+                if (textoFila[j] != null) textoFila[j].Text = "" + fila[j].Count;
+            }
+
+            //atualizando barras de progresso horizontais
+            for (int i = 0; i < progressBar.Length; i++)
+            {
+                if (progressBar[i] != null)
+                {
+                    if (fila[i + 15].Count > progressBar[i].Maximum) progressBar[i].Maximum *= 10;
+                    else if (fila[i + 15].Count != 0 && fila[i + 15].Count < progressBar[i].Maximum / 10) progressBar[i].Maximum /= 10;
+
+                    progressBar[i].Value = fila[i + 15].Count;
+                }
+                if (textoFila[i + 15] != null) textoFila[i + 15].Text = "" + fila[i + 15].Count;
+            }
+
+          
+
+        }
+        void atualizarTempoTroca(GuichesSetup[] guiches)
+        {
             for (int i = 0; i < guiches.Length; i++)
                 if (guiches[i].chegadaAtendente != 0)   //verificando se tem algum atendente indo a esse guiche
                     if (guiches[i].chegadaAtendente >= troca)   //verificando se já deu o tempo de troca
