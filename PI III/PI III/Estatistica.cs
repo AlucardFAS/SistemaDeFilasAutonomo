@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PI_III
 {
-    class Estatistica
+    public class Estatistica
     {   //para o tempo médio de um usuário no sistema
         public int tempoTotalUsuarios;
         public int quantidadeUsuarios;

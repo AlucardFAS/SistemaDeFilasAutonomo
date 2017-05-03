@@ -36,5 +36,10 @@ namespace PI_III
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

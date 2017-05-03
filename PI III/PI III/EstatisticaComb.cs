@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PI_III
 {
-    class EstatisticaComb
+    public class EstatisticaComb
     {
         public String combinacao;
         public int quantidadeTurnos;

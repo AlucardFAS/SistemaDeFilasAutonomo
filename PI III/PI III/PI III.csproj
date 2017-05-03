@@ -47,6 +47,12 @@
     <Compile Include="Constantes.cs" />
     <Compile Include="Estatistica.cs" />
     <Compile Include="EstatisticaComb.cs" />
+    <Compile Include="Estatisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estatisticas.Designer.cs">
+      <DependentUpon>Estatisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuichesSetup.cs" />
     <Compile Include="Janela_Principal.Barra_Menu.cs">
       <SubType>Form</SubType>

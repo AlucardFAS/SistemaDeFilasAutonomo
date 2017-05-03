@@ -215,9 +215,6 @@ namespace PI_III
                         if (resultado != null) {
                             resultado.quantidadePessoas++;
                             resultado.quantidadeTurnos += turno - guiches[i].pessoaDentro.chegada;
-                            MessageBox.Show("combinacao: "+resultado.combinacao+"\n"+
-                                            "qntd Turnos: "+resultado.quantidadeTurnos+"\n"+
-                                            "qntd Pessoas: " +resultado.quantidadePessoas);
                         }
                         else estatisticaPorGuiches.Add(estatisticaComb);
 
@@ -324,6 +321,8 @@ namespace PI_III
             }
         }
         void mostrarEstatisticas(Estatistica estatistica, List<EstatisticaComb> estatisticaPorGuiches) {
+
+            /*
             MessageBox.Show("tempoTotalUsuarios: " + estatistica.tempoTotalUsuarios + "\n" +
                                         "quantidadeUsuarios: " + estatistica.quantidadeUsuarios + "\n" +
                                         "médiaTempoTotalUsuarios " + estatistica.tempoTotalUsuarios / estatistica.quantidadeUsuarios);
@@ -338,10 +337,13 @@ namespace PI_III
                 MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[i] / estatistica.quantidadePessoasFila[i]);
                 k += guiches[k].guichesIguais;
             }
-
+            for(int i = 0; i<estatisticaPorGuiches.Count; i++)
+                MessageBox.Show("Tempo médio da combinação "+estatisticaPorGuiches[i].combinacao+": "+estatisticaPorGuiches[i].quantidadeTurnos / estatisticaPorGuiches[i].quantidadePessoas);
             //Mostrando estatísticas por combinação de guiche
-            
-            
+            //foreach()
+            */
+            Estatisticas janelaEstatistica = new Estatisticas(estatistica, estatisticaPorGuiches, guiches);
+            janelaEstatistica.ShowDialog();
         }
         int contarTurnos(double tempo, int turno)
         {

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace PI_III
 {
-    class GuichesSetup
+    public class GuichesSetup
     {
         public char guiche;
         public Boolean atendente;

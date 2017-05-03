@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace PI_III
 {
 
-    class Pessoas
+    public class Pessoas
     {
         public int usuario;
         public int chegada;
