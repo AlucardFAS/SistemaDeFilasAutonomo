@@ -12,7 +12,7 @@ namespace PI_III
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Janela_Principal java = new Janela_Principal();
-            //java.BackgroundImage = global::PI_III.Properties.Resources.PI_IIIwpp; //comentei o fundo pq fica muito lerdo no meu pc
+            //java.BackgroundImage = Properties.Resources.PI_IIIwpp; //comentei o fundo pq fica muito lerdo no meu pc
             Application.Run(java);
         }
     }

@@ -15,8 +15,8 @@ namespace PI_III
 
             int guichesDiferentes = GuichesSetup.getGuichesDiferentes(guiches);
 
+            List<EstatisticaComb> estatisticaPorGuiches = new List<EstatisticaComb>();
             Estatistica estatistica = new Estatistica(guichesDiferentes);
-
             
 
             GuichesSetup.resetGuiches(guiches, atendentesIniciais);
@@ -41,7 +41,7 @@ namespace PI_III
                 atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
-                atualizarGuiches(guiches, fila, estatistica, turno);
+                atualizarGuiches(guiches, fila, estatistica, estatisticaPorGuiches, turno);
 
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
@@ -83,7 +83,7 @@ namespace PI_III
                 atualizarFilas(guiches, fila, estatistica, turno);
 
                 //atualizando os guiches e jogando as pessoas pras respectivas filas
-                atualizarGuiches(guiches, fila, estatistica, turno);
+                atualizarGuiches(guiches, fila, estatistica, estatisticaPorGuiches, turno);
 
                 //Verificando se vale a pena fazer trocas
                 if (troca != 0) realizarTrocas(guiches, fila);
@@ -114,7 +114,7 @@ namespace PI_III
                 turno = contarTurnos(tempo, turno);
             }
             MessageBox.Show("Turno terminado: " + turno);
-            mostrarEstatisticas(estatistica);
+            mostrarEstatisticas(estatistica, estatisticaPorGuiches);
         }
 
         void lerFila(Queue<Pessoas> fila, int turno, ref string linha, System.IO.StreamReader arquivo, ref Boolean continuar) {
@@ -175,7 +175,7 @@ namespace PI_III
             }
         
         }
-        void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila, Estatistica estatistica , int turno)
+        void atualizarGuiches(GuichesSetup[] guiches, Queue<Pessoas>[] fila, Estatistica estatistica, List<EstatisticaComb> estatisticaPorGuiches, int turno)
         {
             int quantidadeGuiches = guiches.Length;
             char proximoGuiche;
@@ -204,6 +204,22 @@ namespace PI_III
                             estatistica.usuarioMaiorTempo = guiches[i].pessoaDentro.usuario;
                             estatistica.maiorTempo = turno - guiches[i].pessoaDentro.chegada;
                         }
+                        //adicionando a estatistica por combinação
+                        EstatisticaComb estatisticaComb = new EstatisticaComb();
+                        
+                        estatisticaComb.setEstatisticaComb(guiches[i].pessoaDentro.guiches, turno - guiches[i].pessoaDentro.chegada, 1);
+
+                        string aux = new string(guiches[i].pessoaDentro.guiches);
+                        EstatisticaComb resultado = estatisticaPorGuiches.Find(x => x.combinacao == aux);
+
+                        if (resultado != null) {
+                            resultado.quantidadePessoas++;
+                            resultado.quantidadeTurnos += turno - guiches[i].pessoaDentro.chegada;
+                            MessageBox.Show("combinacao: "+resultado.combinacao+"\n"+
+                                            "qntd Turnos: "+resultado.quantidadeTurnos+"\n"+
+                                            "qntd Pessoas: " +resultado.quantidadePessoas);
+                        }
+                        else estatisticaPorGuiches.Add(estatisticaComb);
 
                         return;
                     }
@@ -307,7 +323,7 @@ namespace PI_III
                 else guichesBotao[j].BackColor = System.Drawing.Color.Red;
             }
         }
-        void mostrarEstatisticas(Estatistica estatistica) {
+        void mostrarEstatisticas(Estatistica estatistica, List<EstatisticaComb> estatisticaPorGuiches) {
             MessageBox.Show("tempoTotalUsuarios: " + estatistica.tempoTotalUsuarios + "\n" +
                                         "quantidadeUsuarios: " + estatistica.quantidadeUsuarios + "\n" +
                                         "médiaTempoTotalUsuarios " + estatistica.tempoTotalUsuarios / estatistica.quantidadeUsuarios);
@@ -322,6 +338,10 @@ namespace PI_III
                 MessageBox.Show("tempofilamedio da fila do guiche " + (guiches[k].guiche) + " : " + estatistica.guicheTempoFila[i] / estatistica.quantidadePessoasFila[i]);
                 k += guiches[k].guichesIguais;
             }
+
+            //Mostrando estatísticas por combinação de guiche
+            
+            
         }
         int contarTurnos(double tempo, int turno)
         {

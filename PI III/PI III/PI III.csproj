@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Constantes.cs" />
     <Compile Include="Estatistica.cs" />
+    <Compile Include="EstatisticaComb.cs" />
     <Compile Include="GuichesSetup.cs" />
     <Compile Include="Janela_Principal.Barra_Menu.cs">
       <SubType>Form</SubType>
