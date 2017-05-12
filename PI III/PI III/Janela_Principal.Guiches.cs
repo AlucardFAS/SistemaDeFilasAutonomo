@@ -10,6 +10,7 @@ namespace PI_III
         private VerticalProgressBar[] verticalProgressBar;
         private System.Windows.Forms.ProgressBar[] progressBar;
         private System.Windows.Forms.Label[] textoFila;
+        private System.Windows.Forms.Label[] textoGuiches;
         //private System.Windows.Forms.ToolTip[] toolTip;
 
         private void entrarGuiches(Pessoas pessoa, GuichesSetup guiche) {
@@ -59,6 +60,7 @@ namespace PI_III
                 progressBar = new System.Windows.Forms.ProgressBar[quantidade > 15 ? (quantidade - 15) : 0];    //declarando a quantidade de barras de progressos horizontais
 
                 textoFila = new System.Windows.Forms.Label[quantidade]; //declarando a quantidade de textoFilas
+            textoGuiches = new System.Windows.Forms.Label[quantidade];
 
                 //Criando barras de progresso
                 for (int j = 0; j < quantidade; j++) {
@@ -75,8 +77,16 @@ namespace PI_III
                         {
                             verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2 - 1) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2 - 1)) + inicio / 2 + (Constantes.TAMANHO_HORIZONTAL / (quantidade > 15 ? 15 : quantidade) / 2), 410);
 
-                            //criando label que conta tamanho da fila
+                            //criando label que conta tamanho da fila e o tipo de guiche
                             textoFila[j] = new System.Windows.Forms.Label();
+                            textoGuiches[j] = new System.Windows.Forms.Label();
+
+                            textoGuiches[j].BackColor = System.Drawing.Color.Transparent;
+                            textoGuiches[j].AutoSize = true;
+                            textoGuiches[j].ForeColor = System.Drawing.Color.White;
+                            textoGuiches[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2 - 1) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2 - 1)) + inicio / 2 + (Constantes.TAMANHO_HORIZONTAL / (quantidade > 15 ? 15 : quantidade) / 2) - 15 , 650);
+                            textoGuiches[j].Text = "Guiche " + postos[j].ToString();
+                            Controls.Add(textoGuiches[j]);
 
                             textoFila[j].BackColor = System.Drawing.Color.Transparent;
                             textoFila[j].ForeColor = System.Drawing.Color.White;
@@ -87,8 +97,16 @@ namespace PI_III
                         else{
                             verticalProgressBar[j].Location = new System.Drawing.Point((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) + inicio / 2, 410);
 
-                            //criando label que conta tamanho da fila
+                            //criando label que conta tamanho da fila e o tipo de guiche
                             textoFila[j] = new System.Windows.Forms.Label();
+                            textoGuiches[j] = new System.Windows.Forms.Label();
+
+                            textoGuiches[j].BackColor = System.Drawing.Color.Transparent;
+                            textoGuiches[j].AutoSize = true;
+                            textoGuiches[j].ForeColor = System.Drawing.Color.White;
+                            textoGuiches[j].Location = new System.Drawing.Point(((quantidade > 14 ? Constantes.TAMANHO_HORIZONTAL / 15 * (j + guiches[j].guichesIguais / 2) : Constantes.TAMANHO_HORIZONTAL / quantidade * (j + guiches[j].guichesIguais / 2)) - 15 + inicio / 2), 650);
+                            textoGuiches[j].Text = "Guiche " + postos[j].ToString();
+                            Controls.Add(textoGuiches[j]);
 
                             textoFila[j].BackColor = System.Drawing.Color.Transparent;
                             textoFila[j].ForeColor = System.Drawing.Color.White;
@@ -115,6 +133,14 @@ namespace PI_III
 
                             //criando label que conta tamanho da fila
                             textoFila[j] = new System.Windows.Forms.Label();
+                            textoGuiches[j] = new System.Windows.Forms.Label();
+                          
+                            textoGuiches[j].BackColor = System.Drawing.Color.Transparent;
+                            textoGuiches[j].AutoSize = true;
+                            textoGuiches[j].ForeColor = System.Drawing.Color.White;
+                            textoGuiches[j].Location = new System.Drawing.Point(1150, ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 15) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2) + ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) / 2)) - 15);
+                            textoGuiches[j].Text = "Guiche " + postos[j].ToString();
+                            Controls.Add(textoGuiches[j]);
 
                             textoFila[j].BackColor = System.Drawing.Color.Transparent;
                             textoFila[j].ForeColor = System.Drawing.Color.White;
@@ -127,6 +153,14 @@ namespace PI_III
 
                             //criando label que conta tamanho da fila
                             textoFila[j] = new System.Windows.Forms.Label();
+                           textoGuiches[j] = new System.Windows.Forms.Label();
+
+                            textoGuiches[j].BackColor = System.Drawing.Color.Transparent;
+                            textoGuiches[j].AutoSize = true;
+                            textoGuiches[j].ForeColor = System.Drawing.Color.White;
+                            textoGuiches[j].Location = new System.Drawing.Point(1150, ((Constantes.TAMANHO_VERTICAL - 250) / (quantidade - 14) * ((j - 14) + guiches[j].guichesIguais / 2 - 1) + (inicio / 2)) - 20);
+                            textoGuiches[j].Text = "Guiche " + postos[j].ToString();
+                            Controls.Add(textoGuiches[j]);
 
                             textoFila[j].BackColor = System.Drawing.Color.Transparent;
                             textoFila[j].ForeColor = System.Drawing.Color.White;
