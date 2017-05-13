@@ -51,9 +51,26 @@ namespace PI_III
                 }
             }
 
-            if (maiorPeso > menorPeso + troca)
+            if(troca>=7)
             {
-                trocarAtendentes(guiches, posicaoMenor, posicaoMaior); //se o maiorPeso for maior que o menorPeso + a troca, então, efetuará a troca
+                if (maiorPeso > menorPeso + troca*3)
+                {
+                    trocarAtendentes(guiches, posicaoMenor, posicaoMaior); //se o maiorPeso for maior que o menorPeso + a troca, então, efetuará a troca
+                }
+            }
+            else if(troca>=4 && troca<7)
+            {
+                if (maiorPeso > menorPeso + troca*2)
+                {
+                    trocarAtendentes(guiches, posicaoMenor, posicaoMaior); //se o maiorPeso for maior que o menorPeso + a troca, então, efetuará a troca
+                }
+            }
+            else 
+            {
+                if (maiorPeso > menorPeso + troca)
+                {
+                    trocarAtendentes(guiches, posicaoMenor, posicaoMaior); //se o maiorPeso for maior que o menorPeso + a troca, então, efetuará a troca
+                }
             }
         }
 
