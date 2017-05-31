@@ -133,9 +133,6 @@
   <data name="vazio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Imagens\vazio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PI IIIwpp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Imagens\PI IIIwpp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="atendenteAtendendo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Imagens\atendenteAtendendo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,9 +151,6 @@
   <data name="backgroundPNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Imagens\backgroundPNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="10x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\Imagens\10x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="1493339249_pause1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Imagens\1493339249_pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -168,5 +162,8 @@
   </data>
   <data name="TrocaSaindo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Imagens\TrocaSaindo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="10x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Imagens\10x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

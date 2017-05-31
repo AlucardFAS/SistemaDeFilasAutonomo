@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,8 +16,11 @@ namespace PI_III
         public Estatisticas(Estatistica estatistica, List<EstatisticaComb> estatisticaPorGuiches, GuichesSetup[] guiches)
         {
             //InitializeComponent();
-            ClientSize = new System.Drawing.Size(340, 700);
+            ClientSize = new System.Drawing.Size(370, 700);
             StartPosition = FormStartPosition.CenterScreen;
+            this.AutoScroll = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+
             //estatisticas de tempo médio
             Label textoMedioTotal = new Label();
 
@@ -42,17 +46,19 @@ namespace PI_III
 
             //estatisticas por tempo
             int k = 0;
+            int espaco = 0;
             for (int i = 0; i < estatistica.guicheTempoFila.Length; i++)
                 {
                     textoMediaFila[i] = new Label();
                     textoMediaFila[i].Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     textoMediaFila[i].AutoSize = true;
                     textoMediaFila[i].Location = new System.Drawing.Point(10, 120 + i * 20);
-
+                    textoMediaFila[i].Text = " ";
                     textoMediaFila[i].Text = "Tempo médio da fila do guiche " + (guiches[k].guiche) + " : " + Math.Round(estatistica.guicheTempoFila[i] / estatistica.quantidadePessoasFila[i], 2);
                     k += guiches[k].guichesIguais;
 
                     Controls.Add(textoMediaFila[i]);
+                espaco = (i * 50);
                 }
             //estatisticas por combinação
             Label[] textoMediaComb = new Label[estatisticaPorGuiches.Count];
@@ -62,8 +68,8 @@ namespace PI_III
                 textoMediaComb[i] = new Label();
                 textoMediaComb[i].Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 textoMediaComb[i].AutoSize = true;
-                textoMediaComb[i].Location = new System.Drawing.Point(10, 250 + i * 20);
-
+                textoMediaComb[i].Location = new System.Drawing.Point(10, espaco + i * 20);
+                textoMediaComb[i].Text = " ";
                 textoMediaComb[i].Text = "Tempo médio da combinação " + estatisticaPorGuiches[i].combinacao + ": " + estatisticaPorGuiches[i].quantidadeTurnos / estatisticaPorGuiches[i].quantidadePessoas;
 
                 Controls.Add(textoMediaComb[i]);
