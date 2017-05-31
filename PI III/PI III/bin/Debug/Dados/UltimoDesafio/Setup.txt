@@ -1,0 +1,8 @@
+5
+RP:AABBCCCDDD
+RA:ABBCC
+TROCA:12
+A2:Pratos
+B3:Talheres
+C4:Salada
+D4:Comida

@@ -1,0 +1,11 @@
+8
+RP:AABBCCDDEEFFG
+RA:AABCDDEF
+TROCA:4
+A2:Vestibular
+B2:Matricula
+C3:Allegro
+D5:Marengoni
+E5:Automatos
+F3:TCC
+G4:Colacao Grau
