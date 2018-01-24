@@ -36,9 +36,9 @@ Application of tests for generation of txts and checks of exchange algorithms.
 
 <h2> Technical Data </h2>
 
-Language: C#
-Authors: Fernando Silva, Bruno Rocca, Victor Kelven and Victor Trindade
-University: Centro Universitário Senac
+Language: C#</br>
+Authors: Fernando Silva, Bruno Rocca, Victor Kelven and Victor Trindade</br>
+University: Centro Universitário Senac</br>
 
 Iniciativa desenvolvida para a aula de Projetos Integradores, com foco na resolução do problema de filas de atendimento demoradas visando a otimização do processo.
 
