@@ -19,3 +19,27 @@ the input of information is given by a predefined txt containing the number of c
 A saída é dada após todos usuários passarem pelo sistema, na qual é demonstrada o valor de cada combinação em turnos, o usuário mais rápido, o mais demorado e o tempo total de execução em turnos.
 
 The output is given after all users go through the system, which demonstrates the value of each combination in shifts, the fastest, most time consuming user and the total turnaround time.
+
+<h2> Folder Information </h2>
+
+<h3> PI III </h3>
+
+Pasta principal contendo a aplicação com arquivos de teste e executável.
+
+Main folder containing application with test and executable files.
+
+<h3> TesteFormulas </h3>
+
+Aplicação de testes para geração de txts e verificações de algoritimos de troca.
+
+Application of tests for generation of txts and checks of exchange algorithms.
+
+<h2> Technical Data </h2>
+
+Language: C#
+Authors: Fernando Silva, Bruno Rocca, Victor Kelven and Victor Trindade
+University: Centro Universitário Senac
+
+Iniciativa desenvolvida para a aula de Projetos Integradores, com foco na resolução do problema de filas de atendimento demoradas visando a otimização do processo.
+
+Initiative developed for the class of Integrative Projects, focused on solving the problem of long service queues aiming at optimizing the process.
