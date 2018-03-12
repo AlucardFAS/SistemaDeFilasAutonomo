@@ -4,10 +4,10 @@ The main repository is at https://github.com/AlucardFAS/PI3
 
 <H1>Author</h1>
 
-Bruno Rocca
-Fernando Silva
-Victor Kelven
-Victor Trindade
+Bruno Rocca</br>
+Fernando Silva</br>
+Victor Kelven</br>
+Victor Trindade</br>
 
 <h2> Overview </h2>
 
