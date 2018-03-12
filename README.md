@@ -2,6 +2,13 @@
 
 The main repository is at https://github.com/AlucardFAS/PI3
 
+<H1>Author</h1>
+
+Bruno Rocca
+Fernando Silva
+Victor Kelven
+Victor Trindade
+
 <h2> Overview </h2>
 
 Este projeto automatiza a troca de atendentes entre guichês para otimizar a velocidade de atendimento das filas no sistema.
